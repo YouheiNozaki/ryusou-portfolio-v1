@@ -31,8 +31,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"src/**/*.{js,ts,tsx}*\"",
-    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix"
+    "format": "prettier --write \"src/**/*.{js,ts,tsx}*\""
   },
   "devDependencies": {
     "prettier": "^2.0.5"
