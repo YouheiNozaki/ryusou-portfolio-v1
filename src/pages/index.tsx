@@ -33,7 +33,7 @@ export default class extends React.Component<
           site.
         </p>
         <p>Now go build something great.</p>
-        <Link to="/page-2/">Go to page 2</Link>
+        <Link to="/posts/">Go to Posts Page</Link>
       </div>
     );
   }
