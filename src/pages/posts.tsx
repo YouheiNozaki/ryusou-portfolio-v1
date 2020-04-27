@@ -24,6 +24,7 @@ const Posts: React.FC<Props> = ({ data }) => (
                 </React.Fragment>
               ))}
             </div>
+            <p>{posts.day}</p>
             <img src={posts.image.url} />
           </div>
         </React.Fragment>
