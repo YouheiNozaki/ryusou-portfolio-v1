@@ -9,25 +9,30 @@ type Props = {
 const Posts: React.FC<Props> = ({ data }) => (
   <div>
     <h1>Post Page</h1>
-    {data.allMicrocmsPosts.edges.map((edge) => {
+    {data.allMicrocmsPosts?.edges?.map((edge) => {
       const posts = edge.node;
       return (
-        <React.Fragment key={posts.id}>
-          <div>
-            <Link to={`/posts/${posts.postsId}`}>
-              <h2>{posts.title}</h2>
-            </Link>
+        posts?.image?.url && (
+          <React.Fragment key={posts.id}>
             <div>
-              {posts.tags.map((tag) => (
-                <React.Fragment key={tag.id}>
-                  <span>{tag.name}</span>
-                </React.Fragment>
-              ))}
+              <Link to={`/posts/${posts.postsId}`}>
+                <h2>{posts.title}</h2>
+              </Link>
+              <div>
+                {posts?.tags?.map(
+                  (tag) =>
+                    tag?.id && (
+                      <React.Fragment key={tag.id}>
+                        <span>{tag.name}</span>
+                      </React.Fragment>
+                    ),
+                )}
+              </div>
+              <p>{posts.day}</p>
+              <img src={posts.image.url} />
             </div>
-            <p>{posts.day}</p>
-            <img src={posts.image.url} />
-          </div>
-        </React.Fragment>
+          </React.Fragment>
+        )
       );
     })}
   </div>

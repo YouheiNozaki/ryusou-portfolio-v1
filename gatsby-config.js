@@ -28,13 +28,13 @@ module.exports = {
         icon: `src/images/icon.png`,
       },
     },
+    `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-graphql-codegen`,
       options: {
-        filename: `types/graphql-types.d.ts`,
+        filename: `./types/graphql-types.d.ts`,
       },
     },
-    `gatsby-plugin-typescript`,
     {
       resolve: 'gatsby-source-microcms',
       options: {
