@@ -31,7 +31,7 @@
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "start": "gatsby develop",
     "format": "prettier --write \"src/**/*.{js,ts,tsx}*\""
   },
   "devDependencies": {
