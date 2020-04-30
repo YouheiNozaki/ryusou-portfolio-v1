@@ -7,6 +7,7 @@ type Props = {
 
 const Post: React.FC<Props> = ({ pageContext }) => {
   const post = pageContext.post;
+
   return (
     <>
       <h1>{post.title}</h1>
@@ -19,7 +20,7 @@ const Post: React.FC<Props> = ({ pageContext }) => {
           ),
       )}
       <p>{post.day}</p>
-      <img src={post.image.url} />
+      {post?.image?.url && <img src={post.image.url} />}
       <p
         dangerouslySetInnerHTML={{
           __html: `${post.content}`,

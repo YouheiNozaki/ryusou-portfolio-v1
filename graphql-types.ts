@@ -1705,6 +1705,7 @@ export type QuerySitePageArgs = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
@@ -2159,6 +2160,7 @@ export type SitePage = Node & {
   children: Array<Node>;
   internal: Internal;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
+  context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
   componentPath?: Maybe<Scalars['String']>;
@@ -2183,6 +2185,54 @@ export type SitePageConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
   field: SitePageFieldsEnum;
+};
+
+export type SitePageContext = {
+  post?: Maybe<SitePageContextPost>;
+};
+
+export type SitePageContextFilterInput = {
+  post?: Maybe<SitePageContextPostFilterInput>;
+};
+
+export type SitePageContextPost = {
+  postsId?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  tags?: Maybe<Array<Maybe<SitePageContextPostTags>>>;
+  day?: Maybe<Scalars['Date']>;
+  image?: Maybe<SitePageContextPostImage>;
+  content?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextPostFilterInput = {
+  postsId?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  tags?: Maybe<SitePageContextPostTagsFilterListInput>;
+  day?: Maybe<DateQueryOperatorInput>;
+  image?: Maybe<SitePageContextPostImageFilterInput>;
+  content?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextPostImage = {
+  url?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextPostImageFilterInput = {
+  url?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextPostTags = {
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextPostTagsFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextPostTagsFilterListInput = {
+  elemMatch?: Maybe<SitePageContextPostTagsFilterInput>;
 };
 
 export type SitePageEdge = {
@@ -2284,6 +2334,14 @@ export type SitePageFieldsEnum =
   'internal___owner' |
   'internal___type' |
   'isCreatedByStatefulCreatePages' |
+  'context___post___postsId' |
+  'context___post___title' |
+  'context___post___tags' |
+  'context___post___tags___id' |
+  'context___post___tags___name' |
+  'context___post___day' |
+  'context___post___image___url' |
+  'context___post___content' |
   'pluginCreator___id' |
   'pluginCreator___parent___id' |
   'pluginCreator___parent___parent___id' |
@@ -2369,6 +2427,7 @@ export type SitePageFilterInput = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;

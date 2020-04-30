@@ -12,27 +12,27 @@ const Posts: React.FC<Props> = ({ data }) => (
     {data.allMicrocmsPosts?.edges?.map((edge) => {
       const posts = edge.node;
       return (
-        posts?.image?.url && (
-          <React.Fragment key={posts.id}>
+        <React.Fragment key={posts.id}>
+          <div>
+            <Link to={`/posts/${posts.postsId}`}>
+              <h2>{posts.title}</h2>
+            </Link>
             <div>
-              <Link to={`/posts/${posts.postsId}`}>
-                <h2>{posts.title}</h2>
-              </Link>
-              <div>
-                {posts?.tags?.map(
-                  (tag) =>
-                    tag?.id && (
-                      <React.Fragment key={tag.id}>
-                        <span>{tag.name}</span>
-                      </React.Fragment>
-                    ),
-                )}
-              </div>
-              <p>{posts.day}</p>
-              <img src={posts.image.url} />
+              {posts?.tags?.map(
+                (tag) =>
+                  tag?.id && (
+                    <React.Fragment key={tag.id}>
+                      <span>{tag.name}</span>
+                    </React.Fragment>
+                  ),
+              )}
             </div>
-          </React.Fragment>
-        )
+            <p>{posts.day}</p>
+            {posts?.image?.url && (
+              <img src={posts.image.url} />
+            )}
+          </div>
+        </React.Fragment>
       );
     })}
   </div>

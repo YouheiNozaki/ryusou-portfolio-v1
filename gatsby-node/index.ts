@@ -15,17 +15,22 @@ export type PostContext = {
 
 const query = `
 {
-  microcmsPosts {
-    postsId
-    title
-    tags {
-      name
+  allMicrocmsPosts {
+    edges {
+      node {
+        postsId
+        title
+        tags {
+          id
+          name
+        }
+        day
+        image {
+          url
+        }
+        content
+      }
     }
-    day
-    image {
-      url
-    }
-    content
   }
 }
 `;
@@ -35,13 +40,17 @@ export const createPages: GatsbyNode['createPages'] = async ({
   actions: { createPage },
 }) => {
   const result = await graphql<Result>(query);
-  const { edges } = result.data?.allMicrocmsPosts;
+
+  if (result.errors || !result.data) {
+    throw result.errors;
+  }
+  const { edges } = result.data.allMicrocmsPosts;
 
   const postTemplate = path.resolve(
     './src/templates/post.tsx',
   );
 
-  edges?.forEach((edge) => {
+  edges.forEach((edge) => {
     createPage<PostContext>({
       path: `/posts/${edge.node.postsId}`,
       component: postTemplate,
