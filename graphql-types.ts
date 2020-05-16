@@ -2765,11 +2765,6 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
-export type IndexQueryQueryVariables = {};
-
-
-export type IndexQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
-
 export type PagePostsQueryVariables = {};
 
 

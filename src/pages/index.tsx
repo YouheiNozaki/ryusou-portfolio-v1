@@ -1,50 +1,22 @@
-import * as React from 'react';
-import { graphql } from 'gatsby';
-import Link from 'gatsby-link';
+import React, { useEffect, useRef } from 'react';
+import lottie from 'lottie-web';
 
-// Please note that you can use https://github.com/dotansimha/graphql-code-generator
-// to generate all types from graphQL schema
-interface IndexPageProps {
-  data: {
-    site: {
-      siteMetadata: {
-        title: string;
-      };
-    };
-  };
+function IndexPage() {
+  const animationContainer = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    lottie.loadAnimation({
+      container: animationContainer.current,
+      path: '/animations/data.json',
+    });
+  });
+
+  return (
+    <>
+      <h1> Welcome!!</h1>
+      <div ref={animationContainer} />
+    </>
+  );
 }
 
-export default class extends React.Component<
-  IndexPageProps,
-  {}
-> {
-  constructor(props: IndexPageProps, context: any) {
-    super(props, context);
-  }
-  public render() {
-    return (
-      <div>
-        <h1>Hi people</h1>
-        <p>
-          Welcome to your new{' '}
-          <strong>
-            {this.props.data.site.siteMetadata.title}
-          </strong>{' '}
-          site.
-        </p>
-        <p>Now go build something great.</p>
-        <Link to="/posts/">Go to Posts Page</Link>
-      </div>
-    );
-  }
-}
-
-export const pageQuery = graphql`
-  query IndexQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;
+export default IndexPage;

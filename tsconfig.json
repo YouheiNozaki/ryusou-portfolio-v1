@@ -6,8 +6,13 @@
     "sourceMap": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "jsx": "react",
     "lib": ["dom", "esnext"]
   },
-  "include": ["./types/**/*", "./gatsby-node/**/*", "./src/**/*"]
+  "include": [
+    "./types/**/*",
+    "./gatsby-node/**/*",
+    "./src/**/*"
+  ]
 }
