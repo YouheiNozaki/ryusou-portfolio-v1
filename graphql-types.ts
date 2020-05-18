@@ -2388,6 +2388,8 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___short_name' |
   'pluginCreator___pluginOptions___start_url' |
   'pluginCreator___pluginOptions___icon' |
+  'pluginCreator___pluginOptions___content' |
+  'pluginCreator___pluginOptions___tailwind' |
   'pluginCreator___pluginOptions___filename' |
   'pluginCreator___pluginOptions___apiKey' |
   'pluginCreator___pluginOptions___serviceId' |
@@ -2585,6 +2587,8 @@ export type SitePluginFieldsEnum =
   'pluginOptions___short_name' |
   'pluginOptions___start_url' |
   'pluginOptions___icon' |
+  'pluginOptions___content' |
+  'pluginOptions___tailwind' |
   'pluginOptions___filename' |
   'pluginOptions___apiKey' |
   'pluginOptions___serviceId' |
@@ -2710,6 +2714,8 @@ export type SitePluginPluginOptions = {
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
   icon?: Maybe<Scalars['String']>;
+  content?: Maybe<Array<Maybe<Scalars['String']>>>;
+  tailwind?: Maybe<Scalars['Boolean']>;
   filename?: Maybe<Scalars['String']>;
   apiKey?: Maybe<Scalars['String']>;
   serviceId?: Maybe<Scalars['String']>;
@@ -2723,6 +2729,8 @@ export type SitePluginPluginOptionsFilterInput = {
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
   icon?: Maybe<StringQueryOperatorInput>;
+  content?: Maybe<StringQueryOperatorInput>;
+  tailwind?: Maybe<BooleanQueryOperatorInput>;
   filename?: Maybe<StringQueryOperatorInput>;
   apiKey?: Maybe<StringQueryOperatorInput>;
   serviceId?: Maybe<StringQueryOperatorInput>;

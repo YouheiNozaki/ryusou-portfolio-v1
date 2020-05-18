@@ -13,7 +13,9 @@ function IndexPage() {
 
   return (
     <>
-      <h1> Welcome!!</h1>
+      <p className="text-6xl text-green-700 text-center">
+        Welcome!!
+      </p>
       <div ref={animationContainer} />
     </>
   );

@@ -28,6 +28,19 @@ module.exports = {
         icon: `src/images/icon.png`,
       },
     },
+    `gatsby-plugin-postcss`,
+    {
+      resolve: 'gatsby-plugin-purgecss',
+      options: {
+        content: [
+          require('path').join(
+            process.cwd(),
+            'src/**/!(*.d).{js,jsx,ts,tsx}',
+          ),
+        ],
+        tailwind: true,
+      },
+    },
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-graphql-codegen`,
