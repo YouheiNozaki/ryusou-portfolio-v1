@@ -29,7 +29,10 @@ const Posts: React.FC<Props> = ({ data }) => (
             </div>
             <p>{posts.day}</p>
             {posts?.image?.url && (
-              <img src={posts.image.url} />
+              <img
+                src={posts.image.url}
+                alt="ブログのイメージ画像"
+              />
             )}
           </div>
         </React.Fragment>

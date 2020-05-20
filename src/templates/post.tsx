@@ -20,7 +20,12 @@ const Post: React.FC<Props> = ({ pageContext }) => {
           ),
       )}
       <p>{post.day}</p>
-      {post?.image?.url && <img src={post.image.url} />}
+      {post?.image?.url && (
+        <img
+          src={post.image.url}
+          alt="投稿したブログのイメージ画像"
+        />
+      )}
       <p
         dangerouslySetInnerHTML={{
           __html: `${post.content}`,

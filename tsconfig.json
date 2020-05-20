@@ -10,9 +10,6 @@
     "jsx": "react",
     "lib": ["dom", "esnext"]
   },
-  "include": [
-    "./types/**/*",
-    "./gatsby-node/**/*",
-    "./src/**/*"
-  ]
+  "exclude": ["node_modules", ".cache"],
+  "include": ["./gatsby-node/**/*", "./src/**/*"]
 }
