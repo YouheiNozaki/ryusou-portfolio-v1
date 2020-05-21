@@ -7,14 +7,16 @@ module.exports = {
     'eslint:recommended',
     `eslint-config-react-app`,
     'plugin:react/recommended',
+    'plugin:jsx-a11y/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:prettier/recommended',
     'prettier/@typescript-eslint',
     'prettier/react',
   ],
   globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+    graphql: true,
+    __PATH_PREFIX__: true,
+    __BASE_PATH__: true,
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -31,6 +33,8 @@ module.exports = {
     '@typescript-eslint',
     'prettier',
     'graphql',
+    'jsx-a11y',
+    'import',
   ],
   rules: {
     'react/prop-types': 'off',
