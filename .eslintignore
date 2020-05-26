@@ -1,6 +1,4 @@
 gatsby-config.js
 gatsby-browser.js
 gatsby-node.js
-postcss.config.js
-tailwind.config.js
 .eslintrc.js
