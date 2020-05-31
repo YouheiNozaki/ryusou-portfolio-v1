@@ -2,12 +2,14 @@ import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import { PagePostsQuery } from '../../graphql-types';
 
+import { Layout } from '../components/templates/layouts';
+
 type Props = {
   data: PagePostsQuery;
 };
 
 const Posts: React.FC<Props> = ({ data }) => (
-  <div>
+  <Layout>
     <h1>Post Page</h1>
     {data.allMicrocmsPosts?.edges?.map((edge) => {
       const posts = edge.node;
@@ -38,7 +40,7 @@ const Posts: React.FC<Props> = ({ data }) => (
         </React.Fragment>
       );
     })}
-  </div>
+  </Layout>
 );
 
 export const pageQuery = graphql`

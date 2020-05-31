@@ -55,45 +55,45 @@ declare namespace Lottie {
   }
 }
 
-// declare class LottyPlayer {
-//   // optional parameter name to target a specific animation
-//   play(name?: string): any;
+declare class LottyPlayer {
+  // optional parameter name to target a specific animation
+  play(name?: string): any;
 
-//   // optional parameter name to target a specific animation
-//   stop(name?: string): any;
+  // optional parameter name to target a specific animation
+  stop(name?: string): any;
 
-//   // first param speed (1 is normal speed) with 1 optional parameter name to target a specific animation
-//   setSpeed(speed: number, name?: string): any;
+  // first param speed (1 is normal speed) with 1 optional parameter name to target a specific animation
+  setSpeed(speed: number, name?: string): any;
 
-//   // first param direction (1 is normal direction.) with 1 optional parameter name to target a specific animation
-//   setDirection(direction: number, name?: string): any;
+  // first param direction (1 is normal direction.) with 1 optional parameter name to target a specific animation
+  setDirection(direction: number, name?: string): any;
 
-//   // default 'high', set 'high','medium','low', or a number > 1 to improve player performance. In some animations as low as 2 won't show any difference.
-//   setQuality(quality: string | number): any;
+  // default 'high', set 'high','medium','low', or a number > 1 to improve player performance. In some animations as low as 2 won't show any difference.
+  setQuality(quality: string | number): any;
 
-//   // param usually pass as location.href. Its useful when you experience mask issue in safari where your url does not have # symbol.
-//   setLocationHref(href: string): any;
+  // param usually pass as location.href. Its useful when you experience mask issue in safari where your url does not have # symbol.
+  setLocationHref(href: string): any;
 
-//   // returns an animation instance to control individually.
-//   loadAnimation(
-//     params: Lottie.AnimationConfig,
-//   ): Lottie.AnimationItem;
+  // returns an animation instance to control individually.
+  loadAnimation(
+    params: Lottie.AnimationConfig,
+  ): Lottie.AnimationItem;
 
-//   // you can register an element directly with registerAnimation. It must have the "data-animation-path" attribute pointing at the data.json url
-//   registerAnimation(element: any, animationData?: any): any;
+  // you can register an element directly with registerAnimation. It must have the "data-animation-path" attribute pointing at the data.json url
+  registerAnimation(element: any, animationData?: any): any;
 
-//   // looks for elements with class "lottie"
-//   searchAnimations(
-//     animationData: any,
-//     standalone: boolean,
-//     renderer?: string,
-//   ): any;
+  // looks for elements with class "lottie"
+  searchAnimations(
+    animationData: any,
+    standalone: boolean,
+    renderer?: string,
+  ): any;
 
-//   // To destroy and release resources. The DOM element will be emptied.
-//   destroy(name?: string): any;
-// }
+  // To destroy and release resources. The DOM element will be emptied.
+  destroy(name?: string): any;
+}
 
-// declare const Lottie: LottyPlayer;
+declare const Lottie: LottyPlayer;
 
 declare module 'lottie-web' {
   export = Lottie;

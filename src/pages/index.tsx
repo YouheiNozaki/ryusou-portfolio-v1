@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 
+import { Layout } from '../components/templates/layouts';
+
 function IndexPage() {
   const animationContainer = useRef<HTMLDivElement>(null);
 
@@ -15,7 +17,9 @@ function IndexPage() {
 
   return (
     <>
-      <div ref={animationContainer} />
+      <Layout>
+        <div ref={animationContainer} />
+      </Layout>
     </>
   );
 }
