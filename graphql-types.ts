@@ -1261,10 +1261,10 @@ export type MicrocmsPosts = Node & {
   updatedAt?: Maybe<Scalars['Date']>;
   title?: Maybe<Scalars['String']>;
   tags?: Maybe<Array<Maybe<MicrocmsPostsTags>>>;
-  day?: Maybe<Scalars['Date']>;
   image?: Maybe<MicrocmsPostsImage>;
   content?: Maybe<Scalars['String']>;
   postsId?: Maybe<Scalars['String']>;
+  day?: Maybe<Scalars['Date']>;
 };
 
 export type MicrocmsPostsCreatedAtArgs = {
@@ -1408,10 +1408,10 @@ export type MicrocmsPostsFieldsEnum =
   | 'tags___createdAt'
   | 'tags___updatedAt'
   | 'tags___name'
-  | 'day'
   | 'image___url'
   | 'content'
-  | 'postsId';
+  | 'postsId'
+  | 'day';
 
 export type MicrocmsPostsFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -1422,10 +1422,10 @@ export type MicrocmsPostsFilterInput = {
   updatedAt?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   tags?: Maybe<MicrocmsPostsTagsFilterListInput>;
-  day?: Maybe<DateQueryOperatorInput>;
   image?: Maybe<MicrocmsPostsImageFilterInput>;
   content?: Maybe<StringQueryOperatorInput>;
   postsId?: Maybe<StringQueryOperatorInput>;
+  day?: Maybe<DateQueryOperatorInput>;
 };
 
 export type MicrocmsPostsGroupConnection = {
@@ -1720,10 +1720,10 @@ export type QueryMicrocmsPostsArgs = {
   updatedAt?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   tags?: Maybe<MicrocmsPostsTagsFilterListInput>;
-  day?: Maybe<DateQueryOperatorInput>;
   image?: Maybe<MicrocmsPostsImageFilterInput>;
   content?: Maybe<StringQueryOperatorInput>;
   postsId?: Maybe<StringQueryOperatorInput>;
+  day?: Maybe<DateQueryOperatorInput>;
 };
 
 export type QueryAllMicrocmsPostsArgs = {
@@ -2324,14 +2324,11 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
   | 'pluginCreator___pluginOptions___icon'
-  | 'pluginCreator___pluginOptions___content'
-  | 'pluginCreator___pluginOptions___tailwind'
   | 'pluginCreator___pluginOptions___filename'
   | 'pluginCreator___pluginOptions___apiKey'
   | 'pluginCreator___pluginOptions___serviceId'
   | 'pluginCreator___pluginOptions___endpoint'
   | 'pluginCreator___pluginOptions___stages'
-  | 'pluginCreator___pluginOptions___options___cache'
   | 'pluginCreator___pluginOptions___options___emitWarning'
   | 'pluginCreator___pluginOptions___options___failOnError'
   | 'pluginCreator___pluginOptions___pathCheck'
@@ -2527,14 +2524,11 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
   | 'pluginOptions___icon'
-  | 'pluginOptions___content'
-  | 'pluginOptions___tailwind'
   | 'pluginOptions___filename'
   | 'pluginOptions___apiKey'
   | 'pluginOptions___serviceId'
   | 'pluginOptions___endpoint'
   | 'pluginOptions___stages'
-  | 'pluginOptions___options___cache'
   | 'pluginOptions___options___emitWarning'
   | 'pluginOptions___options___failOnError'
   | 'pluginOptions___pathCheck'
@@ -2676,8 +2670,6 @@ export type SitePluginPluginOptions = {
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
   icon?: Maybe<Scalars['String']>;
-  content?: Maybe<Array<Maybe<Scalars['String']>>>;
-  tailwind?: Maybe<Scalars['Boolean']>;
   filename?: Maybe<Scalars['String']>;
   apiKey?: Maybe<Scalars['String']>;
   serviceId?: Maybe<Scalars['String']>;
@@ -2693,8 +2685,6 @@ export type SitePluginPluginOptionsFilterInput = {
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
   icon?: Maybe<StringQueryOperatorInput>;
-  content?: Maybe<StringQueryOperatorInput>;
-  tailwind?: Maybe<BooleanQueryOperatorInput>;
   filename?: Maybe<StringQueryOperatorInput>;
   apiKey?: Maybe<StringQueryOperatorInput>;
   serviceId?: Maybe<StringQueryOperatorInput>;
@@ -2707,13 +2697,11 @@ export type SitePluginPluginOptionsFilterInput = {
 };
 
 export type SitePluginPluginOptionsOptions = {
-  cache?: Maybe<Scalars['Boolean']>;
   emitWarning?: Maybe<Scalars['Boolean']>;
   failOnError?: Maybe<Scalars['Boolean']>;
 };
 
 export type SitePluginPluginOptionsOptionsFilterInput = {
-  cache?: Maybe<BooleanQueryOperatorInput>;
   emitWarning?: Maybe<BooleanQueryOperatorInput>;
   failOnError?: Maybe<BooleanQueryOperatorInput>;
 };

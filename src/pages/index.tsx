@@ -7,15 +7,14 @@ function IndexPage() {
   useEffect(() => {
     lottie.loadAnimation({
       container: animationContainer.current,
+      autoplay: true,
+      loop: false,
       path: '/animations/data.json',
     });
   });
 
   return (
     <>
-      <p className="text-6xl text-green-700 text-center">
-        Welcome!!
-      </p>
       <div ref={animationContainer} />
     </>
   );
