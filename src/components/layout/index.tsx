@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import './index.css';
-import { Header } from '../Header';
+import { Header } from '../templates/Header';
 
 type Props = {
   children: any;

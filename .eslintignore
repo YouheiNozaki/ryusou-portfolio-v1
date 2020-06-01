@@ -1,4 +1,4 @@
-gatsby-config.js
-gatsby-browser.js
-gatsby-node.js
 .eslintrc.js
+gatsby-browser.js
+gatsby-config.js
+gatsby-ssr.js
