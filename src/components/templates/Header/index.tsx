@@ -2,7 +2,6 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
-// import ICON from '../../../images/icon.png';
 
 type Props = {
   siteTitle: String;

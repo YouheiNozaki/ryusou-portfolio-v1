@@ -2739,6 +2739,57 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
+export type MyQueryQueryVariables = {};
+
+export type MyQueryQuery = {
+  file?: Maybe<{
+    childImageSharp?: Maybe<{
+      fixed?: Maybe<GatsbyImageSharpFixedFragment>;
+    }>;
+  }>;
+};
+
+export type Unnamed_1_QueryVariables = {};
+
+export type Unnamed_1_Query = {
+  site?: Maybe<{
+    siteMetadata?: Maybe<
+      Pick<
+        SiteSiteMetadata,
+        'title' | 'description' | 'author'
+      >
+    >;
+  }>;
+};
+
+export type SiteTitleQueryQueryVariables = {};
+
+export type SiteTitleQueryQuery = {
+  site?: Maybe<{
+    siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>>;
+  }>;
+};
+
+export type PagePostsQueryVariables = {};
+
+export type PagePostsQuery = {
+  allMicrocmsPosts: {
+    edges: Array<{
+      node: Pick<
+        MicrocmsPosts,
+        'id' | 'postsId' | 'title' | 'day'
+      > & {
+        tags?: Maybe<
+          Array<
+            Maybe<Pick<MicrocmsPostsTags, 'id' | 'name'>>
+          >
+        >;
+        image?: Maybe<Pick<MicrocmsPostsImage, 'url'>>;
+      };
+    }>;
+  };
+};
+
 export type GatsbyImageSharpFixedFragment = Pick<
   ImageSharpFixed,
   'base64' | 'width' | 'height' | 'src' | 'srcSet'
