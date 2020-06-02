@@ -1,9 +1,16 @@
-import React from 'react';
+import * as React from 'react';
+import { css } from '@emotion/core';
+
+import { colors } from '../theme';
+
+const Title = css({
+  color: colors.main,
+});
 
 const Work = () => {
   return (
     <>
-      <h1>WORK</h1>
+      <h1 css={Title}>WORK</h1>
     </>
   );
 };
