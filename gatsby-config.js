@@ -45,6 +45,14 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-microcms',
+      options: {
+        apiKey: process.env.X_API_KEY,
+        serviceId: 'ryusou-mtkh',
+        endpoint: 'works',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-eslint',
       options: {
         test: /\.js$|\.jsx$|\.ts$|\.tsx$/,

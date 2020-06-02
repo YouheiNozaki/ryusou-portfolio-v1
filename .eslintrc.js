@@ -40,6 +40,7 @@ module.exports = {
     'react/prop-types': 'off',
     'import/no-webpack-loader-syntax': [0],
     'graphql/template-strings': `off`,
+    '@typescript-eslint/no-unused-expressions': 'off',
 
     // https://github.com/evcohen/eslint-plugin-jsx-a11y/tree/master/docs/rules
     'jsx-a11y/accessible-emoji': `warn`,
