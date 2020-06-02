@@ -1,26 +1,17 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 
 import './index.css';
 import { Header } from '../templates/Header';
+import { Footer } from '../templates/Footer';
 
 type Props = {
   children: any;
 };
 
 export const Layout: React.FC<Props> = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header />
       <div
         style={{
           margin: `0 auto`,
@@ -30,6 +21,7 @@ export const Layout: React.FC<Props> = ({ children }) => {
       >
         <main>{children}</main>
       </div>
+      <Footer />
     </>
   );
 };

@@ -3,11 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 
-type Props = {
-  siteTitle: String;
-};
-
-export const Header: React.FC<Props> = ({ siteTitle }) => {
+export const Header: React.FC = () => {
   const data = useStaticQuery(graphql`
     query MyQuery {
       file(relativePath: { eq: "icon.png" }) {
@@ -27,7 +23,6 @@ export const Header: React.FC<Props> = ({ siteTitle }) => {
           fixed={data.file.childImageSharp.fixed}
           alt="Logo"
         />
-        <h1>{siteTitle}</h1>
       </Link>
       <Link to="/posts">POST</Link>
       <Link to="/work">WORK</Link>
