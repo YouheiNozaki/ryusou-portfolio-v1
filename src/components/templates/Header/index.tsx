@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
       </Link>
       <Link to="/posts">POST</Link>
       <Link to="/works">WORK</Link>
-      <Link to="/contact">CONTACT</Link>
+      <Link to="/contacts">CONTACT</Link>
     </>
   );
 };
