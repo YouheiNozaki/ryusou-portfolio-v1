@@ -3029,10 +3029,18 @@ export type PagePostsQuery = {
   };
 };
 
-export type PageWorksSitesQueryVariables = {};
+export type PageWorksQueryVariables = {};
 
-export type PageWorksSitesQuery = {
-  allMicrocmsWorks: {
+export type PageWorksQuery = {
+  site: {
+    nodes: Array<
+      Pick<
+        MicrocmsWorks,
+        'id' | 'title' | 'url' | 'description'
+      > & { image?: Maybe<Pick<MicrocmsWorksImage, 'url'>> }
+    >;
+  };
+  speech: {
     nodes: Array<
       Pick<
         MicrocmsWorks,
