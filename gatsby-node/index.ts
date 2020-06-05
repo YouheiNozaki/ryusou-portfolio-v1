@@ -11,28 +11,38 @@ type Result = {
 
 export type PostContext = {
   post: MicrocmsPosts;
+  next: MicrocmsPosts;
+  previous: MicrocmsPosts;
 };
 
 const query = `
-{
-  allMicrocmsPosts {
-    edges {
-      node {
-        postsId
-        title
-        tags {
-          id
-          name
+  {
+    allMicrocmsPosts(sort: {fields: day, order: DESC}) {
+      edges {
+        node {
+          postsId
+          title
+          tags {
+            id
+            name
+          }
+          day
+          image {
+            url
+          }
+          content
         }
-        day
-        image {
-          url
+        next {
+          title
+          postsId
         }
-        content
+        previous {
+          title
+          postsId
+        }
       }
     }
   }
-}
 `;
 
 export const createPages: GatsbyNode['createPages'] = async ({
@@ -46,15 +56,30 @@ export const createPages: GatsbyNode['createPages'] = async ({
   }
   const { edges } = result.data.allMicrocmsPosts;
 
-  const postTemplate = path.resolve(
-    './src/templates/post.tsx',
-  );
-
-  edges.forEach((edge) => {
+  edges.forEach(({ node, next, previous }) => {
     createPage<PostContext>({
-      path: `/posts/${edge.node.postsId}`,
-      component: postTemplate,
-      context: { post: edge.node },
+      path: `/posts/${node.postsId}`,
+      component: path.resolve('./src/templates/post.tsx'),
+      context: {
+        post: node,
+        next: next!,
+        previous: previous!,
+      },
+    });
+  });
+
+  const postsPerPage = 6;
+  const posts = result.data.allMicrocmsPosts.edges.length;
+  const postsPages = Math.ceil(posts / postsPerPage);
+
+  Array.from({ length: postsPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/posts/` : `/posts/${i + 1}`,
+      component: path.resolve(`./src/templates/posts.tsx`),
+      context: {
+        skip: postsPerPage * i,
+        limit: postsPerPage,
+      },
     });
   });
 };

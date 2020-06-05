@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import { PostContext } from '../../gatsby-node';
 
 type Props = {
@@ -31,6 +32,28 @@ const Post: React.FC<Props> = ({ pageContext }) => {
           __html: `${post.content}`,
         }}
       ></p>
+      <div>
+        {pageContext.next && (
+          <div>
+            <Link
+              to={`/posts/${pageContext.next.postsId}`}
+              rel="prev"
+            >
+              <span>{pageContext.next.title}</span>
+            </Link>
+          </div>
+        )}
+        {pageContext.previous && (
+          <div>
+            <Link
+              to={`/posts/${pageContext.previous.postsId}`}
+              rel="prev"
+            >
+              <span>{pageContext.previous.title}</span>
+            </Link>
+          </div>
+        )}
+      </div>
     </>
   );
 };
