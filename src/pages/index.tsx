@@ -1,23 +1,32 @@
-import React, { useEffect, useRef } from 'react';
-import lottie from 'lottie-web';
+import React from 'react';
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
-function IndexPage() {
-  const animationContainer = useRef<HTMLDivElement>(null);
+type Props = {
+  data: any;
+};
 
-  useEffect(() => {
-    lottie.loadAnimation({
-      container: animationContainer.current,
-      autoplay: true,
-      loop: false,
-      path: '/animations/data.json',
-    });
-  });
-
+const IndexPage: React.FC<Props> = ({ data }) => {
   return (
     <>
-      <div ref={animationContainer} />
+      <Img
+        fluid={data.file.childImageSharp.fluid}
+        alt="Ryusou blog"
+      />
     </>
   );
-}
+};
+
+export const query = graphql`
+  query {
+    file(relativePath: { eq: "ryusoublog.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 350) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`;
 
 export default IndexPage;

@@ -3264,6 +3264,16 @@ export type Unnamed_1_Query = {
   }>;
 };
 
+export type Unnamed_2_QueryVariables = {};
+
+export type Unnamed_2_Query = {
+  file?: Maybe<{
+    childImageSharp?: Maybe<{
+      fluid?: Maybe<GatsbyImageSharpFluid_WithWebpFragment>;
+    }>;
+  }>;
+};
+
 export type PageWorksQueryVariables = {};
 
 export type PageWorksQuery = {
