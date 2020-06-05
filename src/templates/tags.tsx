@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
-import { PagePostsQuery } from '../../graphql-types';
-import { PostsContext } from '../../gatsby-node';
+import { PageTagQuery } from '../../graphql-types';
+import { TagsContext } from '../../gatsby-node';
 
 type Props = {
-  data: PagePostsQuery;
-  pageContext: PostsContext;
+  data: PageTagQuery;
+  pageContext: TagsContext;
 };
 
-const Posts: React.FC<Props> = ({ data, pageContext }) => (
+const Tags: React.FC<Props> = ({ data, pageContext }) => (
   <>
     <section>
-      <h1>Post Page</h1>
+      <h1>{pageContext.tagsname}</h1>
       {data.allMicrocmsPosts?.edges?.map((edge) => {
         const posts = edge.node;
         return (
@@ -75,12 +75,19 @@ const Posts: React.FC<Props> = ({ data, pageContext }) => (
   </>
 );
 
-export const pageQuery = graphql`
-  query PagePosts($skip: Int!, $limit: Int!) {
+export const query = graphql`
+  query PageTag(
+    $tagsId: String!
+    $skip: Int!
+    $limit: Int!
+  ) {
     allMicrocmsPosts(
       sort: { fields: day, order: DESC }
       skip: $skip
       limit: $limit
+      filter: {
+        tags: { elemMatch: { slug: { eq: $tagsId } } }
+      }
     ) {
       edges {
         node {
@@ -101,4 +108,4 @@ export const pageQuery = graphql`
   }
 `;
 
-export default Posts;
+export default Tags;

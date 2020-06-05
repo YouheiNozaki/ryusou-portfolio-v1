@@ -16,7 +16,9 @@ const Post: React.FC<Props> = ({ pageContext }) => {
         (tag) =>
           tag?.id && (
             <React.Fragment key={tag.id}>
-              <span>{tag.name}</span>
+              <Link to={`/tags/${tag.id}`}>
+                <span>{tag.name}</span>
+              </Link>
             </React.Fragment>
           ),
       )}
