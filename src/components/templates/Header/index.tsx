@@ -4,7 +4,12 @@ import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 
-import { colors, sizes, typography } from '../../../theme/';
+import {
+  colors,
+  sizes,
+  fontSizes,
+  typography,
+} from '../../../theme/';
 
 const HeaderContainer = css({
   display: 'flex',
@@ -25,6 +30,7 @@ const HeaderLink = css({
     marginRight: sizes[8],
     listStyle: 'none',
     '& a': {
+      fontSize: fontSizes.xl,
       color: colors.blue,
       textDecoration: 'none',
       fontWeight: typography.fontWeights.bold,
