@@ -3,8 +3,10 @@ import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 
+import { PageImageQuery } from '../../graphql-types';
+
 type Props = {
-  data: any;
+  data: PageImageQuery;
 };
 
 const HeroImage = css({
@@ -16,17 +18,19 @@ const IndexPage: React.FC<Props> = ({ data }) => {
   return (
     <>
       <div css={HeroImage}>
-        <Img
-          fluid={data.file.childImageSharp.fluid}
-          alt="Ryusou blog"
-        />
+        {data.file?.childImageSharp?.fluid && (
+          <Img
+            fluid={data.file.childImageSharp.fluid}
+            alt="Ryusou blog"
+          />
+        )}
       </div>
     </>
   );
 };
 
 export const query = graphql`
-  query {
+  query PageImage {
     file(relativePath: { eq: "ryusoublog.png" }) {
       childImageSharp {
         fluid(maxWidth: 640) {

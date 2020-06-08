@@ -3267,6 +3267,19 @@ export type Unnamed_1_Query = {
 export type Unnamed_2_QueryVariables = {};
 
 export type Unnamed_2_Query = {
+  allImageSharp: {
+    nodes: Array<{
+      fluid?: Maybe<
+        Pick<ImageSharpFluid, 'originalName'> &
+          GatsbyImageSharpFluid_WithWebpFragment
+      >;
+    }>;
+  };
+};
+
+export type PageImageQueryVariables = {};
+
+export type PageImageQuery = {
   file?: Maybe<{
     childImageSharp?: Maybe<{
       fluid?: Maybe<GatsbyImageSharpFluid_WithWebpFragment>;

@@ -68,6 +68,9 @@ export const Header: React.FC = () => {
         <nav>
           <ul css={HeaderLink}>
             <li>
+              <Link to="/about">ABOUT</Link>
+            </li>
+            <li>
               <Link to="/posts">POST</Link>
             </li>
             <li>
