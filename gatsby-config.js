@@ -70,6 +70,30 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-microcms',
+      options: {
+        apiKey: process.env.X_API_KEY,
+        serviceId: 'ryusou-mtkh',
+        endpoint: 'skills',
+        query: {
+          limit: 100,
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-imgix',
+      options: {
+        domain: 'https://images.microcms-assets.io',
+        fields: [
+          {
+            nodeType: 'MicrocmsSkills',
+            fieldName: 'featuredImage',
+            getUrl: (node) => node.image.url,
+          },
+        ],
+      },
+    },
+    {
       resolve: 'gatsby-plugin-eslint',
       options: {
         test: /\.js$|\.jsx$|\.ts$|\.tsx$/,

@@ -1,14 +1,24 @@
 import * as React from 'react';
+import { graphql } from 'gatsby';
+import Image from 'gatsby-image';
 import { FluidImage } from '../lib/images';
 
-const About = () => (
+import { PageAboutQuery } from '../../graphql-types';
+
+type Props = {
+  data: PageAboutQuery;
+};
+
+const About: React.FC<Props> = ({ data }) => (
   <>
     <div>
       <h1>どーも。りゅーそうです。</h1>
-      <FluidImage
-        filename="girl.png"
-        alt="プロフィール画像"
-      />
+      <div>
+        <FluidImage
+          filename="girl.png"
+          alt="プロフィール画像"
+        />
+      </div>
       <article>
         <section>
           <h2>私について</h2>
@@ -25,24 +35,80 @@ const About = () => (
           <p>Spitzと猫と犬が大好きです</p>
         </section>
         <section>
-          <h2>経歴</h2>
+          <h2>これまでのりゅーそう</h2>
           <table>
+            <caption>経歴</caption>
             <tr>
               <td>年</td>
               <td>項目</td>
             </tr>
             <tr>
-              <td>２０１６.４〜</td>
+              <td>1994</td>
+              <td>誕生</td>
+            </tr>
+            <tr>
+              <td>2013</td>
+              <td>某大学文学部入学</td>
+            </tr>
+            <tr>
+              <td>2016.4~</td>
               <td>どこかの県の学校の社会科教員</td>
             </tr>
           </table>
         </section>
         <section>
           <h2>技術スタック</h2>
+          {data?.allMicrocmsSkills?.edges.map((edge) => {
+            const skill = edge.node;
+            return (
+              <React.Fragment key={skill.id}>
+                <div>
+                  {skill?.title &&
+                    skill?.fields?.featuredImage?.fixed && (
+                      <Image
+                        fixed={
+                          skill.fields.featuredImage.fixed
+                        }
+                        alt={skill.title}
+                      />
+                    )}
+                  <h3>{skill.title}</h3>
+                  <p>{skill.parameter}</p>
+                </div>
+              </React.Fragment>
+            );
+          })}
         </section>
       </article>
     </div>
   </>
 );
+
+export const pagequery = graphql`
+  query PageAbout {
+    allMicrocmsSkills {
+      edges {
+        node {
+          id
+          title
+          parameter
+          fields {
+            featuredImage {
+              fixed(height: 80, width: 80) {
+                src
+                base64
+                srcSet
+                srcSetWebp
+                srcWebp
+                height
+                width
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default About;
