@@ -1,53 +1,161 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import Image from 'gatsby-image';
+import { css } from '@emotion/core';
+import { color } from 'csx';
+
+import { FaExternalLinkAlt } from 'react-icons/fa';
+import { sizes, colors } from '../theme';
 import { PageWorksQuery } from '../../graphql-types';
 
 type Props = {
   data: PageWorksQuery;
 };
 
+const SiteContainer = css({
+  marginTop: sizes[16],
+  '& .SiteTitle': {
+    textAlign: 'center',
+  },
+  '& .SiteList': {
+    display: 'grid',
+    gridTemplateColumns: `1fr 1fr`,
+    gridGap: sizes[8],
+    '& .SiteItem': {
+      border: `solid ${sizes[1]} ${color(colors.red).fade(
+        0.4,
+      )}`,
+      borderRadius: sizes[8],
+      padding: sizes[4],
+      '& h2': {
+        color: colors.blue,
+        paddingLeft: sizes[2],
+      },
+      '& img': {
+        borderRadius: sizes[8],
+      },
+      '& .SiteItemContent': {
+        marginTop: sizes[2],
+        '& a': {
+          textDecoration: 'none',
+          color: colors.blue,
+        },
+        '& a:hover': {
+          color: colors.red,
+        },
+        '& p': {
+          marginTop: sizes[2],
+        },
+      },
+    },
+  },
+});
+
+const SpeechContainer = css({
+  marginTop: sizes[16],
+  '& .SpeechTitle': {
+    textAlign: 'center',
+  },
+  '& .SpeechList': {
+    margin: '0 auto',
+    width: sizes.largeSizes.sm,
+    '& .SpeechItem': {
+      border: `solid ${sizes[1]} ${color(
+        colors.lightBlue,
+      ).fade(0.4)}`,
+      borderRadius: sizes[8],
+      padding: sizes[4],
+      '& h2': {
+        color: colors.blue,
+        paddingLeft: sizes[2],
+      },
+      '& img': {
+        borderRadius: sizes[8],
+      },
+      '& .SpeechItemContent': {
+        marginTop: sizes[2],
+        '& a': {
+          textDecoration: 'none',
+          color: colors.blue,
+          textOverflow: 'ellipsis',
+        },
+        '& a:hover': {
+          color: colors.red,
+        },
+        '& p': {
+          marginTop: sizes[2],
+        },
+      },
+    },
+  },
+});
+
 const Works: React.FC<Props> = ({ data }) => (
   <>
     <h1>WORKS</h1>
-    <div>
-      <h2>サイト</h2>
-      {data.site?.nodes?.map((node) => {
-        const site = node;
-        return (
-          <React.Fragment key={site.id}>
-            <h2>{site.title}</h2>
-            {site?.image?.url && (
-              <img
-                src={site.image?.url}
-                alt="作成したアプリ、サイトの画像"
-              />
-            )}
-            {site?.url && <a href={site.url}>{site.url}</a>}
-            <p>{site.description}</p>
-          </React.Fragment>
-        );
-      })}
+    <div css={SiteContainer}>
+      <h2 className="SiteTitle">サイト</h2>
+      <div className="SiteList">
+        {data.site?.nodes?.map((node) => {
+          const site = node;
+          return (
+            <React.Fragment key={site.id}>
+              <div className="SiteItem">
+                <h2>{site.title}</h2>
+                {site?.fields?.featuredImage?.fluid && (
+                  // altのデータ取得する
+                  <Image
+                    fluid={site.fields.featuredImage?.fluid}
+                    alt="作成したアプリ、サイトの画像"
+                  />
+                )}
+                <div className="SiteItemContent">
+                  {site?.url && (
+                    <a href={site.url}>
+                      <FaExternalLinkAlt />
+                      {site.url}
+                    </a>
+                  )}
+                  <p>{site.description}</p>
+                </div>
+              </div>
+            </React.Fragment>
+          );
+        })}
+      </div>
     </div>
-    <div>
-      <h2>スピーチ</h2>
-      {data.speech?.nodes?.map((node) => {
-        const speech = node;
-        return (
-          <React.Fragment key={speech.id}>
-            <h2>{speech.title}</h2>
-            {speech?.image?.url && (
-              <img
-                src={speech.image?.url}
-                alt="作成したアプリ、サイトの画像"
-              />
-            )}
-            {speech?.url && (
-              <a href={speech.url}>{speech.url}</a>
-            )}
-            <p>{speech.description}</p>
-          </React.Fragment>
-        );
-      })}
+    <div css={SpeechContainer}>
+      <h2 className="SpeechTitle">スピーチ</h2>
+      <div className="SpeechList">
+        {data.speech?.nodes?.map((node) => {
+          const speech = node;
+          return (
+            <React.Fragment key={speech.id}>
+              <div className="SpeechItem">
+                <h2>{speech.title}</h2>
+                {speech?.fields?.featuredImage?.fluid && (
+                  // altのデータ取得する
+                  <Image
+                    fluid={
+                      speech.fields?.featuredImage?.fluid
+                    }
+                    alt="行ったスピーチの画像"
+                  />
+                )}
+                <div className="SpeechItemContent">
+                  {speech?.url && (
+                    <a href={speech.url}>
+                      <FaExternalLinkAlt />
+                      {speech.url}
+                    </a>
+                  )}
+                  <p>{speech.description}</p>
+                </div>
+              </div>
+            </React.Fragment>
+          );
+        })}
+      </div>
     </div>
   </>
 );
@@ -61,8 +169,18 @@ export const pageQuery = graphql`
     ) {
       nodes {
         id
-        image {
-          url
+        fields {
+          featuredImage {
+            fluid(maxHeight: 110, maxWidth: 180) {
+              src
+              sizes
+              srcSet
+              srcSetWebp
+              srcWebp
+              base64
+              aspectRatio
+            }
+          }
         }
         title
         url
@@ -76,8 +194,18 @@ export const pageQuery = graphql`
     ) {
       nodes {
         id
-        image {
-          url
+        fields {
+          featuredImage {
+            fluid(maxHeight: 110, maxWidth: 180) {
+              src
+              sizes
+              srcSet
+              srcSetWebp
+              srcWebp
+              base64
+              aspectRatio
+            }
+          }
         }
         title
         url

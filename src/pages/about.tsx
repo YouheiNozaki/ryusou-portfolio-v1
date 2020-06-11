@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import { FluidImage } from '../lib/images';
 import { css } from '@emotion/core';
-import { color, repeatingLinearGradient } from 'csx';
+import { color } from 'csx';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
 import {

@@ -2476,6 +2476,7 @@ export type MicrocmsWorks = Node & {
   description?: Maybe<Scalars['String']>;
   tag?: Maybe<Array<Maybe<MicrocmsWorksTag>>>;
   worksId?: Maybe<Scalars['String']>;
+  fields?: Maybe<MicrocmsWorksFields>;
 };
 
 export type MicrocmsWorksCreatedAtArgs = {
@@ -2515,6 +2516,10 @@ export type MicrocmsWorksEdge = {
   next?: Maybe<MicrocmsWorks>;
   node: MicrocmsWorks;
   previous?: Maybe<MicrocmsWorks>;
+};
+
+export type MicrocmsWorksFields = {
+  featuredImage?: Maybe<ImgixImage>;
 };
 
 export type MicrocmsWorksFieldsEnum =
@@ -2615,7 +2620,27 @@ export type MicrocmsWorksFieldsEnum =
   | 'tag___createdAt'
   | 'tag___updatedAt'
   | 'tag___tag'
-  | 'worksId';
+  | 'worksId'
+  | 'fields___featuredImage___url'
+  | 'fields___featuredImage___fixed___base64'
+  | 'fields___featuredImage___fixed___src'
+  | 'fields___featuredImage___fixed___srcSet'
+  | 'fields___featuredImage___fixed___srcWebp'
+  | 'fields___featuredImage___fixed___srcSetWebp'
+  | 'fields___featuredImage___fixed___sizes'
+  | 'fields___featuredImage___fixed___width'
+  | 'fields___featuredImage___fixed___height'
+  | 'fields___featuredImage___fluid___base64'
+  | 'fields___featuredImage___fluid___src'
+  | 'fields___featuredImage___fluid___srcSet'
+  | 'fields___featuredImage___fluid___srcWebp'
+  | 'fields___featuredImage___fluid___srcSetWebp'
+  | 'fields___featuredImage___fluid___sizes'
+  | 'fields___featuredImage___fluid___aspectRatio';
+
+export type MicrocmsWorksFieldsFilterInput = {
+  featuredImage?: Maybe<ImgixImageFilterInput>;
+};
 
 export type MicrocmsWorksFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2630,6 +2655,7 @@ export type MicrocmsWorksFilterInput = {
   description?: Maybe<StringQueryOperatorInput>;
   tag?: Maybe<MicrocmsWorksTagFilterListInput>;
   worksId?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<MicrocmsWorksFieldsFilterInput>;
 };
 
 export type MicrocmsWorksGroupConnection = {
@@ -2974,6 +3000,7 @@ export type QueryMicrocmsWorksArgs = {
   description?: Maybe<StringQueryOperatorInput>;
   tag?: Maybe<MicrocmsWorksTagFilterListInput>;
   worksId?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<MicrocmsWorksFieldsFilterInput>;
 };
 
 export type QueryAllMicrocmsWorksArgs = {
@@ -4178,7 +4205,24 @@ export type PageWorksQuery = {
       Pick<
         MicrocmsWorks,
         'id' | 'title' | 'url' | 'description'
-      > & { image?: Maybe<Pick<MicrocmsWorksImage, 'url'>> }
+      > & {
+        fields?: Maybe<{
+          featuredImage?: Maybe<{
+            fluid?: Maybe<
+              Pick<
+                ImgixFluid,
+                | 'src'
+                | 'sizes'
+                | 'srcSet'
+                | 'srcSetWebp'
+                | 'srcWebp'
+                | 'base64'
+                | 'aspectRatio'
+              >
+            >;
+          }>;
+        }>;
+      }
     >;
   };
   speech: {
@@ -4186,7 +4230,24 @@ export type PageWorksQuery = {
       Pick<
         MicrocmsWorks,
         'id' | 'title' | 'url' | 'description'
-      > & { image?: Maybe<Pick<MicrocmsWorksImage, 'url'>> }
+      > & {
+        fields?: Maybe<{
+          featuredImage?: Maybe<{
+            fluid?: Maybe<
+              Pick<
+                ImgixFluid,
+                | 'src'
+                | 'sizes'
+                | 'srcSet'
+                | 'srcSetWebp'
+                | 'srcWebp'
+                | 'base64'
+                | 'aspectRatio'
+              >
+            >;
+          }>;
+        }>;
+      }
     >;
   };
 };

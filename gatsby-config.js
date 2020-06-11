@@ -90,6 +90,11 @@ module.exports = {
             fieldName: 'featuredImage',
             getUrl: (node) => node.image.url,
           },
+          {
+            nodeType: 'MicrocmsWorks',
+            fieldName: 'featuredImage',
+            getUrl: (node) => node.image.url,
+          },
         ],
       },
     },
