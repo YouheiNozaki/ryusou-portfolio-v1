@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { css } from '@emotion/core';
+import { color } from 'csx';
+import { FaCat } from 'react-icons/fa';
+import { AiOutlineMail, AiFillHeart } from 'react-icons/ai';
 
 import { sizes, colors } from '../theme';
 
@@ -76,7 +79,7 @@ const Contact = () => {
               })}
               disabled={isSubmitting}
             />
-            <span className="focusLine"></span>
+            <FaCat className="icon" />
             {errors.name && (
               <div>{errors.name.message}</div>
             )}
@@ -95,6 +98,7 @@ const Contact = () => {
               })}
               disabled={isSubmitting}
             />
+            <AiOutlineMail className="icon" />
             {errors.email && (
               <div>{errors.email.message}</div>
             )}
@@ -112,6 +116,7 @@ const Contact = () => {
               placeholder="メッセージ"
               disabled={isSubmitting}
             />
+            <AiFillHeart className="icon" />
             {errors.question && (
               <div>{errors.question.message}</div>
             )}
@@ -143,37 +148,117 @@ const ContactContainer = css({
   justifyContent: 'center',
   alignItems: 'center',
   '& .showFormName': {
+    position: 'relative',
     marginTop: sizes[8],
     "& input[type='text']": {
       width: sizes.largeSizes.md,
       boxSizing: 'border-box',
-      padding: sizes[1],
+      paddingLeft: sizes[10],
+      paddingTop: sizes[3],
+      paddingBottom: sizes[3],
       borderRadius: sizes[1],
+      border: 'none',
+      backgroundColor: `${color(colors.lightgray).fade(
+        0.8,
+      )}`,
+      outline: 'none',
+    },
+    "& input[type='text']::placeholder": {
+      color: colors.gray,
+    },
+    "& input[type='text']:focus": {
+      boxSizing: 'border-box',
+      border: `solid ${sizes.px} ${colors.lightBlue}`,
+    },
+    '& .icon': {
+      position: 'absolute',
+      top: sizes[2],
+      left: sizes[2],
+      width: sizes[6],
+      height: sizes[6],
+      color: colors.gray,
+    },
+    "& input[type='text']:focus + .icon": {
+      color: colors.lightBlue,
     },
   },
   '& .showFormEmail': {
+    position: 'relative',
     marginTop: sizes[8],
     "& input[type='email']": {
       width: sizes.largeSizes.md,
       boxSizing: 'border-box',
-      padding: sizes[1],
+      paddingLeft: sizes[10],
+      paddingTop: sizes[3],
+      paddingBottom: sizes[3],
       borderRadius: sizes[1],
+      border: 'none',
+      backgroundColor: `${color(colors.lightgray).fade(
+        0.8,
+      )}`,
+      outline: 'none',
+    },
+    "& input[type='email']::placeholder": {
+      color: colors.gray,
+    },
+    "& input[type='email']:focus": {
+      boxSizing: 'border-box',
+      border: `solid ${sizes.px} ${colors.lightBlue}`,
+    },
+    '& .icon': {
+      position: 'absolute',
+      top: sizes[3],
+      left: sizes[2],
+      width: sizes[6],
+      height: sizes[6],
+      color: colors.gray,
+    },
+    "& input[type='email']:focus + .icon": {
+      color: colors.lightBlue,
     },
   },
   '& .showFormQuestion': {
+    position: 'relative',
     marginTop: sizes[8],
     '& textarea': {
       width: sizes.largeSizes.md,
       boxSizing: 'border-box',
-      padding: sizes[1],
+      paddingLeft: sizes[10],
+      paddingTop: sizes[2],
       borderRadius: sizes[1],
+      border: 'none',
+      backgroundColor: `${color(colors.lightgray).fade(
+        0.8,
+      )}`,
+      outline: 'none',
+    },
+    '& textarea::placeholder': {
+      color: colors.gray,
+    },
+    '& textarea:focus': {
+      boxSizing: 'border-box',
+      border: `solid ${sizes.px} ${colors.lightBlue}`,
+    },
+    '& .icon': {
+      position: 'absolute',
+      top: sizes[2],
+      left: sizes[2],
+      width: sizes[6],
+      height: sizes[6],
+      color: colors.gray,
+    },
+    '& textarea:focus + .icon': {
+      color: colors.lightBlue,
     },
   },
   '& button': {
     marginTop: sizes[4],
     width: '100%',
-    padding: sizes[1],
+    padding: sizes[2],
     borderRadius: sizes[1],
+    border: 'none',
+    color: colors.white,
+    backgroundColor: `${color(colors.lightBlue).fade(0.8)}`,
   },
 });
 
