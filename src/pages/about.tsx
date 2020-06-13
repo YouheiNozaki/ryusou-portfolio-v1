@@ -167,15 +167,15 @@ const About: React.FC<Props> = ({ data }) => (
             </thead>
             <tbody>
               <tr>
-                <td>１９９４</td>
+                <td>1994</td>
                 <td>誕生</td>
               </tr>
               <tr>
-                <td>２０１３</td>
+                <td>2013</td>
                 <td>某大学文学部入学</td>
               </tr>
               <tr>
-                <td>２０１６</td>
+                <td>2016</td>
                 <td>どこかの県の学校の社会科教員</td>
               </tr>
             </tbody>

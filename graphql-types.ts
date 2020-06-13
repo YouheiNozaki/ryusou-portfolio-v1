@@ -1865,6 +1865,7 @@ export type MicrocmsPosts = Node & {
   image?: Maybe<MicrocmsPostsImage>;
   content?: Maybe<Scalars['String']>;
   postsId?: Maybe<Scalars['String']>;
+  fields?: Maybe<MicrocmsPostsFields>;
   day?: Maybe<Scalars['Date']>;
 };
 
@@ -1912,6 +1913,10 @@ export type MicrocmsPostsEdge = {
   next?: Maybe<MicrocmsPosts>;
   node: MicrocmsPosts;
   previous?: Maybe<MicrocmsPosts>;
+};
+
+export type MicrocmsPostsFields = {
+  featuredImage?: Maybe<ImgixImage>;
 };
 
 export type MicrocmsPostsFieldsEnum =
@@ -2013,7 +2018,27 @@ export type MicrocmsPostsFieldsEnum =
   | 'image___url'
   | 'content'
   | 'postsId'
+  | 'fields___featuredImage___url'
+  | 'fields___featuredImage___fixed___base64'
+  | 'fields___featuredImage___fixed___src'
+  | 'fields___featuredImage___fixed___srcSet'
+  | 'fields___featuredImage___fixed___srcWebp'
+  | 'fields___featuredImage___fixed___srcSetWebp'
+  | 'fields___featuredImage___fixed___sizes'
+  | 'fields___featuredImage___fixed___width'
+  | 'fields___featuredImage___fixed___height'
+  | 'fields___featuredImage___fluid___base64'
+  | 'fields___featuredImage___fluid___src'
+  | 'fields___featuredImage___fluid___srcSet'
+  | 'fields___featuredImage___fluid___srcWebp'
+  | 'fields___featuredImage___fluid___srcSetWebp'
+  | 'fields___featuredImage___fluid___sizes'
+  | 'fields___featuredImage___fluid___aspectRatio'
   | 'day';
+
+export type MicrocmsPostsFieldsFilterInput = {
+  featuredImage?: Maybe<ImgixImageFilterInput>;
+};
 
 export type MicrocmsPostsFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2027,6 +2052,7 @@ export type MicrocmsPostsFilterInput = {
   image?: Maybe<MicrocmsPostsImageFilterInput>;
   content?: Maybe<StringQueryOperatorInput>;
   postsId?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<MicrocmsPostsFieldsFilterInput>;
   day?: Maybe<DateQueryOperatorInput>;
 };
 
@@ -3022,6 +3048,7 @@ export type QueryMicrocmsPostsArgs = {
   image?: Maybe<MicrocmsPostsImageFilterInput>;
   content?: Maybe<StringQueryOperatorInput>;
   postsId?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<MicrocmsPostsFieldsFilterInput>;
   day?: Maybe<DateQueryOperatorInput>;
 };
 
@@ -4262,14 +4289,33 @@ export type PagePostsQuery = {
     edges: Array<{
       node: Pick<
         MicrocmsPosts,
-        'id' | 'postsId' | 'title' | 'day'
+        | 'id'
+        | 'postsId'
+        | 'title'
+        | 'createdAt'
+        | 'updatedAt'
       > & {
         tags?: Maybe<
           Array<
             Maybe<Pick<MicrocmsPostsTags, 'id' | 'name'>>
           >
         >;
-        image?: Maybe<Pick<MicrocmsPostsImage, 'url'>>;
+        fields?: Maybe<{
+          featuredImage?: Maybe<{
+            fluid?: Maybe<
+              Pick<
+                ImgixFluid,
+                | 'src'
+                | 'sizes'
+                | 'base64'
+                | 'aspectRatio'
+                | 'srcSet'
+                | 'srcSetWebp'
+                | 'srcWebp'
+              >
+            >;
+          }>;
+        }>;
       };
     }>;
   };
@@ -4286,14 +4332,33 @@ export type PageTagQuery = {
     edges: Array<{
       node: Pick<
         MicrocmsPosts,
-        'id' | 'postsId' | 'title' | 'day'
+        | 'id'
+        | 'postsId'
+        | 'title'
+        | 'createdAt'
+        | 'updatedAt'
       > & {
         tags?: Maybe<
           Array<
             Maybe<Pick<MicrocmsPostsTags, 'id' | 'name'>>
           >
         >;
-        image?: Maybe<Pick<MicrocmsPostsImage, 'url'>>;
+        fields?: Maybe<{
+          featuredImage?: Maybe<{
+            fluid?: Maybe<
+              Pick<
+                ImgixFluid,
+                | 'src'
+                | 'sizes'
+                | 'base64'
+                | 'aspectRatio'
+                | 'srcSet'
+                | 'srcSetWebp'
+                | 'srcWebp'
+              >
+            >;
+          }>;
+        }>;
       };
     }>;
   };

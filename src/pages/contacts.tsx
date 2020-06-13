@@ -14,6 +14,125 @@ type FormData = {
   submit: string;
 };
 
+const ContactContainer = css({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  '& .showFormName': {
+    position: 'relative',
+    marginTop: sizes[8],
+    "& input[type='text']": {
+      width: sizes.largeSizes.md,
+      boxSizing: 'border-box',
+      paddingLeft: sizes[10],
+      paddingTop: sizes[3],
+      paddingBottom: sizes[3],
+      borderRadius: sizes[1],
+      border: 'none',
+      backgroundColor: `${color(colors.lightgray).fade(
+        0.8,
+      )}`,
+      outline: 'none',
+    },
+    "& input[type='text']::placeholder": {
+      color: colors.gray,
+    },
+    "& input[type='text']:focus": {
+      boxSizing: 'border-box',
+      border: `solid ${sizes.px} ${colors.lightBlue}`,
+    },
+    '& .icon': {
+      position: 'absolute',
+      top: sizes[2],
+      left: sizes[2],
+      width: sizes[6],
+      height: sizes[6],
+      color: colors.gray,
+    },
+    "& input[type='text']:focus + .icon": {
+      color: colors.lightBlue,
+    },
+  },
+  '& .showFormEmail': {
+    position: 'relative',
+    marginTop: sizes[8],
+    "& input[type='email']": {
+      width: sizes.largeSizes.md,
+      boxSizing: 'border-box',
+      paddingLeft: sizes[10],
+      paddingTop: sizes[3],
+      paddingBottom: sizes[3],
+      borderRadius: sizes[1],
+      border: 'none',
+      backgroundColor: `${color(colors.lightgray).fade(
+        0.8,
+      )}`,
+      outline: 'none',
+    },
+    "& input[type='email']::placeholder": {
+      color: colors.gray,
+    },
+    "& input[type='email']:focus": {
+      boxSizing: 'border-box',
+      border: `solid ${sizes.px} ${colors.lightBlue}`,
+    },
+    '& .icon': {
+      position: 'absolute',
+      top: sizes[3],
+      left: sizes[2],
+      width: sizes[6],
+      height: sizes[6],
+      color: colors.gray,
+    },
+    "& input[type='email']:focus + .icon": {
+      color: colors.lightBlue,
+    },
+  },
+  '& .showFormQuestion': {
+    position: 'relative',
+    marginTop: sizes[8],
+    '& textarea': {
+      width: sizes.largeSizes.md,
+      boxSizing: 'border-box',
+      paddingLeft: sizes[10],
+      paddingTop: sizes[2],
+      borderRadius: sizes[1],
+      border: 'none',
+      backgroundColor: `${color(colors.lightgray).fade(
+        0.8,
+      )}`,
+      outline: 'none',
+    },
+    '& textarea::placeholder': {
+      color: colors.gray,
+    },
+    '& textarea:focus': {
+      boxSizing: 'border-box',
+      border: `solid ${sizes.px} ${colors.lightBlue}`,
+    },
+    '& .icon': {
+      position: 'absolute',
+      top: sizes[2],
+      left: sizes[2],
+      width: sizes[6],
+      height: sizes[6],
+      color: colors.gray,
+    },
+    '& textarea:focus + .icon': {
+      color: colors.lightBlue,
+    },
+  },
+  '& button': {
+    marginTop: sizes[4],
+    width: '100%',
+    padding: sizes[2],
+    borderRadius: sizes[1],
+    border: 'none',
+    color: colors.white,
+    backgroundColor: `${color(colors.lightBlue).fade(0.8)}`,
+  },
+});
+
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const {
@@ -142,124 +261,5 @@ const Contact = () => {
     </>
   );
 };
-
-const ContactContainer = css({
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  '& .showFormName': {
-    position: 'relative',
-    marginTop: sizes[8],
-    "& input[type='text']": {
-      width: sizes.largeSizes.md,
-      boxSizing: 'border-box',
-      paddingLeft: sizes[10],
-      paddingTop: sizes[3],
-      paddingBottom: sizes[3],
-      borderRadius: sizes[1],
-      border: 'none',
-      backgroundColor: `${color(colors.lightgray).fade(
-        0.8,
-      )}`,
-      outline: 'none',
-    },
-    "& input[type='text']::placeholder": {
-      color: colors.gray,
-    },
-    "& input[type='text']:focus": {
-      boxSizing: 'border-box',
-      border: `solid ${sizes.px} ${colors.lightBlue}`,
-    },
-    '& .icon': {
-      position: 'absolute',
-      top: sizes[2],
-      left: sizes[2],
-      width: sizes[6],
-      height: sizes[6],
-      color: colors.gray,
-    },
-    "& input[type='text']:focus + .icon": {
-      color: colors.lightBlue,
-    },
-  },
-  '& .showFormEmail': {
-    position: 'relative',
-    marginTop: sizes[8],
-    "& input[type='email']": {
-      width: sizes.largeSizes.md,
-      boxSizing: 'border-box',
-      paddingLeft: sizes[10],
-      paddingTop: sizes[3],
-      paddingBottom: sizes[3],
-      borderRadius: sizes[1],
-      border: 'none',
-      backgroundColor: `${color(colors.lightgray).fade(
-        0.8,
-      )}`,
-      outline: 'none',
-    },
-    "& input[type='email']::placeholder": {
-      color: colors.gray,
-    },
-    "& input[type='email']:focus": {
-      boxSizing: 'border-box',
-      border: `solid ${sizes.px} ${colors.lightBlue}`,
-    },
-    '& .icon': {
-      position: 'absolute',
-      top: sizes[3],
-      left: sizes[2],
-      width: sizes[6],
-      height: sizes[6],
-      color: colors.gray,
-    },
-    "& input[type='email']:focus + .icon": {
-      color: colors.lightBlue,
-    },
-  },
-  '& .showFormQuestion': {
-    position: 'relative',
-    marginTop: sizes[8],
-    '& textarea': {
-      width: sizes.largeSizes.md,
-      boxSizing: 'border-box',
-      paddingLeft: sizes[10],
-      paddingTop: sizes[2],
-      borderRadius: sizes[1],
-      border: 'none',
-      backgroundColor: `${color(colors.lightgray).fade(
-        0.8,
-      )}`,
-      outline: 'none',
-    },
-    '& textarea::placeholder': {
-      color: colors.gray,
-    },
-    '& textarea:focus': {
-      boxSizing: 'border-box',
-      border: `solid ${sizes.px} ${colors.lightBlue}`,
-    },
-    '& .icon': {
-      position: 'absolute',
-      top: sizes[2],
-      left: sizes[2],
-      width: sizes[6],
-      height: sizes[6],
-      color: colors.gray,
-    },
-    '& textarea:focus + .icon': {
-      color: colors.lightBlue,
-    },
-  },
-  '& button': {
-    marginTop: sizes[4],
-    width: '100%',
-    padding: sizes[2],
-    borderRadius: sizes[1],
-    border: 'none',
-    color: colors.white,
-    backgroundColor: `${color(colors.lightBlue).fade(0.8)}`,
-  },
-});
 
 export default Contact;
