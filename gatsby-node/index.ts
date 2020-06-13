@@ -38,18 +38,30 @@ export type TagsContext = {
 
 const query = `
   {
-    allMicrocmsPosts(sort: {fields: day, order: DESC}) {
+    allMicrocmsPosts(sort: {fields: createdAt, order: DESC}) {
       edges {
         node {
+          id
           postsId
           title
           tags {
             id
             name
           }
-          day
-          image {
-            url
+          createdAt(locale: "ja", formatString: "YYYY/M/DD")
+          updatedAt(locale: "ja", formatString: "YYYY/M/DD")
+          fields {
+            featuredImage {
+              fluid(maxHeight: 768, maxWidth: 1024) {
+                sizes
+                src
+                srcSet
+                srcSetWebp
+                srcWebp
+                base64
+                aspectRatio
+              }
+            }
           }
           content
         }

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import Image from 'gatsby-image';
+
 import { PostContext } from '../../gatsby-node';
 
 type Props = {
@@ -22,10 +24,11 @@ const Post: React.FC<Props> = ({ pageContext }) => {
             </React.Fragment>
           ),
       )}
-      <p>{post.day}</p>
-      {post?.image?.url && (
-        <img
-          src={post.image.url}
+      <p>{post.createdAt}</p>
+      <p>{post.updatedAt}</p>
+      {post?.fields?.featuredImage?.fluid && (
+        <Image
+          fluid={post.fields.featuredImage.fluid}
           alt="投稿したブログのイメージ画像"
         />
       )}

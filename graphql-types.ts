@@ -3486,29 +3486,69 @@ export type SitePageContextNextFilterInput = {
 };
 
 export type SitePageContextPost = {
+  id?: Maybe<Scalars['String']>;
   postsId?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   tags?: Maybe<Array<Maybe<SitePageContextPostTags>>>;
-  day?: Maybe<Scalars['Date']>;
-  image?: Maybe<SitePageContextPostImage>;
+  createdAt?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['String']>;
+  fields?: Maybe<SitePageContextPostFields>;
   content?: Maybe<Scalars['String']>;
 };
 
+export type SitePageContextPostFields = {
+  featuredImage?: Maybe<
+    SitePageContextPostFieldsFeaturedImage
+  >;
+};
+
+export type SitePageContextPostFieldsFeaturedImage = {
+  fluid?: Maybe<
+    SitePageContextPostFieldsFeaturedImageFluid
+  >;
+};
+
+export type SitePageContextPostFieldsFeaturedImageFilterInput = {
+  fluid?: Maybe<
+    SitePageContextPostFieldsFeaturedImageFluidFilterInput
+  >;
+};
+
+export type SitePageContextPostFieldsFeaturedImageFluid = {
+  sizes?: Maybe<Scalars['String']>;
+  src?: Maybe<Scalars['String']>;
+  srcSet?: Maybe<Scalars['String']>;
+  srcSetWebp?: Maybe<Scalars['String']>;
+  srcWebp?: Maybe<Scalars['String']>;
+  base64?: Maybe<Scalars['String']>;
+  aspectRatio?: Maybe<Scalars['Float']>;
+};
+
+export type SitePageContextPostFieldsFeaturedImageFluidFilterInput = {
+  sizes?: Maybe<StringQueryOperatorInput>;
+  src?: Maybe<StringQueryOperatorInput>;
+  srcSet?: Maybe<StringQueryOperatorInput>;
+  srcSetWebp?: Maybe<StringQueryOperatorInput>;
+  srcWebp?: Maybe<StringQueryOperatorInput>;
+  base64?: Maybe<StringQueryOperatorInput>;
+  aspectRatio?: Maybe<FloatQueryOperatorInput>;
+};
+
+export type SitePageContextPostFieldsFilterInput = {
+  featuredImage?: Maybe<
+    SitePageContextPostFieldsFeaturedImageFilterInput
+  >;
+};
+
 export type SitePageContextPostFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
   postsId?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   tags?: Maybe<SitePageContextPostTagsFilterListInput>;
-  day?: Maybe<DateQueryOperatorInput>;
-  image?: Maybe<SitePageContextPostImageFilterInput>;
+  createdAt?: Maybe<StringQueryOperatorInput>;
+  updatedAt?: Maybe<StringQueryOperatorInput>;
+  fields?: Maybe<SitePageContextPostFieldsFilterInput>;
   content?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextPostImage = {
-  url?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextPostImageFilterInput = {
-  url?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageContextPostTags = {
@@ -3634,13 +3674,14 @@ export type SitePageFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
+  | 'context___post___id'
   | 'context___post___postsId'
   | 'context___post___title'
   | 'context___post___tags'
   | 'context___post___tags___id'
   | 'context___post___tags___name'
-  | 'context___post___day'
-  | 'context___post___image___url'
+  | 'context___post___createdAt'
+  | 'context___post___updatedAt'
   | 'context___post___content'
   | 'context___next___title'
   | 'context___next___postsId'
@@ -4294,6 +4335,7 @@ export type PagePostsQuery = {
         | 'title'
         | 'createdAt'
         | 'updatedAt'
+        | 'content'
       > & {
         tags?: Maybe<
           Array<
