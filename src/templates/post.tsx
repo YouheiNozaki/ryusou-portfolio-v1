@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
+import { FaLink, FaExternalLinkAlt } from 'react-icons/fa';
+import unified from 'unified';
+import parse from 'rehype-parse';
+import rehypeReact from 'rehype-react';
+import Imgix from 'react-imgix';
 
 import { PostContext } from '../../gatsby-node';
 
@@ -10,6 +15,60 @@ type Props = {
 
 const Post: React.FC<Props> = ({ pageContext }) => {
   const post = pageContext.post;
+
+  const htmlAst = unified()
+    .use(parse, { fragment: true })
+    .parse(post.content!);
+
+  const renderAst = new rehypeReact({
+    createElement: React.createElement,
+    Fragment: React.Fragment,
+    components: {
+      h1: (props: string) => {
+        return (
+          <h1 className="MainChapter">
+            <FaLink className="MainChapterIcon" />
+            {props.children}
+          </h1>
+        );
+      },
+      h2: (props: string) => {
+        return (
+          <h2 className="SecondChapter">
+            <FaLink className="SecondChapterIcon" />
+            {props.children}
+          </h2>
+        );
+      },
+      h3: (props: string) => {
+        return (
+          <h3 className="ThirdChapter">
+            <FaLink className="ThirdChapterIcon" />
+            {props.children}
+          </h3>
+        );
+      },
+      a: (props: string) => {
+        return (
+          <a href={props.href}>
+            <FaExternalLinkAlt />
+            {props.children}
+          </a>
+        );
+      },
+      img: (props: string) => {
+        return (
+          <Imgix
+            src={props.src}
+            sizes="(max-width: 768px) 100vw, 768px"
+            htmlAttributes={{
+              alt: props.alt,
+            }}
+          />
+        );
+      },
+    },
+  }).Compiler;
 
   return (
     <>
@@ -24,19 +83,17 @@ const Post: React.FC<Props> = ({ pageContext }) => {
             </React.Fragment>
           ),
       )}
-      <p>{post.createdAt}</p>
-      <p>{post.updatedAt}</p>
+      <div>
+        <p>{post.createdAt}</p>
+        <p>{post.updatedAt}</p>
+      </div>
       {post?.fields?.featuredImage?.fluid && (
         <Image
           fluid={post.fields.featuredImage.fluid}
           alt="投稿したブログのイメージ画像"
         />
       )}
-      <p
-        dangerouslySetInnerHTML={{
-          __html: `${post.content}`,
-        }}
-      ></p>
+      <div className="postbody">{renderAst(htmlAst)}</div>
       <div>
         {pageContext.next && (
           <div>

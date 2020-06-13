@@ -38,6 +38,7 @@ module.exports = {
   ],
   rules: {
     'react/prop-types': 'off',
+    'react/display-name': 'off',
     'import/no-webpack-loader-syntax': [0],
     'graphql/template-strings': `off`,
     '@typescript-eslint/no-unused-expressions': 'off',
