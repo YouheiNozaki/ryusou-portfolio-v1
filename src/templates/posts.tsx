@@ -61,7 +61,6 @@ export const PostItem = css({
         display: 'flex',
         '& .PostItemDayItem': {
           display: 'flex',
-          // alignItems: 'center',
           color: colors.blue,
           marginLeft: sizes[2],
           '& .icon': {
