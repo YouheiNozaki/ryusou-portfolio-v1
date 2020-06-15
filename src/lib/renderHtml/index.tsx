@@ -3,12 +3,29 @@ import rehypeReact from 'rehype-react';
 import Imgix from 'react-imgix';
 import Highlight from 'react-highlight';
 import { FaLink, FaExternalLinkAlt } from 'react-icons/fa';
-import { colors } from '../../theme';
+import {
+  colors,
+  sizes,
+  fontSizes,
+  typography,
+} from '../../theme';
 
 const MainChapter: React.FC = (props) => {
   return (
-    <h1 css={{ color: colors.blue }}>
-      <FaLink className="MainChapterIcon" />
+    <h1
+      css={{
+        color: colors.blue,
+        padding: sizes[8],
+        marginTop: sizes[16],
+        marginBottom: sizes[16],
+        borderLeft: `solid ${sizes[2]} ${colors.red}`,
+      }}
+    >
+      <FaLink
+        className="MainChapterIcon"
+        size={sizes[6]}
+        css={{ marginRight: sizes[2] }}
+      />
       {props.children}
     </h1>
   );
@@ -16,8 +33,20 @@ const MainChapter: React.FC = (props) => {
 
 const SubChapter: React.FC = (props) => {
   return (
-    <h2 css={{ color: colors.blue }}>
-      <FaLink className="SubChapterIcon" />
+    <h2
+      css={{
+        color: colors.blue,
+        padding: sizes[3],
+        marginTop: sizes[16],
+        marginBottom: sizes[16],
+        borderLeft: `solid ${sizes[2]} ${colors.red}`,
+      }}
+    >
+      <FaLink
+        className="SubChapterIcon"
+        size={sizes[4]}
+        css={{ marginRight: sizes[2] }}
+      />
       {props.children}
     </h2>
   );
@@ -25,10 +54,34 @@ const SubChapter: React.FC = (props) => {
 
 const ThirdChapter: React.FC = (props) => {
   return (
-    <h3 css={{ color: colors.blue }}>
-      <FaLink className="ThirdChapterIcon" />
+    <h3
+      css={{
+        color: colors.blue,
+        padding: sizes[8],
+        marginTop: sizes[8],
+        borderLeft: `solid ${sizes[2]} ${colors.red}`,
+      }}
+    >
+      <FaLink
+        className="ThirdChapterIcon"
+        size={sizes[4]}
+        css={{ marginRight: sizes[2] }}
+      />
       {props.children}
     </h3>
+  );
+};
+
+const Paragraph: React.FC = (props) => {
+  return (
+    <p
+      css={{
+        letterSpacing: typography.letterSpacings.wide,
+        lineHeight: typography.lineHeights.tall,
+      }}
+    >
+      {props.children}
+    </p>
   );
 };
 
@@ -37,9 +90,17 @@ const MyLink: React.FC = (props: any) => {
     <a
       href={props.href}
       className="MyLink"
-      css={{ color: colors.blue }}
+      css={{
+        fontSize: fontSizes.xl,
+        color: colors.red,
+        marginLeft: sizes[4],
+        lineHeight: sizes[24],
+        ':hover': {
+          color: colors.blue,
+        },
+      }}
     >
-      <FaExternalLinkAlt />
+      <FaExternalLinkAlt css={{ marginRight: sizes.px }} />
       {props.children}
     </a>
   );
@@ -53,7 +114,11 @@ const MyImage: React.FC = (props: any) => {
       htmlAttributes={{
         alt: props.alt,
       }}
-      css={{ width: '100%' }}
+      css={{
+        width: '60%',
+        margin: `0 auto ${sizes[8]} auto`,
+        borderRadius: sizes[2],
+      }}
     />
   );
 };
@@ -66,6 +131,7 @@ export const renderAst = new rehypeReact({
     h1: MainChapter,
     h2: SubChapter,
     h3: ThirdChapter,
+    p: Paragraph,
     a: MyLink,
     img: MyImage,
     // @ts-ignore
