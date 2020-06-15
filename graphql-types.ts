@@ -1,4 +1,7 @@
 export type Maybe<T> = T | null;
+export type Exact<T extends { [key: string]: any }> = {
+  [K in keyof T]: T[K];
+};
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -1100,8 +1103,8 @@ export type ImageSharpFluid = {
   sizes: Scalars['String'];
   originalImg?: Maybe<Scalars['String']>;
   originalName?: Maybe<Scalars['String']>;
-  presentationWidth?: Maybe<Scalars['Int']>;
-  presentationHeight?: Maybe<Scalars['Int']>;
+  presentationWidth: Scalars['Int'];
+  presentationHeight: Scalars['Int'];
 };
 
 export type ImageSharpFluidFilterInput = {
@@ -1195,8 +1198,8 @@ export type ImageSharpSizes = {
   sizes: Scalars['String'];
   originalImg?: Maybe<Scalars['String']>;
   originalName?: Maybe<Scalars['String']>;
-  presentationWidth?: Maybe<Scalars['Int']>;
-  presentationHeight?: Maybe<Scalars['Int']>;
+  presentationWidth: Scalars['Int'];
+  presentationHeight: Scalars['Int'];
 };
 
 export type ImageSharpSizesFilterInput = {
@@ -2764,6 +2767,7 @@ export type PageInfo = {
   itemCount: Scalars['Int'];
   pageCount: Scalars['Int'];
   perPage?: Maybe<Scalars['Int']>;
+  totalCount: Scalars['Int'];
 };
 
 export type Potrace = {
@@ -2936,7 +2940,7 @@ export type QueryAllSitePageArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
+  port?: Maybe<DateQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
@@ -3100,7 +3104,7 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Int']>;
+  port?: Maybe<Scalars['Date']>;
   host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
@@ -3111,6 +3115,13 @@ export type Site = Node & {
 };
 
 export type SiteBuildTimeArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type SitePortArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
@@ -3392,7 +3403,7 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
+  port?: Maybe<DateQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
@@ -3740,6 +3751,11 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
   | 'pluginCreator___pluginOptions___icon'
+  | 'pluginCreator___pluginOptions___cache_busting_mode'
+  | 'pluginCreator___pluginOptions___include_favicon'
+  | 'pluginCreator___pluginOptions___legacy'
+  | 'pluginCreator___pluginOptions___theme_color_in_head'
+  | 'pluginCreator___pluginOptions___cacheDigest'
   | 'pluginCreator___pluginOptions___filename'
   | 'pluginCreator___pluginOptions___apiKey'
   | 'pluginCreator___pluginOptions___serviceId'
@@ -3945,6 +3961,11 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
   | 'pluginOptions___icon'
+  | 'pluginOptions___cache_busting_mode'
+  | 'pluginOptions___include_favicon'
+  | 'pluginOptions___legacy'
+  | 'pluginOptions___theme_color_in_head'
+  | 'pluginOptions___cacheDigest'
   | 'pluginOptions___filename'
   | 'pluginOptions___apiKey'
   | 'pluginOptions___serviceId'
@@ -4096,6 +4117,11 @@ export type SitePluginPluginOptions = {
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
   icon?: Maybe<Scalars['String']>;
+  cache_busting_mode?: Maybe<Scalars['String']>;
+  include_favicon?: Maybe<Scalars['Boolean']>;
+  legacy?: Maybe<Scalars['Boolean']>;
+  theme_color_in_head?: Maybe<Scalars['Boolean']>;
+  cacheDigest?: Maybe<Scalars['String']>;
   filename?: Maybe<Scalars['String']>;
   apiKey?: Maybe<Scalars['String']>;
   serviceId?: Maybe<Scalars['String']>;
@@ -4132,6 +4158,11 @@ export type SitePluginPluginOptionsFilterInput = {
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
   icon?: Maybe<StringQueryOperatorInput>;
+  cache_busting_mode?: Maybe<StringQueryOperatorInput>;
+  include_favicon?: Maybe<BooleanQueryOperatorInput>;
+  legacy?: Maybe<BooleanQueryOperatorInput>;
+  theme_color_in_head?: Maybe<BooleanQueryOperatorInput>;
+  cacheDigest?: Maybe<StringQueryOperatorInput>;
   filename?: Maybe<StringQueryOperatorInput>;
   apiKey?: Maybe<StringQueryOperatorInput>;
   serviceId?: Maybe<StringQueryOperatorInput>;
@@ -4199,7 +4230,9 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
-export type MyQueryQueryVariables = {};
+export type MyQueryQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
 export type MyQueryQuery = {
   file?: Maybe<{
@@ -4209,7 +4242,9 @@ export type MyQueryQuery = {
   }>;
 };
 
-export type Unnamed_1_QueryVariables = {};
+export type Unnamed_1_QueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
 export type Unnamed_1_Query = {
   site?: Maybe<{
@@ -4222,7 +4257,9 @@ export type Unnamed_1_Query = {
   }>;
 };
 
-export type Unnamed_2_QueryVariables = {};
+export type Unnamed_2_QueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
 export type Unnamed_2_Query = {
   allImageSharp: {
@@ -4235,7 +4272,9 @@ export type Unnamed_2_Query = {
   };
 };
 
-export type PageAboutQueryVariables = {};
+export type PageAboutQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
 export type PageAboutQuery = {
   allMicrocmsSkills: {
@@ -4265,7 +4304,9 @@ export type PageAboutQuery = {
   };
 };
 
-export type PageWorksQueryVariables = {};
+export type PageWorksQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
 export type PageWorksQuery = {
   site: {
@@ -4320,10 +4361,10 @@ export type PageWorksQuery = {
   };
 };
 
-export type PagePostsQueryVariables = {
+export type PagePostsQueryVariables = Exact<{
   skip: Scalars['Int'];
   limit: Scalars['Int'];
-};
+}>;
 
 export type PagePostsQuery = {
   allMicrocmsPosts: {
@@ -4363,11 +4404,11 @@ export type PagePostsQuery = {
   };
 };
 
-export type PageTagQueryVariables = {
+export type PageTagQueryVariables = Exact<{
   tagsId: Scalars['String'];
   skip: Scalars['Int'];
   limit: Scalars['Int'];
-};
+}>;
 
 export type PageTagQuery = {
   allMicrocmsPosts: {
@@ -4457,6 +4498,11 @@ export type GatsbyImageSharpFluidFragment = Pick<
   ImageSharpFluid,
   'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
 >;
+
+export type GatsbyImageSharpFluidLimitPresentationSizeFragment = {
+  maxHeight: ImageSharpFluid['presentationHeight'];
+  maxWidth: ImageSharpFluid['presentationWidth'];
+};
 
 export type GatsbyImageSharpFluid_TracedSvgFragment = Pick<
   ImageSharpFluid,
