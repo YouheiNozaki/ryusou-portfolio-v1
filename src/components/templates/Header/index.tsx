@@ -1,6 +1,6 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import Link from 'gatsby-link';
+import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 
@@ -10,6 +10,7 @@ import {
   fontSizes,
   typography,
 } from '../../../theme/';
+import { Burger } from '../../Burger';
 
 const HeaderContainer = css({
   display: 'flex',
@@ -82,6 +83,7 @@ export const Header: React.FC = () => {
           </ul>
         </nav>
       </div>
+      <Burger />
     </>
   );
 };
