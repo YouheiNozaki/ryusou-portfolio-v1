@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { css } from '@emotion/core';
+
 import { sizes, colors } from '../../theme';
 
 const hamburger = css({
@@ -14,6 +15,7 @@ const hamburger = css({
     MozAppearance: 'none',
     border: 'none',
     backgroundColor: 'transparent',
+    zIndex: 200,
   },
   '& .hamburger': {
     position: 'absolute',
@@ -79,14 +81,14 @@ const hamburger = css({
       top: 0,
       backgroundColor: colors.lightBlue,
       WebkitTransform: 'rotate(45deg)',
-      '-ms-transform': 'rotate(45deg)',
+      msTransform: 'rotate(45deg)',
       transform: 'rotate(45deg)',
     },
     '& .hamburgerLine::after': {
       top: 0,
       backgroundColor: colors.red,
       WebkitTransform: 'rotate(-45deg)',
-      '-ms-transform': 'rotate(-45deg)',
+      msTransform: 'rotate(-45deg)',
       transform: 'rotate(-45deg)',
     },
   },
@@ -104,24 +106,32 @@ const hamburger = css({
   },
 });
 
-export const Burger = () => {
-  const [ariaExpanded, setAriaExpanded] = useState(false);
+type Props = {
+  open: boolean;
+  setOpen: Function;
+};
 
+export const Burger: React.FC<Props> = ({
+  open,
+  setOpen,
+}) => {
   return (
-    <div css={hamburger}>
-      <button
-        type="button"
-        className="button hamburger"
-        aria-controls="global-nav"
-        aria-expanded={ariaExpanded}
-        onClick={() => setAriaExpanded(!ariaExpanded)}
-      >
-        <span className="hamburgerLine">
-          <span className="visuallyHidden">
-            メニューを開閉する
+    <>
+      <div css={hamburger}>
+        <button
+          type="button"
+          className="button hamburger"
+          aria-controls="global-nav"
+          aria-expanded={open}
+          onClick={() => setOpen(!open)}
+        >
+          <span className="hamburgerLine">
+            <span className="visuallyHidden">
+              メニューを開閉する
+            </span>
           </span>
-        </span>
-      </button>
-    </div>
+        </button>
+      </div>
+    </>
   );
 };

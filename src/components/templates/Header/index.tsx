@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'gatsby-link';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
@@ -11,6 +11,7 @@ import {
   typography,
 } from '../../../theme/';
 import { Burger } from '../../Burger';
+import { Nav } from '../../Nav';
 
 const HeaderContainer = css({
   display: 'flex',
@@ -83,7 +84,6 @@ export const Header: React.FC = () => {
           </ul>
         </nav>
       </div>
-      <Burger />
     </>
   );
 };
