@@ -4,8 +4,17 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { css } from '@emotion/core';
 import { color, translateX } from 'csx';
+import { FaReact } from 'react-icons/fa';
+import { TiPencil } from 'react-icons/ti';
+import { FiMail } from 'react-icons/fi';
+import { MdWork } from 'react-icons/md';
 
-import { colors, fontSizes, typography } from '../../theme';
+import {
+  colors,
+  fontSizes,
+  typography,
+  sizes,
+} from '../../theme';
 
 const NavContainer = css({
   '& nav': {
@@ -23,8 +32,15 @@ const NavContainer = css({
         '& a': {
           textDecoration: 'none',
           color: colors.white,
-          fontSize: fontSizes['2xl'],
+          fontSize: fontSizes['4xl'],
           fontWeight: typography.fontWeights.bold,
+          '& ul': {
+            display: 'flex',
+            '& .NavListIcon': {},
+            '& li': {
+              margin: sizes[2],
+            },
+          },
         },
         '& a:hover': {
           color: colors.yellow,
@@ -47,7 +63,7 @@ export const Nav: React.FC<Props> = ({ open }) => {
     query {
       file(relativePath: { eq: "icon.png" }) {
         childImageSharp {
-          fixed(width: 48, height: 48) {
+          fixed(width: 36, height: 36) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -61,24 +77,56 @@ export const Nav: React.FC<Props> = ({ open }) => {
         <ul>
           <li>
             <Link to="/">
-              <Img
-                fixed={data.file.childImageSharp.fixed}
-                alt="Logo"
-              />
-              HOME
+              <ul>
+                <li className="NavListIcon">
+                  <Img
+                    fixed={data.file.childImageSharp.fixed}
+                    alt="Logo"
+                  />
+                </li>
+                <li>HOME</li>
+              </ul>
             </Link>
           </li>
           <li>
-            <Link to="/about">ABOUT</Link>
+            <Link to="/about">
+              <ul>
+                <li className="NavListIcon">
+                  <FaReact size={36} />
+                </li>
+                <li>ABOUT</li>
+              </ul>
+            </Link>
           </li>
           <li>
-            <Link to="/posts">POST</Link>
+            <Link to="/posts">
+              <ul>
+                <li className="NavListIcon">
+                  <TiPencil size={36} />
+                </li>
+                <li>POST</li>
+              </ul>
+            </Link>
           </li>
           <li>
-            <Link to="/works">WORK</Link>
+            <Link to="/works">
+              <ul>
+                <li className="NavListIcon">
+                  <MdWork size={36} />
+                </li>
+                <li>WORK</li>
+              </ul>
+            </Link>
           </li>
           <li>
-            <Link to="/contacts">CONTACT</Link>
+            <Link to="/contacts">
+              <ul>
+                <li className="NavListIcon">
+                  <FiMail size={36} />
+                </li>
+                <li>CONTACT</li>
+              </ul>
+            </Link>
           </li>
         </ul>
       </nav>
