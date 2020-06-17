@@ -1,14 +1,14 @@
 import React from 'react';
 import { css } from '@emotion/core';
 
-import { sizes, colors } from '../../theme';
+import { sizes, colors, mq } from '../../theme';
 
 const hamburger = css({
   '& .button': {
     position: 'relative',
     top: sizes[5],
     right: sizes[5],
-    display: 'inline-block',
+    display: 'none',
     textDecoration: 'none',
     appearance: 'none',
     WebkitAppearance: 'none',
@@ -16,6 +16,9 @@ const hamburger = css({
     border: 'none',
     backgroundColor: 'transparent',
     zIndex: 200,
+    [mq[0]]: {
+      display: 'inline-block',
+    },
   },
   '& .hamburger': {
     position: 'absolute',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'gatsby-link';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
@@ -9,9 +9,8 @@ import {
   sizes,
   fontSizes,
   typography,
+  mq,
 } from '../../../theme/';
-import { Burger } from '../../Burger';
-import { Nav } from '../../Nav';
 
 const HeaderContainer = css({
   display: 'flex',
@@ -40,6 +39,9 @@ const HeaderLink = css({
     '& a:hover': {
       color: colors.red,
     },
+  },
+  [mq[0]]: {
+    display: 'none',
   },
 });
 
