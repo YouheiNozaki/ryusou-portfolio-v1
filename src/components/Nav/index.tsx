@@ -55,10 +55,10 @@ const NavContainer = css({
 
 type Props = {
   open: boolean;
-  setOpen?: Function;
+  setOpen: Function;
 };
 
-export const Nav: React.FC<Props> = ({ open }) => {
+export const Nav: React.FC<Props> = ({ open, setOpen }) => {
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "icon.png" }) {
@@ -76,7 +76,7 @@ export const Nav: React.FC<Props> = ({ open }) => {
       <nav aria-expanded={open}>
         <ul>
           <li>
-            <Link to="/">
+            <Link to="/" onClick={() => setOpen(!open)}>
               <ul>
                 <li className="NavListIcon">
                   <Img
@@ -89,7 +89,10 @@ export const Nav: React.FC<Props> = ({ open }) => {
             </Link>
           </li>
           <li>
-            <Link to="/about">
+            <Link
+              to="/about"
+              onClick={() => setOpen(!open)}
+            >
               <ul>
                 <li className="NavListIcon">
                   <FaReact size={36} />
@@ -99,7 +102,10 @@ export const Nav: React.FC<Props> = ({ open }) => {
             </Link>
           </li>
           <li>
-            <Link to="/posts">
+            <Link
+              to="/posts"
+              onClick={() => setOpen(!open)}
+            >
               <ul>
                 <li className="NavListIcon">
                   <TiPencil size={36} />
@@ -109,7 +115,10 @@ export const Nav: React.FC<Props> = ({ open }) => {
             </Link>
           </li>
           <li>
-            <Link to="/works">
+            <Link
+              to="/works"
+              onClick={() => setOpen(!open)}
+            >
               <ul>
                 <li className="NavListIcon">
                   <MdWork size={36} />
@@ -119,7 +128,10 @@ export const Nav: React.FC<Props> = ({ open }) => {
             </Link>
           </li>
           <li>
-            <Link to="/contacts">
+            <Link
+              to="/contacts"
+              onClick={() => setOpen(!open)}
+            >
               <ul>
                 <li className="NavListIcon">
                   <FiMail size={36} />
