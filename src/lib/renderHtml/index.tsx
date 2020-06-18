@@ -16,8 +16,8 @@ const MainChapter: React.FC = (props) => {
       css={{
         color: colors.blue,
         padding: sizes[8],
-        marginTop: sizes[16],
-        marginBottom: sizes[16],
+        marginTop: sizes[8],
+        marginBottom: sizes[8],
         borderLeft: `solid ${sizes[2]} ${colors.red}`,
       }}
     >
@@ -37,8 +37,8 @@ const SubChapter: React.FC = (props) => {
       css={{
         color: colors.blue,
         padding: sizes[3],
-        marginTop: sizes[16],
-        marginBottom: sizes[16],
+        marginTop: sizes[8],
+        marginBottom: sizes[8],
         borderLeft: `solid ${sizes[2]} ${colors.red}`,
       }}
     >
@@ -57,8 +57,8 @@ const ThirdChapter: React.FC = (props) => {
     <h3
       css={{
         color: colors.blue,
-        padding: sizes[8],
-        marginTop: sizes[8],
+        padding: sizes[4],
+        marginTop: sizes[4],
         borderLeft: `solid ${sizes[2]} ${colors.red}`,
       }}
     >
@@ -94,7 +94,6 @@ const MyLink: React.FC = (props: any) => {
         fontSize: fontSizes.xl,
         color: colors.red,
         marginLeft: sizes[4],
-        lineHeight: sizes[24],
         ':hover': {
           color: colors.blue,
         },

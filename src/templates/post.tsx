@@ -13,7 +13,7 @@ import {
 
 import { PostContext } from '../../gatsby-node';
 import { renderAst } from '../lib/renderHtml';
-import { colors, sizes } from '../theme';
+import { colors, sizes, mq } from '../theme';
 
 type Props = {
   pageContext: PostContext;
@@ -54,13 +54,12 @@ const PostContainer = css({
     marginTop: sizes[8],
   },
   '& .PostPageNation': {
+    display: 'flex',
+    justifyContent: 'space-between',
     marginTop: sizes[8],
-    position: 'relative',
     '& .PostPageNationNext': {
       display: 'flex',
       alignItems: 'center',
-      position: 'absolute',
-      right: sizes[8],
       '& a': {
         textDecoration: 'none',
         color: colors.lightBlue,
@@ -75,8 +74,6 @@ const PostContainer = css({
     '& .PostPageNationPrevious': {
       display: 'flex',
       alignItems: 'center',
-      position: 'absolute',
-      left: sizes[8],
       '& a': {
         textDecoration: 'none',
         color: colors.lightBlue,
@@ -86,6 +83,9 @@ const PostContainer = css({
       },
       '& a:hover': {
         color: colors.blue,
+      },
+      [mq[0]]: {
+        display: 'block',
       },
     },
   },
@@ -131,17 +131,6 @@ const Post: React.FC<Props> = ({ pageContext }) => {
         {renderAst(htmlAst)}
       </div>
       <div className="PostPageNation">
-        {pageContext.next && (
-          <div className="PostPageNationNext">
-            <Link
-              to={`/posts/${pageContext.next.postsId}`}
-              rel="next"
-            >
-              <span>{pageContext.next.title}</span>
-              <FaArrowCircleRight className="icons" />
-            </Link>
-          </div>
-        )}
         {pageContext.previous && (
           <div className="PostPageNationPrevious">
             <Link
@@ -150,6 +139,17 @@ const Post: React.FC<Props> = ({ pageContext }) => {
             >
               <FaArrowCircleLeft className="icons" />
               <span>{pageContext.previous.title}</span>
+            </Link>
+          </div>
+        )}
+        {pageContext.next && (
+          <div className="PostPageNationNext">
+            <Link
+              to={`/posts/${pageContext.next.postsId}`}
+              rel="next"
+            >
+              <span>{pageContext.next.title}</span>
+              <FaArrowCircleRight className="icons" />
             </Link>
           </div>
         )}

@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 import { color } from 'csx';
 
 import { FaExternalLinkAlt } from 'react-icons/fa';
-import { sizes, colors } from '../theme';
+import { sizes, colors, mq } from '../theme';
 import { PageWorksQuery } from '../../graphql-types';
 
 type Props = {
@@ -21,12 +21,18 @@ const SiteContainer = css({
     display: 'grid',
     gridTemplateColumns: `1fr 1fr`,
     gridGap: sizes[8],
+    [mq[0]]: {
+      display: 'block',
+    },
     '& .SiteItem': {
       border: `solid ${sizes[1]} ${color(colors.red).fade(
         0.4,
       )}`,
       borderRadius: sizes[8],
       padding: sizes[4],
+      [mq[0]]: {
+        marginTop: sizes[6],
+      },
       '& h2': {
         color: colors.blue,
         paddingLeft: sizes[2],

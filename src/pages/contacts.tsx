@@ -5,7 +5,7 @@ import { color } from 'csx';
 import { FaCat } from 'react-icons/fa';
 import { AiOutlineMail, AiFillHeart } from 'react-icons/ai';
 
-import { sizes, colors } from '../theme';
+import { sizes, colors, mq } from '../theme';
 
 type FormData = {
   name: string;
