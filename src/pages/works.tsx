@@ -93,7 +93,7 @@ const SpeechContainer = css({
         },
       },
       [mq[0]]: {
-        width: sizes.full,
+        width: sizes.largeSizes.sm,
       },
     },
   },
