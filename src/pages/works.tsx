@@ -92,6 +92,9 @@ const SpeechContainer = css({
           marginTop: sizes[2],
         },
       },
+      [mq[0]]: {
+        width: sizes.full,
+      },
     },
   },
 });
