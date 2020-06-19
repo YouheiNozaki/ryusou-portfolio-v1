@@ -11,6 +11,7 @@ import {
   colors,
   fontSizes,
   typography,
+  mq,
 } from '../theme';
 
 import { PageAboutQuery } from '../../graphql-types';
@@ -63,7 +64,7 @@ const Career = css({
   textAlign: 'center',
   '& table': {
     margin: `${sizes[16]} auto`,
-    width: sizes.largeSizes.xl,
+    width: '100%',
     borderTop: `solid ${sizes[1]} ${colors.blue}`,
     borderBottom: `solid ${sizes[1]} ${colors.blue}`,
     borderCollapse: 'collapse',
@@ -122,7 +123,21 @@ const SkillStack = css({
           marginTop: sizes[1],
           marginLeft: sizes[2],
         },
+        [mq[1]]: {
+          marginLeft: sizes[6],
+        },
+        [mq[0]]: {
+          marginLeft: sizes[8],
+        },
       },
+    },
+    [mq[1]]: {
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr ',
+    },
+    [mq[0]]: {
+      display: 'block',
+      marginLeft: sizes[8],
     },
   },
 });

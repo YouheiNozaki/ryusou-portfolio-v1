@@ -4215,6 +4215,18 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
+export type Unnamed_1_QueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type Unnamed_1_Query = {
+  file?: Maybe<{
+    childImageSharp?: Maybe<{
+      fixed?: Maybe<GatsbyImageSharpFixedFragment>;
+    }>;
+  }>;
+};
+
 export type MyQueryQueryVariables = Exact<{
   [key: string]: never;
 }>;
@@ -4227,11 +4239,11 @@ export type MyQueryQuery = {
   }>;
 };
 
-export type Unnamed_1_QueryVariables = Exact<{
+export type Unnamed_2_QueryVariables = Exact<{
   [key: string]: never;
 }>;
 
-export type Unnamed_1_Query = {
+export type Unnamed_2_Query = {
   site?: Maybe<{
     siteMetadata?: Maybe<
       Pick<
@@ -4242,11 +4254,11 @@ export type Unnamed_1_Query = {
   }>;
 };
 
-export type Unnamed_2_QueryVariables = Exact<{
+export type Unnamed_3_QueryVariables = Exact<{
   [key: string]: never;
 }>;
 
-export type Unnamed_2_Query = {
+export type Unnamed_3_Query = {
   allImageSharp: {
     nodes: Array<{
       fluid?: Maybe<

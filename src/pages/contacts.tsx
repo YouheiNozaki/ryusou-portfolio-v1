@@ -5,7 +5,7 @@ import { color } from 'csx';
 import { FaCat } from 'react-icons/fa';
 import { AiOutlineMail, AiFillHeart } from 'react-icons/ai';
 
-import { sizes, colors } from '../theme';
+import { sizes, colors, mq } from '../theme';
 
 type FormData = {
   name: string;
@@ -33,6 +33,9 @@ const ContactContainer = css({
         0.8,
       )}`,
       outline: 'none',
+      [mq[0]]: {
+        width: sizes.largeSizes.xs,
+      },
     },
     "& input[type='text']::placeholder": {
       color: colors.gray,
@@ -57,7 +60,6 @@ const ContactContainer = css({
     position: 'relative',
     marginTop: sizes[8],
     "& input[type='email']": {
-      width: sizes.largeSizes.md,
       boxSizing: 'border-box',
       paddingLeft: sizes[10],
       paddingTop: sizes[3],
@@ -68,6 +70,10 @@ const ContactContainer = css({
         0.8,
       )}`,
       outline: 'none',
+      width: sizes.largeSizes.md,
+      [mq[0]]: {
+        width: sizes.largeSizes.xs,
+      },
     },
     "& input[type='email']::placeholder": {
       color: colors.gray,
@@ -102,6 +108,9 @@ const ContactContainer = css({
         0.8,
       )}`,
       outline: 'none',
+      [mq[0]]: {
+        width: sizes.largeSizes.xs,
+      },
     },
     '& textarea::placeholder': {
       color: colors.gray,

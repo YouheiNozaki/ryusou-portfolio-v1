@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './index.css';
 import { Header } from '../templates/Header';
 import { Footer } from '../templates/Footer';
+import { Nav } from '../Nav';
+import { Burger } from '../Burger';
 import { sizes } from '../../theme';
 
 type Props = {
@@ -10,8 +12,12 @@ type Props = {
 };
 
 export const Layout: React.FC<Props> = ({ children }) => {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
+      <Burger open={open} setOpen={setOpen} />
+      <Nav open={open} setOpen={setOpen} />
       <Header />
       <div
         style={{

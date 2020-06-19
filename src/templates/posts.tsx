@@ -9,7 +9,7 @@ import {
   FaArrowCircleLeft,
 } from 'react-icons/fa';
 
-import { sizes, colors, typography } from '../theme';
+import { sizes, colors, typography, mq } from '../theme';
 import { PagePostsQuery } from '../../graphql-types';
 import { PostsContext } from '../../gatsby-node';
 
@@ -22,11 +22,17 @@ export const PostList = css({
   display: 'grid',
   gridTemplateColumns: '1fr 1fr',
   gap: sizes[4],
+  [mq[0]]: {
+    display: 'block',
+  },
 });
 
 export const PostItem = css({
   display: 'grid',
   gridTemplateColumns: '1fr 1fr',
+  [mq[0]]: {
+    padding: sizes[4],
+  },
   '& a': {
     textDecoration: 'none',
     cursor: 'pointer',
@@ -35,6 +41,12 @@ export const PostItem = css({
       borderRadius: sizes[2],
       padding: sizes[4],
       width: sizes.largeSizes.sm,
+      [mq[1]]: {
+        width: sizes.largeSizes.xs,
+      },
+      [mq[0]]: {
+        width: sizes.largeSizes.xs,
+      },
       '& .PostItemTitle': {
         color: colors.blue,
         fontWeight: typography.fontWeights.medium,
@@ -59,6 +71,9 @@ export const PostItem = css({
       '& .PostItemDay': {
         marginTop: sizes[3],
         display: 'flex',
+        [mq[0]]: {
+          marginTop: sizes[1],
+        },
         '& .PostItemDayItem': {
           display: 'flex',
           color: colors.blue,
@@ -66,6 +81,12 @@ export const PostItem = css({
           '& .icon': {
             marginRight: sizes[1],
           },
+        },
+        [mq[1]]: {
+          display: 'block',
+        },
+        [mq[0]]: {
+          display: 'block',
         },
       },
     },
@@ -146,17 +167,17 @@ const Posts: React.FC<Props> = ({ data, pageContext }) => (
                   <div className="PostItemDay">
                     <div className="PostItemDayItem">
                       <FaCalendar className="icon" />
-                      <p>
-                        投稿:
-                        {posts.createdAt}
-                      </p>
+                      {/* <p> */}
+                      投稿:
+                      {posts.createdAt}
+                      {/* </p> */}
                     </div>
                     <div className="PostItemDayItem">
                       <FaRegCalendarCheck className="icon" />
-                      <p>
-                        更新:
-                        {posts.updatedAt}
-                      </p>
+                      {/* <p> */}
+                      更新:
+                      {posts.updatedAt}
+                      {/* </p> */}
                     </div>
                   </div>
                 </article>

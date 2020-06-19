@@ -3,7 +3,7 @@ import { FluidImage } from '../lib/images';
 import { css } from '@emotion/core';
 
 const HeroImage = css({
-  width: 640,
+  maxWidth: 640,
   margin: '0 auto',
 });
 

@@ -96,11 +96,22 @@ export const sizes = {
     '6xl': '72rem',
   },
   container: {
-    sm: '640px',
-    md: '768px',
+    sm: '560px',
+    md: '960px',
     lg: '1024px',
     xl: '1280px',
   },
 } as const;
 
 type sizes = typeof sizes[keyof typeof sizes];
+
+// breakpointsの設定
+// example
+// [mq[1]]:{
+// color: red;
+// }
+const breakpoints = [560, 960, 1024, 1280];
+
+export const mq = breakpoints.map(
+  (bp) => `@media(max-width: ${bp}px)`,
+);
