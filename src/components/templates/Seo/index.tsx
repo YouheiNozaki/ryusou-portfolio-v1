@@ -7,6 +7,7 @@ type Props = {
   pagedesc?: string;
   pagepath?: string;
   pageimg?: string;
+  postimg?: string;
   pageimgw?: string;
   pageimgh?: string;
 };
@@ -37,7 +38,8 @@ export const SEO: React.FC<Props> = (props) => {
     : data.site.siteMetadata.siteUrl;
   const imgurl = props.pageimg
     ? `${data.site.siteMetadata.siteUrl}${props.pageimg}`
-    : `${data.site.siteMetadata.siteUrl}/thumb.png`;
+    : props.postimg ||
+      `${data.site.siteMetadata.siteUrl}/thumb.png`;
   const imgw = props.pageimgw || '1280px';
   const imgh = props.pageimgh || '640px';
 
