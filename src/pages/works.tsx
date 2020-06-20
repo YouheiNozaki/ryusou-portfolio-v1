@@ -25,6 +25,8 @@ const SiteContainer = css({
     gridGap: sizes[8],
     [mq[0]]: {
       display: 'block',
+      margin: '0 auto',
+      width: sizes.largeSizes.xs,
     },
     '& .SiteItem': {
       border: `solid ${sizes[1]} ${color(colors.red).fade(
@@ -34,6 +36,7 @@ const SiteContainer = css({
       padding: sizes[4],
       [mq[0]]: {
         marginTop: sizes[6],
+        width: sizes.largeSizes.xs,
       },
       '& h2': {
         color: colors.blue,
@@ -67,6 +70,10 @@ const SpeechContainer = css({
   '& .SpeechList': {
     margin: '0 auto',
     width: sizes.largeSizes.sm,
+    [mq[0]]: {
+      margin: '0 auto',
+      width: sizes.largeSizes.xs,
+    },
     '& .SpeechItem': {
       border: `solid ${sizes[1]} ${color(
         colors.lightBlue,
@@ -93,9 +100,6 @@ const SpeechContainer = css({
         '& p': {
           marginTop: sizes[2],
         },
-      },
-      [mq[0]]: {
-        width: sizes.largeSizes.sm,
       },
     },
   },
