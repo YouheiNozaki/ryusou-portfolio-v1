@@ -3311,6 +3311,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___description'
   | 'siteMetadata___author'
   | 'siteMetadata___siteUrl'
+  | 'siteMetadata___locale'
+  | 'siteMetadata___fbappid'
   | 'port'
   | 'host'
   | 'polyfill'
@@ -3752,6 +3754,9 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___path'
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
+  | 'pluginCreator___pluginOptions___background_color'
+  | 'pluginCreator___pluginOptions___theme_color'
+  | 'pluginCreator___pluginOptions___display'
   | 'pluginCreator___pluginOptions___icon'
   | 'pluginCreator___pluginOptions___cache_busting_mode'
   | 'pluginCreator___pluginOptions___include_favicon'
@@ -3962,6 +3967,9 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___path'
   | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
+  | 'pluginOptions___background_color'
+  | 'pluginOptions___theme_color'
+  | 'pluginOptions___display'
   | 'pluginOptions___icon'
   | 'pluginOptions___cache_busting_mode'
   | 'pluginOptions___include_favicon'
@@ -4118,6 +4126,9 @@ export type SitePluginPluginOptions = {
   path?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
+  background_color?: Maybe<Scalars['String']>;
+  theme_color?: Maybe<Scalars['String']>;
+  display?: Maybe<Scalars['String']>;
   icon?: Maybe<Scalars['String']>;
   cache_busting_mode?: Maybe<Scalars['String']>;
   include_favicon?: Maybe<Scalars['Boolean']>;
@@ -4159,6 +4170,9 @@ export type SitePluginPluginOptionsFilterInput = {
   path?: Maybe<StringQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
+  background_color?: Maybe<StringQueryOperatorInput>;
+  theme_color?: Maybe<StringQueryOperatorInput>;
+  display?: Maybe<StringQueryOperatorInput>;
   icon?: Maybe<StringQueryOperatorInput>;
   cache_busting_mode?: Maybe<StringQueryOperatorInput>;
   include_favicon?: Maybe<BooleanQueryOperatorInput>;
@@ -4210,6 +4224,8 @@ export type SiteSiteMetadata = {
   description?: Maybe<Scalars['String']>;
   author?: Maybe<Scalars['String']>;
   siteUrl?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+  fbappid?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataFilterInput = {
@@ -4218,6 +4234,8 @@ export type SiteSiteMetadataFilterInput = {
   description?: Maybe<StringQueryOperatorInput>;
   author?: Maybe<StringQueryOperatorInput>;
   siteUrl?: Maybe<StringQueryOperatorInput>;
+  locale?: Maybe<StringQueryOperatorInput>;
+  fbappid?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSortInput = {
@@ -4269,7 +4287,12 @@ export type Unnamed_2_Query = {
     siteMetadata?: Maybe<
       Pick<
         SiteSiteMetadata,
-        'title' | 'lang' | 'description' | 'siteUrl'
+        | 'title'
+        | 'lang'
+        | 'description'
+        | 'siteUrl'
+        | 'locale'
+        | 'fbappid'
       >
     >;
   }>;

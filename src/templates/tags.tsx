@@ -9,14 +9,25 @@ import {
 import { PageTagQuery } from '../../graphql-types';
 import { TagsContext } from '../../gatsby-node';
 import { PostList, PostItem } from './posts';
+import { SEO } from '../components/templates/Seo';
 
 type Props = {
   data: PageTagQuery;
+  location: Location;
   pageContext: TagsContext;
 };
 
-const Tags: React.FC<Props> = ({ data, pageContext }) => (
+const Tags: React.FC<Props> = ({
+  data,
+  location,
+  pageContext,
+}) => (
   <>
+    <SEO
+      pagetitle={pageContext.tagsname}
+      pagedesc={`カテゴリー別ページ | ${pageContext.tagsname}`}
+      pagepath={location.pathname}
+    />
     <h1>{pageContext.tagsname}</h1>
     <section css={PostList}>
       {data.allMicrocmsPosts?.edges?.map((edge) => {

@@ -12,9 +12,11 @@ import {
 import { sizes, colors, typography, mq } from '../theme';
 import { PagePostsQuery } from '../../graphql-types';
 import { PostsContext } from '../../gatsby-node';
+import { SEO } from '../components/templates/Seo';
 
 type Props = {
   data: PagePostsQuery;
+  location: Location;
   pageContext: PostsContext;
 };
 
@@ -130,8 +132,17 @@ const PostPageNation = css({
   },
 });
 
-const Posts: React.FC<Props> = ({ data, pageContext }) => (
+const Posts: React.FC<Props> = ({
+  data,
+  location,
+  pageContext,
+}) => (
   <>
+    <SEO
+      pagetitle="POST"
+      pagedesc="技術ブログのページ"
+      pagepath={location.pathname}
+    />
     <h1>りゅーそうの技術ブログ</h1>
     <section css={PostList}>
       {data.allMicrocmsPosts?.edges?.map((edge) => {

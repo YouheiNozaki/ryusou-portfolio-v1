@@ -4,6 +4,7 @@ import Image from 'gatsby-image';
 import unified from 'unified';
 import parse from 'rehype-parse';
 import { css } from '@emotion/core';
+import htmlToText from 'html-to-text';
 import {
   FaCalendar,
   FaRegCalendarCheck,
@@ -14,9 +15,11 @@ import {
 import { PostContext } from '../../gatsby-node';
 import { renderAst } from '../lib/renderHtml';
 import { colors, sizes, mq } from '../theme';
+import { SEO } from '../components/templates/Seo';
 
 type Props = {
   pageContext: PostContext;
+  location: Location;
 };
 
 const PostContainer = css({
@@ -91,7 +94,10 @@ const PostContainer = css({
   },
 });
 
-const Post: React.FC<Props> = ({ pageContext }) => {
+const Post: React.FC<Props> = ({
+  pageContext,
+  location,
+}) => {
   const post = pageContext.post;
 
   const htmlAst = unified()
@@ -99,62 +105,77 @@ const Post: React.FC<Props> = ({ pageContext }) => {
     .parse(post.content!);
 
   return (
-    <div css={PostContainer}>
-      <h1 className="PostTitle">{post.title}</h1>
-      {post?.tags?.map(
-        (tag) =>
-          tag?.id && (
-            <React.Fragment key={tag.id}>
-              <Link to={`/tags/${tag.id}`}>
-                <span className="tagName">{tag.name}</span>
+    <>
+      <SEO
+        pagetitle={post.title!}
+        pagedesc={`${htmlToText
+          .fromString(post.content!, {
+            ignoreImage: true,
+            ignoreHref: true,
+          })
+          .slice(0, 70)}....`}
+        pagepath={location.pathname}
+        pageimg={post.image?.url!}
+      />
+      <div css={PostContainer}>
+        <h1 className="PostTitle">{post.title}</h1>
+        {post?.tags?.map(
+          (tag) =>
+            tag?.id && (
+              <React.Fragment key={tag.id}>
+                <Link to={`/tags/${tag.id}`}>
+                  <span className="tagName">
+                    {tag.name}
+                  </span>
+                </Link>
+              </React.Fragment>
+            ),
+        )}
+        <div className="PostDay">
+          <div className="PostDayItem">
+            <FaCalendar className="icon" />
+            <p>投稿:{post.createdAt}</p>
+          </div>
+          <div className="PostDayItem">
+            <FaRegCalendarCheck className="icon" />
+            <p>更新:{post.updatedAt}</p>
+          </div>
+        </div>
+        {post?.fields?.featuredImage?.fluid && (
+          <Image
+            fluid={post.fields.featuredImage.fluid}
+            alt="投稿したブログのイメージ画像"
+          />
+        )}
+        <div className="PostContent">
+          {renderAst(htmlAst)}
+        </div>
+        <div className="PostPageNation">
+          {pageContext.previous && (
+            <div className="PostPageNationPrevious">
+              <Link
+                to={`/posts/${pageContext.previous.postsId}`}
+                rel="prev"
+              >
+                <FaArrowCircleLeft className="icons" />
+                <span>{pageContext.previous.title}</span>
               </Link>
-            </React.Fragment>
-          ),
-      )}
-      <div className="PostDay">
-        <div className="PostDayItem">
-          <FaCalendar className="icon" />
-          <p>投稿:{post.createdAt}</p>
+            </div>
+          )}
+          {pageContext.next && (
+            <div className="PostPageNationNext">
+              <Link
+                to={`/posts/${pageContext.next.postsId}`}
+                rel="next"
+              >
+                <span>{pageContext.next.title}</span>
+                <FaArrowCircleRight className="icons" />
+              </Link>
+            </div>
+          )}
         </div>
-        <div className="PostDayItem">
-          <FaRegCalendarCheck className="icon" />
-          <p>更新:{post.updatedAt}</p>
-        </div>
       </div>
-      {post?.fields?.featuredImage?.fluid && (
-        <Image
-          fluid={post.fields.featuredImage.fluid}
-          alt="投稿したブログのイメージ画像"
-        />
-      )}
-      <div className="PostContent">
-        {renderAst(htmlAst)}
-      </div>
-      <div className="PostPageNation">
-        {pageContext.previous && (
-          <div className="PostPageNationPrevious">
-            <Link
-              to={`/posts/${pageContext.previous.postsId}`}
-              rel="prev"
-            >
-              <FaArrowCircleLeft className="icons" />
-              <span>{pageContext.previous.title}</span>
-            </Link>
-          </div>
-        )}
-        {pageContext.next && (
-          <div className="PostPageNationNext">
-            <Link
-              to={`/posts/${pageContext.next.postsId}`}
-              rel="next"
-            >
-              <span>{pageContext.next.title}</span>
-              <FaArrowCircleRight className="icons" />
-            </Link>
-          </div>
-        )}
-      </div>
-    </div>
+    </>
   );
 };
 

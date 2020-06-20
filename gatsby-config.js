@@ -9,6 +9,8 @@ module.exports = {
     description: `りゅーそうの技術ブログ&ポートフォリオサイト`,
     author: `Yohei Nozaki`,
     siteUrl: `https://ryusou.dev/`,
+    locale: `ja_JP`,
+    fbappid: `${process.env.FB_APP_ID}`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -24,12 +26,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: ` Ryusou Blog`,
-        short_name: `Ryusou Blog`,
+        name: ` Ryusou Blog りゅーそうブログ`,
+        short_name: `RyusouBlog`,
         start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#faf7d9`,
+        display: 'standalone',
         icon: `src/images/icon.png`,
       },
     },
+    'gatsby-plugin-offline',
     `gatsby-plugin-emotion`,
     `gatsby-plugin-typescript`,
     {
