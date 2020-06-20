@@ -76,7 +76,11 @@ export const Nav: React.FC<Props> = ({ open, setOpen }) => {
       <nav aria-expanded={open}>
         <ul>
           <li>
-            <Link to="/" onClick={() => setOpen(!open)}>
+            <Link
+              to="/"
+              aria-label="HOME"
+              onClick={() => setOpen(!open)}
+            >
               <ul>
                 <li className="NavListIcon">
                   <Img
@@ -91,6 +95,7 @@ export const Nav: React.FC<Props> = ({ open, setOpen }) => {
           <li>
             <Link
               to="/about"
+              aria-label="ABOUT"
               onClick={() => setOpen(!open)}
             >
               <ul>
@@ -104,6 +109,7 @@ export const Nav: React.FC<Props> = ({ open, setOpen }) => {
           <li>
             <Link
               to="/posts"
+              aria-label="POSTS"
               onClick={() => setOpen(!open)}
             >
               <ul>
@@ -117,6 +123,7 @@ export const Nav: React.FC<Props> = ({ open, setOpen }) => {
           <li>
             <Link
               to="/works"
+              aria-label="WORK"
               onClick={() => setOpen(!open)}
             >
               <ul>
@@ -130,6 +137,7 @@ export const Nav: React.FC<Props> = ({ open, setOpen }) => {
           <li>
             <Link
               to="/contacts"
+              aria-label="CONTACTS"
               onClick={() => setOpen(!open)}
             >
               <ul>

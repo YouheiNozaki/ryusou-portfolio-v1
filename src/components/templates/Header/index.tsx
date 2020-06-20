@@ -62,7 +62,7 @@ export const Header: React.FC = () => {
     <>
       <div css={HeaderContainer}>
         <div css={HeaderLogo}>
-          <Link to="/">
+          <Link to="/" aria-label="HOME">
             <Img
               fixed={data.file.childImageSharp.fixed}
               alt="Logo"
@@ -72,16 +72,24 @@ export const Header: React.FC = () => {
         <nav>
           <ul css={HeaderLink}>
             <li>
-              <Link to="/about">ABOUT</Link>
+              <Link to="/about" aria-label="ABOUT">
+                ABOUT
+              </Link>
             </li>
             <li>
-              <Link to="/posts">POST</Link>
+              <Link to="/posts" aria-label="POST">
+                POST
+              </Link>
             </li>
             <li>
-              <Link to="/works">WORK</Link>
+              <Link to="/works" aria-label="WORK">
+                WORK
+              </Link>
             </li>
             <li>
-              <Link to="/contacts">CONTACT</Link>
+              <Link to="/contacts" aria-label="CONTACT">
+                CONTACT
+              </Link>
             </li>
           </ul>
         </nav>

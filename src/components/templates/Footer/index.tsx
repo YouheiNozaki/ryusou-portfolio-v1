@@ -38,10 +38,16 @@ export const Footer: React.FC = () => {
       <div css={FooterContainer}>
         <p>This Site is built in Gatsby</p>
         <div css={FooterLink}>
-          <a href="https://twitter.com/ryusou_mtkh">
+          <a
+            href="https://twitter.com/ryusou_mtkh"
+            aria-label="りゅーそうのTwitterアカウントへ"
+          >
             <FaTwitter className="twitter" />
           </a>
-          <a href="https://github.com/YouheiNozaki">
+          <a
+            href="https://github.com/YouheiNozaki"
+            aria-label="りゅーそうのgithubアカウントへ"
+          >
             <FaGithub className="github" />
           </a>
         </div>
