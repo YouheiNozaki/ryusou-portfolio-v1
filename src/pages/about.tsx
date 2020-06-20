@@ -15,9 +15,11 @@ import {
 } from '../theme';
 
 import { PageAboutQuery } from '../../graphql-types';
+import { SEO } from '../components/templates/Seo';
 
 type Props = {
   data: PageAboutQuery;
+  location: Location;
 };
 
 // style
@@ -142,8 +144,13 @@ const SkillStack = css({
   },
 });
 
-const About: React.FC<Props> = ({ data }) => (
+const About: React.FC<Props> = ({ data, location }) => (
   <>
+    <SEO
+      pagetitle="ABOUT"
+      pagedesc="Aboutページ"
+      pagepath={location.pathname}
+    />
     <section css={AboutContainer}>
       <h1 css={Title}>どーも。りゅーそうです。</h1>
       <div css={AboutIconImage}>

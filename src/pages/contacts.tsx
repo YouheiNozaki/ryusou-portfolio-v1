@@ -6,12 +6,17 @@ import { FaCat } from 'react-icons/fa';
 import { AiOutlineMail, AiFillHeart } from 'react-icons/ai';
 
 import { sizes, colors, mq } from '../theme';
+import { SEO } from '../components/templates/Seo';
 
 type FormData = {
   name: string;
   email: string;
   question: string;
   submit: string;
+};
+
+type Props = {
+  location: Location;
 };
 
 const ContactContainer = css({
@@ -142,7 +147,7 @@ const ContactContainer = css({
   },
 });
 
-const Contact = () => {
+const Contact: React.FC<Props> = ({ location }) => {
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
@@ -260,6 +265,11 @@ const Contact = () => {
   );
   return (
     <>
+      <SEO
+        pagetitle="CONTACT"
+        pagedesc="CONTACTページ"
+        pagepath={location.pathname}
+      />
       <h1>Contact</h1>
       <div css={ContactContainer}>
         {errors &&

@@ -2,6 +2,8 @@ import React from 'react';
 import { FluidImage } from '../lib/images';
 import { css } from '@emotion/core';
 
+import { SEO } from '../components/templates/Seo';
+
 const HeroImage = css({
   maxWidth: 640,
   margin: '0 auto',
@@ -10,6 +12,7 @@ const HeroImage = css({
 const IndexPage = () => {
   return (
     <>
+      <SEO />
       <div css={HeroImage}>
         <FluidImage
           filename="ryusoublog.png"

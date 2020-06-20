@@ -3,80 +3,40 @@ import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 type Props = {
-  description?: String;
-  lang?: String;
-  meta?: any;
-  title: String;
+  pagetitle?: string;
+  pagedesc?: string;
+  pagepath?: string;
 };
 
-export const SEO: React.FC<Props> = ({
-  description,
-  lang,
-  meta,
-  title,
-}) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
+export const SEO: React.FC<Props> = (props) => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+          lang
+          description
+          siteUrl
         }
       }
-    `,
-  );
+    }
+  `);
 
-  const metaDescription =
-    description || site.siteMetadata.description;
+  const title = props.pagetitle
+    ? `${props.pagetitle} | ${data.site.siteMetadata.title}`
+    : data.site.siteMetadata.title;
+  const description =
+    props.pagedesc || data.site.siteMetadata.description;
+  const url = props.pagepath
+    ? `${data.site.siteMetadata.siteUrl}${props.pagepath}`
+    : data.site.siteMetadata.siteUrl;
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          property: `og:image`,
-          content: `../../../images/icon.png`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
+    <Helmet>
+      <html lang={data.site.siteMetadata.lang} />
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <link rel="canonical" href={url} />
+    </Helmet>
   );
 };

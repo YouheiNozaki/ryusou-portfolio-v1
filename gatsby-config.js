@@ -5,8 +5,10 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: `Ryusou Blog`,
+    lang: 'ja',
     description: `りゅーそうの技術ブログ&ポートフォリオサイト`,
     author: `Yohei Nozaki`,
+    siteUrl: `https://ryusou.dev/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

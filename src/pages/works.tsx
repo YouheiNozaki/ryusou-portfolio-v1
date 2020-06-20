@@ -6,10 +6,12 @@ import { color } from 'csx';
 
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { sizes, colors, mq } from '../theme';
+import { SEO } from '../components/templates/Seo';
 import { PageWorksQuery } from '../../graphql-types';
 
 type Props = {
   data: PageWorksQuery;
+  location: Location;
 };
 
 const SiteContainer = css({
@@ -99,8 +101,13 @@ const SpeechContainer = css({
   },
 });
 
-const Works: React.FC<Props> = ({ data }) => (
+const Works: React.FC<Props> = ({ data, location }) => (
   <>
+    <SEO
+      pagetitle="WORK"
+      pagedesc="作品の一覧ページ"
+      pagepath={location.pathname}
+    />
     <h1>WORKS</h1>
     <div css={SiteContainer}>
       <h2 className="SiteTitle">サイト</h2>
