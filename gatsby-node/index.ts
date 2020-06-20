@@ -50,6 +50,9 @@ const query = `
           }
           createdAt(locale: "ja", formatString: "YYYY/M/DD")
           updatedAt(locale: "ja", formatString: "YYYY/M/DD")
+          image {
+            url
+          }
           fields {
             featuredImage {
               fluid(maxHeight: 768, maxWidth: 1024) {

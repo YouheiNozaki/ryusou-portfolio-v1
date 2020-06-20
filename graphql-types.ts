@@ -3492,6 +3492,7 @@ export type SitePageContextPost = {
   tags?: Maybe<Array<Maybe<SitePageContextPostTags>>>;
   createdAt?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['String']>;
+  image?: Maybe<SitePageContextPostImage>;
   fields?: Maybe<SitePageContextPostFields>;
   content?: Maybe<Scalars['String']>;
 };
@@ -3547,8 +3548,17 @@ export type SitePageContextPostFilterInput = {
   tags?: Maybe<SitePageContextPostTagsFilterListInput>;
   createdAt?: Maybe<StringQueryOperatorInput>;
   updatedAt?: Maybe<StringQueryOperatorInput>;
+  image?: Maybe<SitePageContextPostImageFilterInput>;
   fields?: Maybe<SitePageContextPostFieldsFilterInput>;
   content?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextPostImage = {
+  url?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextPostImageFilterInput = {
+  url?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageContextPostTags = {
@@ -3682,6 +3692,7 @@ export type SitePageFieldsEnum =
   | 'context___post___tags___name'
   | 'context___post___createdAt'
   | 'context___post___updatedAt'
+  | 'context___post___image___url'
   | 'context___post___content'
   | 'context___next___title'
   | 'context___next___postsId'
