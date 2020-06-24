@@ -13,6 +13,15 @@ module.exports = {
     fbappid: `${process.env.FB_APP_ID}`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trakingId: `UA-170651312-1`,
+        head: true,
+        respectDNT: true,
+      },
+    },
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

@@ -1863,14 +1863,14 @@ export type MicrocmsPosts = Node & {
   internal: Internal;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
+  publishedAt?: Maybe<Scalars['Date']>;
   title?: Maybe<Scalars['String']>;
   tags?: Maybe<Array<Maybe<MicrocmsPostsTags>>>;
+  day?: Maybe<Scalars['Date']>;
   image?: Maybe<MicrocmsPostsImage>;
   content?: Maybe<Scalars['String']>;
   postsId?: Maybe<Scalars['String']>;
   fields?: Maybe<MicrocmsPostsFields>;
-  day?: Maybe<Scalars['Date']>;
-  publishedAt?: Maybe<Scalars['Date']>;
 };
 
 export type MicrocmsPostsCreatedAtArgs = {
@@ -1887,14 +1887,14 @@ export type MicrocmsPostsUpdatedAtArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
-export type MicrocmsPostsDayArgs = {
+export type MicrocmsPostsPublishedAtArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
 
-export type MicrocmsPostsPublishedAtArgs = {
+export type MicrocmsPostsDayArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
@@ -2019,14 +2019,16 @@ export type MicrocmsPostsFieldsEnum =
   | 'internal___type'
   | 'createdAt'
   | 'updatedAt'
+  | 'publishedAt'
   | 'title'
   | 'tags'
   | 'tags___id'
   | 'tags___createdAt'
   | 'tags___updatedAt'
+  | 'tags___publishedAt'
   | 'tags___name'
   | 'tags___slug'
-  | 'tags___publishedAt'
+  | 'day'
   | 'image___url'
   | 'content'
   | 'postsId'
@@ -2045,9 +2047,7 @@ export type MicrocmsPostsFieldsEnum =
   | 'fields___featuredImage___fluid___srcWebp'
   | 'fields___featuredImage___fluid___srcSetWebp'
   | 'fields___featuredImage___fluid___sizes'
-  | 'fields___featuredImage___fluid___aspectRatio'
-  | 'day'
-  | 'publishedAt';
+  | 'fields___featuredImage___fluid___aspectRatio';
 
 export type MicrocmsPostsFieldsFilterInput = {
   featuredImage?: Maybe<ImgixImageFilterInput>;
@@ -2060,14 +2060,14 @@ export type MicrocmsPostsFilterInput = {
   internal?: Maybe<InternalFilterInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
+  publishedAt?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   tags?: Maybe<MicrocmsPostsTagsFilterListInput>;
+  day?: Maybe<DateQueryOperatorInput>;
   image?: Maybe<MicrocmsPostsImageFilterInput>;
   content?: Maybe<StringQueryOperatorInput>;
   postsId?: Maybe<StringQueryOperatorInput>;
   fields?: Maybe<MicrocmsPostsFieldsFilterInput>;
-  day?: Maybe<DateQueryOperatorInput>;
-  publishedAt?: Maybe<DateQueryOperatorInput>;
 };
 
 export type MicrocmsPostsGroupConnection = {
@@ -2096,9 +2096,9 @@ export type MicrocmsPostsTags = {
   id?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
+  publishedAt?: Maybe<Scalars['Date']>;
   name?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
-  publishedAt?: Maybe<Scalars['Date']>;
 };
 
 export type MicrocmsPostsTagsCreatedAtArgs = {
@@ -2126,9 +2126,9 @@ export type MicrocmsPostsTagsFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
+  publishedAt?: Maybe<DateQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
-  publishedAt?: Maybe<DateQueryOperatorInput>;
 };
 
 export type MicrocmsPostsTagsFilterListInput = {
@@ -2349,10 +2349,10 @@ export type MicrocmsTags = Node & {
   internal: Internal;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
+  publishedAt?: Maybe<Scalars['Date']>;
   name?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
   tagsId?: Maybe<Scalars['String']>;
-  publishedAt?: Maybe<Scalars['Date']>;
 };
 
 export type MicrocmsTagsCreatedAtArgs = {
@@ -2490,10 +2490,10 @@ export type MicrocmsTagsFieldsEnum =
   | 'internal___type'
   | 'createdAt'
   | 'updatedAt'
+  | 'publishedAt'
   | 'name'
   | 'slug'
-  | 'tagsId'
-  | 'publishedAt';
+  | 'tagsId';
 
 export type MicrocmsTagsFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2502,10 +2502,10 @@ export type MicrocmsTagsFilterInput = {
   internal?: Maybe<InternalFilterInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
+  publishedAt?: Maybe<DateQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
   tagsId?: Maybe<StringQueryOperatorInput>;
-  publishedAt?: Maybe<DateQueryOperatorInput>;
 };
 
 export type MicrocmsTagsGroupConnection = {
@@ -3035,10 +3035,10 @@ export type QueryMicrocmsTagsArgs = {
   internal?: Maybe<InternalFilterInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
+  publishedAt?: Maybe<DateQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
   tagsId?: Maybe<StringQueryOperatorInput>;
-  publishedAt?: Maybe<DateQueryOperatorInput>;
 };
 
 export type QueryAllMicrocmsTagsArgs = {
@@ -3078,14 +3078,14 @@ export type QueryMicrocmsPostsArgs = {
   internal?: Maybe<InternalFilterInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
+  publishedAt?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   tags?: Maybe<MicrocmsPostsTagsFilterListInput>;
+  day?: Maybe<DateQueryOperatorInput>;
   image?: Maybe<MicrocmsPostsImageFilterInput>;
   content?: Maybe<StringQueryOperatorInput>;
   postsId?: Maybe<StringQueryOperatorInput>;
   fields?: Maybe<MicrocmsPostsFieldsFilterInput>;
-  day?: Maybe<DateQueryOperatorInput>;
-  publishedAt?: Maybe<DateQueryOperatorInput>;
 };
 
 export type QueryAllMicrocmsPostsArgs = {
@@ -3793,6 +3793,9 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___resolve'
   | 'pluginCreator___name'
   | 'pluginCreator___version'
+  | 'pluginCreator___pluginOptions___trakingId'
+  | 'pluginCreator___pluginOptions___head'
+  | 'pluginCreator___pluginOptions___respectDNT'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
   | 'pluginCreator___pluginOptions___short_name'
@@ -4006,6 +4009,9 @@ export type SitePluginFieldsEnum =
   | 'resolve'
   | 'name'
   | 'version'
+  | 'pluginOptions___trakingId'
+  | 'pluginOptions___head'
+  | 'pluginOptions___respectDNT'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
   | 'pluginOptions___short_name'
@@ -4165,6 +4171,9 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 };
 
 export type SitePluginPluginOptions = {
+  trakingId?: Maybe<Scalars['String']>;
+  head?: Maybe<Scalars['Boolean']>;
+  respectDNT?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
@@ -4209,6 +4218,9 @@ export type SitePluginPluginOptionsFieldsFilterListInput = {
 };
 
 export type SitePluginPluginOptionsFilterInput = {
+  trakingId?: Maybe<StringQueryOperatorInput>;
+  head?: Maybe<BooleanQueryOperatorInput>;
+  respectDNT?: Maybe<BooleanQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
