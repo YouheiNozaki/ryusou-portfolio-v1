@@ -71,7 +71,10 @@ export const SEO: React.FC<Props> = (props) => {
       <meta property="og:image" content={imgurl} />
       <meta property="og:image:width" content={imgw} />
       <meta property="og:image:height" content={imgh} />
-      <meta name="twitter:card" content="summary" />
+      <meta
+        name="twitter:card"
+        content="summary_large_image"
+      />
     </Helmet>
   );
 };

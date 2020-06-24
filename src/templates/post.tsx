@@ -115,7 +115,7 @@ const Post: React.FC<Props> = ({
           })
           .slice(0, 70)}....`}
         pagepath={location.pathname}
-        postimg={`https:${post.image?.url!}`}
+        postimg={post?.image?.url!}
       />
       <div css={PostContainer}>
         <h1 className="PostTitle">{post.title}</h1>
