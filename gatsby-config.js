@@ -26,7 +26,7 @@ module.exports = {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: `https://ryusou.dev/`,
-        sitemap: '`https://ryusou.dev/sitemap.xml',
+        sitemap: `https://ryusou.dev/sitemap.xml`,
         env: {
           development: {
             policy: [{ userAgent: '*', disallow: ['/'] }],
@@ -37,10 +37,10 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-feed`,
-      oprions: {},
-    },
+    // {
+    //   resolve: `gatsby-plugin-feed`,
+    //   oprions: {},
+    // },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
