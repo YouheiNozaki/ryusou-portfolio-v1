@@ -1,8 +1,8 @@
-import React from 'react';
-import { Layout } from './src/components/layout';
+const React = require('react');
+const Layout = require('./src/components/layout');
 
-import(`./node_modules/highlight.js/styles/a11y-light.css`);
+require(`./node_modules/highlight.js/styles/a11y-light.css`);
 
-export const wrapPageElement = ({ element }) => {
+module.exports = wrapPageElement = ({ element }) => {
   return <Layout>{element}</Layout>;
 };

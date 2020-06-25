@@ -39,13 +39,15 @@
     "start": "gatsby develop",
     "clean": "gatsby clean",
     "format": "prettier --write \"src/**/*.{js,ts,tsx}*\"",
-    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'"
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "local": "node -e 'require(\"./gatsby-browser.js\").onSuccess()'"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@emotion/core": "^10.0.28",
+    "@netlify/plugin-lighthouse": "^1.2.1",
     "@types/html-to-text": "^5.1.1",
     "@types/node": "^13.13.2",
     "@types/prettier": "^2.0.0",
