@@ -16,7 +16,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trakingId: `UA-170651312-1`,
+        trackingId: `UA-170651312-1`,
         head: true,
         respectDNT: true,
       },
@@ -37,10 +37,6 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-feed`,
-    //   oprions: {},
-    // },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
