@@ -5,6 +5,7 @@ import { color } from 'csx';
 import { FaCat } from 'react-icons/fa';
 import { AiOutlineMail, AiFillHeart } from 'react-icons/ai';
 
+import { Title } from '../components/Atom';
 import { sizes, colors, mq } from '../theme';
 import { SEO } from '../components/templates/Seo';
 
@@ -270,7 +271,7 @@ const Contact: React.FC<Props> = ({ location }) => {
         pagedesc="CONTACTページ"
         pagepath={location.pathname}
       />
-      <h1>Contact</h1>
+      <Title>Contact</Title>
       <div css={ContactContainer}>
         {errors &&
           errors.submit &&

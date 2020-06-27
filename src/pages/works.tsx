@@ -8,6 +8,7 @@ import { FaExternalLinkAlt } from 'react-icons/fa';
 import { sizes, colors, mq } from '../theme';
 import { SEO } from '../components/templates/Seo';
 import { PageWorksQuery } from '../../graphql-types';
+import { Title } from '../components/Atom';
 
 type Props = {
   data: PageWorksQuery;
@@ -112,7 +113,7 @@ const Works: React.FC<Props> = ({ data, location }) => (
       pagedesc="作品の一覧ページ"
       pagepath={location.pathname}
     />
-    <h1>WORKS</h1>
+    <Title>WORKS</Title>
     <div css={SiteContainer}>
       <h2 className="SiteTitle">サイト</h2>
       <div className="SiteList">

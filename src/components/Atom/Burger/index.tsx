@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 
-import { sizes, colors, mq } from '../../theme';
+import { sizes, colors, mq } from '../../../theme';
 
 const hamburger = css({
   '& .button': {

@@ -13,9 +13,9 @@ import {
   typography,
   mq,
 } from '../theme';
-
 import { PageAboutQuery } from '../../graphql-types';
 import { SEO } from '../components/templates/Seo';
+import { Title } from '../components/Atom';
 
 type Props = {
   data: PageAboutQuery;
@@ -28,8 +28,8 @@ const AboutContainer = css({
   marginTop: sizes[16],
 });
 
-const Title = css({
-  margin: '0 auto',
+const SubTitle = css({
+  margin: `${sizes[16]} auto 0`,
   textAlign: 'center',
 });
 
@@ -152,7 +152,8 @@ const About: React.FC<Props> = ({ data, location }) => (
       pagepath={location.pathname}
     />
     <section css={AboutContainer}>
-      <h1 css={Title}>どーも。りゅーそうです。</h1>
+      <Title>ABOUT</Title>
+      <h2 css={SubTitle}>どーも。りゅーそうです。</h2>
       <div css={AboutIconImage}>
         <FluidImage
           filename="girl.png"

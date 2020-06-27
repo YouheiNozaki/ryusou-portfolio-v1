@@ -3793,7 +3793,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___resolve'
   | 'pluginCreator___name'
   | 'pluginCreator___version'
-  | 'pluginCreator___pluginOptions___trakingId'
+  | 'pluginCreator___pluginOptions___trackingId'
   | 'pluginCreator___pluginOptions___head'
   | 'pluginCreator___pluginOptions___respectDNT'
   | 'pluginCreator___pluginOptions___host'
@@ -4011,7 +4011,7 @@ export type SitePluginFieldsEnum =
   | 'resolve'
   | 'name'
   | 'version'
-  | 'pluginOptions___trakingId'
+  | 'pluginOptions___trackingId'
   | 'pluginOptions___head'
   | 'pluginOptions___respectDNT'
   | 'pluginOptions___host'
@@ -4177,7 +4177,7 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 };
 
 export type SitePluginPluginOptions = {
-  trakingId?: Maybe<Scalars['String']>;
+  trackingId?: Maybe<Scalars['String']>;
   head?: Maybe<Scalars['Boolean']>;
   respectDNT?: Maybe<Scalars['Boolean']>;
   host?: Maybe<Scalars['String']>;
@@ -4301,7 +4301,7 @@ export type SitePluginPluginOptionsFieldsFilterListInput = {
 };
 
 export type SitePluginPluginOptionsFilterInput = {
-  trakingId?: Maybe<StringQueryOperatorInput>;
+  trackingId?: Maybe<StringQueryOperatorInput>;
   head?: Maybe<BooleanQueryOperatorInput>;
   respectDNT?: Maybe<BooleanQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;

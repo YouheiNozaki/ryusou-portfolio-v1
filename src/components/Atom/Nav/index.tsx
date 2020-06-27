@@ -14,7 +14,7 @@ import {
   fontSizes,
   typography,
   sizes,
-} from '../../theme';
+} from '../../../theme';
 
 const NavContainer = css({
   '& nav': {

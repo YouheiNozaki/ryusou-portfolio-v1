@@ -13,6 +13,7 @@ import { sizes, colors, typography, mq } from '../theme';
 import { PagePostsQuery } from '../../graphql-types';
 import { PostsContext } from '../../gatsby-node';
 import { SEO } from '../components/templates/Seo';
+import { Title } from '../components/Atom';
 
 type Props = {
   data: PagePostsQuery;
@@ -143,7 +144,7 @@ const Posts: React.FC<Props> = ({
       pagedesc="技術ブログのページ"
       pagepath={location.pathname}
     />
-    <h1>りゅーそうの技術ブログ</h1>
+    <Title>POST</Title>
     <section css={PostList}>
       {data.allMicrocmsPosts?.edges?.map((edge) => {
         const posts = edge.node;

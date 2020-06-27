@@ -1,9 +1,11 @@
 import * as React from 'react';
 import Link from 'gatsby-link';
+import { css } from '@emotion/core';
+
 import { FluidImage } from '../lib/images';
 import { SEO } from '../components/templates/Seo';
-import { css } from '@emotion/core';
 import { colors } from '../theme';
+import { Title } from '../components/Atom';
 
 type Props = {
   location: Location;
@@ -11,9 +13,6 @@ type Props = {
 
 const ErrorPageContainer = css({
   margin: '0 auto',
-  '& h1': {
-    color: colors.blue,
-  },
   '& .ErrorPageText': {
     margin: '0 auto',
     textAlign: 'center',
@@ -34,7 +33,7 @@ const NotFoundPage: React.FC<Props> = ({ location }) => (
       pagepath={location.pathname}
     />
     <div css={ErrorPageContainer}>
-      <h1>404</h1>
+      <Title>404</Title>
       <FluidImage
         filename="404.png"
         alt="エラーページの画像"
