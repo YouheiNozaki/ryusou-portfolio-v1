@@ -271,7 +271,7 @@ const Contact: React.FC<Props> = ({ location }) => {
         pagedesc="CONTACTページ"
         pagepath={location.pathname}
       />
-      <Title>Contact</Title>
+      <Title>CONTACT</Title>
       <div css={ContactContainer}>
         {errors &&
           errors.submit &&

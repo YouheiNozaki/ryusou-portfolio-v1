@@ -113,7 +113,7 @@ const Works: React.FC<Props> = ({ data, location }) => (
       pagedesc="作品の一覧ページ"
       pagepath={location.pathname}
     />
-    <Title>WORKS</Title>
+    <Title>WORK</Title>
     <div css={SiteContainer}>
       <h2 className="SiteTitle">サイト</h2>
       <div className="SiteList">
