@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, ReactNode } from 'react';
 
 import './index.css';
 import { Header } from '../templates/Header';
@@ -8,7 +8,7 @@ import { Burger } from '../Atom';
 import { sizes } from '../../theme';
 
 type Props = {
-  children: any;
+  children: ReactNode;
 };
 
 export const Layout: React.FC<Props> = ({ children }) => {
