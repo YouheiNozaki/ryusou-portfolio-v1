@@ -36,7 +36,8 @@ export const Footer: React.FC = () => {
   return (
     <>
       <div css={FooterContainer}>
-        <p>This Site is built in Gatsby</p>
+        <p>© -2020- Built with Gatsby</p>
+        <p>This site uses Google Analytics</p>
         <div css={FooterLink}>
           <a
             href="https://twitter.com/ryusou_mtkh"
