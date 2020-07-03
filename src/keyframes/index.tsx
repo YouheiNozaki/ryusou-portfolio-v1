@@ -4,13 +4,13 @@ import { sizes } from '../theme';
 export const RightIn = keyframes({
   '0%': {
     opacity: 0,
-    transform: `translate3d{${sizes[10]})`,
+    transform: `translateX(${sizes[5]})`,
   },
   '80%': {
-    transform: `translate3d(-1rem)`,
+    transform: `translateX(-1rem)`,
   },
   '100%': {
     opacity: 1,
-    transform: `translate3d(0)`,
+    transform: `translateX(0)`,
   },
 });
