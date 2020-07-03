@@ -119,22 +119,20 @@ export const Burger: React.FC<Props> = ({
   setOpen,
 }) => {
   return (
-    <>
-      <div css={hamburger}>
-        <button
-          type="button"
-          className="button hamburger"
-          aria-controls="global-nav"
-          aria-expanded={open}
-          onClick={() => setOpen(!open)}
-        >
-          <span className="hamburgerLine">
-            <span className="visuallyHidden">
-              メニューを開閉する
-            </span>
+    <div css={hamburger}>
+      <button
+        type="button"
+        className="button hamburger"
+        aria-controls="global-nav"
+        aria-expanded={open}
+        onClick={() => setOpen(!open)}
+      >
+        <span className="hamburgerLine">
+          <span className="visuallyHidden">
+            メニューを開閉する
           </span>
-        </button>
-      </div>
-    </>
+        </span>
+      </button>
+    </div>
   );
 };

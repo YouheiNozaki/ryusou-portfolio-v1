@@ -15,32 +15,15 @@ import {
 } from '../theme';
 import { PageAboutQuery } from '../../graphql-types';
 import { SEO } from '../components/templates/Seo';
-import { Title } from '../components/Atom';
+import { Title, SubTitle, Icon } from '../components/Atom';
 
 type Props = {
   data: PageAboutQuery;
   location: Location;
 };
 
-// style
-// Container
 const AboutContainer = css({
   marginTop: sizes[16],
-});
-
-const SubTitle = css({
-  margin: `${sizes[16]} auto 0`,
-  textAlign: 'center',
-});
-
-const AboutIconImage = css({
-  margin: `${sizes[8]} auto`,
-  height: sizes[32],
-  width: sizes[32],
-  '& img': {
-    borderRadius: '50%',
-    border: `${sizes[1]} solid ${colors.red}`,
-  },
 });
 
 const Profile = css({
@@ -153,16 +136,16 @@ const About: React.FC<Props> = ({ data, location }) => (
     />
     <section css={AboutContainer}>
       <Title>ABOUT</Title>
-      <h2 css={SubTitle}>どーも。りゅーそうです。</h2>
-      <div css={AboutIconImage}>
+      <SubTitle>どーも。りゅーそうです。</SubTitle>
+      <Icon>
         <FluidImage
           filename="girl.png"
           alt="プロフィール画像"
         />
-      </div>
+      </Icon>
       <article>
         <section css={Profile}>
-          <h2>私について</h2>
+          <SubTitle>私について</SubTitle>
           <div className="paragraph">
             <p>
               私は現在、学校の社会科の教員として教壇に立っています。
@@ -179,7 +162,7 @@ const About: React.FC<Props> = ({ data, location }) => (
           </div>
         </section>
         <section css={Career}>
-          <h2>これまでのりゅーそう</h2>
+          <SubTitle>これまでのりゅーそう</SubTitle>
           <table>
             <caption>経歴</caption>
             <thead>
@@ -205,7 +188,7 @@ const About: React.FC<Props> = ({ data, location }) => (
           </table>
         </section>
         <section css={SkillStack}>
-          <h2>技術スタック</h2>
+          <SubTitle>技術スタック</SubTitle>
           <div className="SkillStackList">
             {data?.allMicrocmsSkills?.edges.map((edge) => {
               const skill = edge.node;
