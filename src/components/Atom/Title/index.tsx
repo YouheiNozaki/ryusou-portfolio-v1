@@ -13,7 +13,6 @@ const TitleStyle = css({
   fontWeight: typography.fontWeights.bold,
   marginLeft: sizes[4],
   color: colors.lightBlue,
-  // textShadow: `0.07rem 0.07rem 0 ${colors.yellow}, 0.1rem 0.1rem 0 ${colors.blue}`,
   animation: `${RightIn} 0.7s ease-out`,
 });
 

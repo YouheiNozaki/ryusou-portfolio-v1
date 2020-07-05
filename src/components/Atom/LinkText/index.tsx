@@ -2,23 +2,32 @@ import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import { colors, sizes } from '../../../theme';
 import { BottomIn } from '../../../keyframes';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
-export const SubTitle: React.FC = ({ children }) => {
+type Props = {
+  href: string;
+};
+export const LinkText: React.FC<Props> = ({
+  children,
+  href,
+}) => {
   const [ref, inView] = useInView({
-    rootMargin: '-50px 0px',
+    rootMargin: '-20px 0px',
   });
   return (
-    <h2
+    <a
+      href={href}
       ref={ref}
       css={{
-        margin: `${sizes[16]} auto 0`,
-        textAlign: 'center',
+        textDecoration: 'none',
         color: colors.blue,
+        margin: sizes[1],
         opacity: inView ? 1 : 0,
         animation: inView ? `${BottomIn} 0.5s ease-out` : 0,
       }}
     >
+      <FaExternalLinkAlt />
       {children}
-    </h2>
+    </a>
   );
 };

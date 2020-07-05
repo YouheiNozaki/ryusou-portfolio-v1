@@ -14,3 +14,18 @@ export const RightIn = keyframes({
     transform: `translateX(0)`,
   },
 });
+
+export const BottomIn = keyframes({
+  '0%': {
+    opacity: 0,
+    transform: `translateY(${sizes[4]})`,
+  },
+  '50%': {
+    opacity: 0.5,
+    transform: `translateY(${sizes[2]})`,
+  },
+  '100%': {
+    opacity: 1,
+    transform: `translateY(0)`,
+  },
+});
