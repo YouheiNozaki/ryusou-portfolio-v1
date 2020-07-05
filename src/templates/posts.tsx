@@ -137,98 +137,101 @@ const Posts: React.FC<Props> = ({
   data,
   location,
   pageContext,
-}) => (
-  <>
-    <SEO
-      pagetitle="POST"
-      pagedesc="技術ブログのページ"
-      pagepath={location.pathname}
-    />
-    <Title>POST</Title>
-    <section css={PostList}>
-      {data.allMicrocmsPosts?.edges?.map((edge) => {
-        const posts = edge.node;
-        return (
-          <React.Fragment key={posts.id}>
-            <div css={PostItem}>
-              <Link to={`/posts/${posts.postsId}`}>
-                <article>
-                  <p className="PostItemTitle">
-                    {posts.title}
-                  </p>
-                  {posts?.fields?.featuredImage?.fluid && (
-                    <Image
-                      fluid={
-                        posts.fields.featuredImage.fluid
-                      }
-                      alt="ブログのイメージ画像"
-                    />
-                  )}
-                  <div className="PostItemTag">
-                    {posts?.tags?.map(
-                      (tag) =>
-                        tag?.id && (
-                          <React.Fragment key={tag.id}>
-                            <Link to={`/tags/${tag.id}`}>
-                              <span>{tag.name}</span>
-                            </Link>
-                          </React.Fragment>
-                        ),
+}) => {
+  return (
+    <>
+      <SEO
+        pagetitle="POST"
+        pagedesc="技術ブログのページ"
+        pagepath={location.pathname}
+      />
+      <Title>POST</Title>
+      <section css={PostList}>
+        {data.allMicrocmsPosts?.edges?.map((edge) => {
+          const posts = edge.node;
+          return (
+            <React.Fragment key={posts.id}>
+              <div css={PostItem}>
+                <Link to={`/posts/${posts.postsId}`}>
+                  <article>
+                    <p className="PostItemTitle">
+                      {posts.title}
+                    </p>
+                    {posts?.fields?.featuredImage
+                      ?.fluid && (
+                      <Image
+                        fluid={
+                          posts.fields.featuredImage.fluid
+                        }
+                        alt="ブログのイメージ画像"
+                      />
                     )}
-                  </div>
-                  <div className="PostItemDay">
-                    <div className="PostItemDayItem">
-                      <FaCalendar className="icon" />
-                      {/* <p> */}
-                      投稿:
-                      {posts.createdAt}
-                      {/* </p> */}
+                    <div className="PostItemTag">
+                      {posts?.tags?.map(
+                        (tag) =>
+                          tag?.id && (
+                            <React.Fragment key={tag.id}>
+                              <Link to={`/tags/${tag.id}`}>
+                                <span>{tag.name}</span>
+                              </Link>
+                            </React.Fragment>
+                          ),
+                      )}
                     </div>
-                    <div className="PostItemDayItem">
-                      <FaRegCalendarCheck className="icon" />
-                      {/* <p> */}
-                      更新:
-                      {posts.updatedAt}
-                      {/* </p> */}
+                    <div className="PostItemDay">
+                      <div className="PostItemDayItem">
+                        <FaCalendar className="icon" />
+                        {/* <p> */}
+                        投稿:
+                        {posts.createdAt}
+                        {/* </p> */}
+                      </div>
+                      <div className="PostItemDayItem">
+                        <FaRegCalendarCheck className="icon" />
+                        {/* <p> */}
+                        更新:
+                        {posts.updatedAt}
+                        {/* </p> */}
+                      </div>
                     </div>
-                  </div>
-                </article>
-              </Link>
-            </div>
-          </React.Fragment>
-        );
-      })}
-    </section>
-    <div css={PostPageNation}>
-      {!pageContext.isFirst && (
-        <div className="PostPageNationPrev">
-          <Link
-            to={
-              pageContext.currentPage === 2
-                ? `/posts/`
-                : `/posts/${pageContext.currentPage - 1}`
-            }
-            rel="prev"
-          >
-            <FaArrowCircleLeft className="icons" />
-            <span>前のページ</span>
-          </Link>
-        </div>
-      )}
-      {!pageContext.isLast && (
-        <div className="PostPageNationNext">
-          <Link
-            to={`/posts/${pageContext.currentPage + 1}/`}
-            rel="next"
-          >
-            <span>次のページ</span>
-            <FaArrowCircleRight className="icons" />
-          </Link>
-        </div>
-      )}
-    </div>
-  </>
-);
+                  </article>
+                </Link>
+              </div>
+            </React.Fragment>
+          );
+        })}
+      </section>
+      <div css={PostPageNation}>
+        {!pageContext.isFirst && (
+          <div className="PostPageNationPrev">
+            <Link
+              to={
+                pageContext.currentPage === 2
+                  ? `/posts/`
+                  : `/posts/${pageContext.currentPage - 1}`
+              }
+              rel="prev"
+            >
+              <FaArrowCircleLeft className="icons" />
+              <span>前のページ</span>
+            </Link>
+          </div>
+        )}
+        {!pageContext.isLast && (
+          <div className="PostPageNationNext">
+            <Link
+              to={`/posts/${pageContext.currentPage + 1}/`}
+              rel="next"
+            >
+              <span>次のページ</span>
+              <FaArrowCircleRight className="icons" />
+            </Link>
+          </div>
+        )}
+      </div>
+    </>
+  );
+};
 
 export const pageQuery = graphql`
   query PagePosts($skip: Int!, $limit: Int!) {
