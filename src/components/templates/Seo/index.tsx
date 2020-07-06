@@ -75,6 +75,13 @@ export const SEO: React.FC<Props> = (props) => {
         name="twitter:card"
         content="summary_large_image"
       />
+      <script
+        type="text/javascript"
+        src="https://b.st-hatena.com/js/bookmark_button.js"
+        charset="utf-8"
+        // @ts-ignore
+        async="async"
+      ></script>
     </Helmet>
   );
 };

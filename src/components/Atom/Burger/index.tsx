@@ -5,7 +5,7 @@ import { sizes, colors, mq } from '../../../theme';
 
 const hamburger = css({
   '& .button': {
-    position: 'relative',
+    position: 'fixed',
     top: sizes[5],
     right: sizes[5],
     display: 'none',

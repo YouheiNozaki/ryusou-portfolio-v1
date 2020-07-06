@@ -11,6 +11,14 @@ import {
   FaArrowCircleRight,
   FaArrowCircleLeft,
 } from 'react-icons/fa';
+import {
+  TwitterIcon,
+  TwitterShareButton,
+  FacebookIcon,
+  FacebookShareButton,
+  LineIcon,
+  LineShareButton,
+} from 'react-share';
 
 import { PostContext } from '../../gatsby-node';
 import { renderAst } from '../lib/renderHtml';
@@ -92,6 +100,13 @@ const PostContainer = css({
       },
     },
   },
+  '& .ShareButton': {
+    display: 'flex',
+    '& button': {
+      marginRight: sizes[2],
+      marginBottom: sizes[4],
+    },
+  },
 });
 
 const Post: React.FC<Props> = ({
@@ -150,6 +165,41 @@ const Post: React.FC<Props> = ({
         <div className="PostContent">
           {renderAst(htmlAst)}
         </div>
+        <div className="ShareButton">
+          <TwitterShareButton
+            title={post.title!}
+            url={`https://ryusou.dev/posts/${post.postsId}`}
+          >
+            <TwitterIcon size={40} round />
+          </TwitterShareButton>
+          <FacebookShareButton
+            quote={post.title!}
+            url={`https://ryusou.dev/posts/${post.postsId}`}
+          >
+            <FacebookIcon size={40} round />
+          </FacebookShareButton>
+          <LineShareButton
+            title={post.title!}
+            url={`https://ryusou.dev/posts/${post.postsId}`}
+          >
+            <LineIcon size={40} round />
+          </LineShareButton>
+        </div>
+        <a
+          href="https://b.hatena.ne.jp/entry/"
+          className="hatena-bookmark-button"
+          data-hatena-bookmark-layout="vertical-normal"
+          data-hatena-bookmark-lang="ja"
+          title="このエントリーをはてなブックマークに追加"
+        >
+          <img
+            src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png"
+            alt="このエントリーをはてなブックマークに追加"
+            width="20"
+            height="20"
+            css={{ border: 'none' }}
+          />
+        </a>
         <div className="PostPageNation">
           {pageContext.previous && (
             <div className="PostPageNationPrevious">

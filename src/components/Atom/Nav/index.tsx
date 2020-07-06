@@ -18,7 +18,7 @@ import {
 
 const NavContainer = css({
   '& nav': {
-    position: 'absolute',
+    position: 'fixed',
     zIndex: 1,
     display: 'flex',
     height: '100vh',
