@@ -1,6 +1,4 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
+require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
@@ -10,13 +8,13 @@ module.exports = {
     author: `Yohei Nozaki`,
     siteUrl: `https://ryusou.dev/`,
     locale: `ja_JP`,
-    fbappid: `${process.env.FB_APP_ID}`,
+    fbappid: `${process.env.GATSBY_FB_APP_ID}`,
   },
   plugins: [
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `${process.env.GA_TRACKING_ID}`,
+        trackingId: `${process.env.GATSBY_GA_TRACKING_ID}`,
         head: true,
         respectDNT: true,
       },
@@ -71,7 +69,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-microcms',
       options: {
-        apiKey: process.env.X_API_KEY,
+        apiKey: process.env.GATSBY_X_API_KEY,
         serviceId: 'ryusou-mtkh',
         endpoint: 'posts',
         query: {
@@ -82,7 +80,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-microcms',
       options: {
-        apiKey: process.env.X_API_KEY,
+        apiKey: process.env.GATSBY_X_API_KEY,
         serviceId: 'ryusou-mtkh',
         endpoint: 'works',
         query: {
@@ -93,7 +91,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-microcms',
       options: {
-        apiKey: process.env.X_API_KEY,
+        apiKey: process.env.GATSBY_X_API_KEY,
         serviceId: 'ryusou-mtkh',
         endpoint: 'tags',
         query: {
@@ -104,7 +102,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-microcms',
       options: {
-        apiKey: process.env.X_API_KEY,
+        apiKey: process.env.GATSBY_X_API_KEY,
         serviceId: 'ryusou-mtkh',
         endpoint: 'skills',
         query: {

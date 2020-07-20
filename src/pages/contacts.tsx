@@ -167,7 +167,7 @@ const Contact: React.FC<Props> = ({ location }) => {
           method: 'post',
           headers: {
             'Content-type': 'application/json',
-            'X-WRITE-API-KEY': `${process.env.X_WRITE_API_KEY}`,
+            'X-WRITE-API-KEY': `${process.env.GATSBY_X_WRITE_API_KEY}`,
           },
           body: JSON.stringify(data),
         },
