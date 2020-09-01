@@ -2,7 +2,7 @@ import React from 'react';
 import rehypeReact from 'rehype-react';
 import Imgix from 'react-imgix';
 import Highlight from 'react-highlight';
-import { FaLink, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 import {
   colors,
   sizes,
@@ -21,11 +21,6 @@ const MainChapter: React.FC = (props) => {
         borderLeft: `solid ${sizes[2]} ${colors.red}`,
       }}
     >
-      <FaLink
-        className="MainChapterIcon"
-        size={sizes[6]}
-        css={{ marginRight: sizes[2] }}
-      />
       {props.children}
     </h1>
   );
@@ -42,11 +37,6 @@ const SubChapter: React.FC = (props) => {
         borderLeft: `solid ${sizes[2]} ${colors.red}`,
       }}
     >
-      <FaLink
-        className="SubChapterIcon"
-        size={sizes[4]}
-        css={{ marginRight: sizes[2] }}
-      />
       {props.children}
     </h2>
   );
@@ -62,11 +52,6 @@ const ThirdChapter: React.FC = (props) => {
         borderLeft: `solid ${sizes[2]} ${colors.red}`,
       }}
     >
-      <FaLink
-        className="ThirdChapterIcon"
-        size={sizes[4]}
-        css={{ marginRight: sizes[2] }}
-      />
       {props.children}
     </h3>
   );

@@ -87,39 +87,6 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: 'gatsby-source-microcms',
-    //   options: {
-    //     apiKey: process.env.GATSBY_X_API_KEY,
-    //     serviceId: 'ryusou-mtkh',
-    //     endpoint: 'works',
-    //     query: {
-    //       limit: 100,
-    //     },
-    //   },
-    // },
-    // {
-    //   resolve: 'gatsby-source-microcms',
-    //   options: {
-    //     apiKey: process.env.GATSBY_X_API_KEY,
-    //     serviceId: 'ryusou-mtkh',
-    //     endpoint: 'tags',
-    //     query: {
-    //       limit: 100,
-    //     },
-    //   },
-    // },
-    // {
-    //   resolve: 'gatsby-source-microcms',
-    //   options: {
-    //     apiKey: process.env.GATSBY_X_API_KEY,
-    //     serviceId: 'ryusou-mtkh',
-    //     endpoint: 'skills',
-    //     query: {
-    //       limit: 100,
-    //     },
-    //   },
-    // },
     {
       resolve: 'gatsby-plugin-imgix',
       options: {

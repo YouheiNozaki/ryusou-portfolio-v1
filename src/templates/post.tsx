@@ -185,7 +185,7 @@ const Post: React.FC<Props> = ({
             <LineIcon size={40} round />
           </LineShareButton>
         </div>
-        <a
+        {/* <a
           href="https://b.hatena.ne.jp/entry/"
           className="hatena-bookmark-button"
           data-hatena-bookmark-layout="vertical-normal"
@@ -199,7 +199,7 @@ const Post: React.FC<Props> = ({
             height="20"
             css={{ border: 'none' }}
           />
-        </a>
+        </a> */}
         <div className="PostPageNation">
           {pageContext.previous && (
             <div className="PostPageNationPrevious">
