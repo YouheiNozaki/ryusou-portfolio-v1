@@ -7981,10 +7981,10 @@ gatsby-source-graphql@^2.5.4:
     node-fetch "^1.7.3"
     uuid "^3.4.0"
 
-gatsby-source-microcms@^0.1.0:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/gatsby-source-microcms/-/gatsby-source-microcms-0.1.1.tgz#aeaf2fa4809800496c815ff0477d331cbf89a99c"
-  integrity sha512-cMXaPWMalPuOdDWLzn46MvJuo4X79R8gG+Pqhd6GtMfVQjxUEPA5INNTyZEwVf6ZzrDEOr6ZIEmuH9YMDbudVQ==
+gatsby-source-microcms@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-source-microcms/-/gatsby-source-microcms-1.0.0.tgz#77125face999ca5d25215e61a9f8d578685cd719"
+  integrity sha512-DUDfTQTHZLqujB3UimhEY+AOnTILwrMW7jE+m4oYtZEruhRaHR7rfap55lAjBQvhjMl4EmM64XsCG+PVtQ6rQg==
   dependencies:
     "@hapi/joi" "^16.1.7"
     camelcase "^5.3.1"
@@ -10839,11 +10839,6 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.4.0:
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
-lottie-web@^5.6.10:
-  version "5.6.10"
-  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.6.10.tgz#9c2959df12976f49637f563dcc96db2078010b4d"
-  integrity sha512-ucTzaiBJOMm56/K7Wqjajyh7qXlonHKB3+b5fHvhSiz+jOrXt6QDNKAinI3qdw/zvvYHKzXvFMy5SgOXbOJ5ng==
-
 loud-rejection@^1.0.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/loud-rejection/-/loud-rejection-1.6.0.tgz#5b46f80147edee578870f086d04821cf998e551f"
@@ -13076,13 +13071,6 @@ pretty-format@^25.5.0:
     ansi-regex "^5.0.0"
     ansi-styles "^4.0.0"
     react-is "^16.12.0"
-
-prismjs@^1.20.0:
-  version "1.20.0"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.20.0.tgz#9b685fc480a3514ee7198eac6a3bf5024319ff03"
-  integrity sha512-AEDjSrVNkynnw6A+B1DsFkd6AVdTnp+/WoUixFRULlCLZVRZlVQMVWio/16jv7G1FscUxQxOQhWwApgbnxr6kQ==
-  optionalDependencies:
-    clipboard "^2.0.0"
 
 prismjs@~1.17.0:
   version "1.17.1"
