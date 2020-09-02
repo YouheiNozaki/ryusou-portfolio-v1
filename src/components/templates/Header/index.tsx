@@ -20,6 +20,11 @@ const HeaderContainer = css({
 
 const HeaderLogo = css({
   marginRight: 'auto',
+  '& a': {
+    '& img': {
+      borderRadius: '50%',
+    },
+  },
 });
 
 const HeaderLink = css({
