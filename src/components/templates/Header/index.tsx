@@ -77,22 +77,22 @@ export const Header: React.FC = () => {
         <nav>
           <ul css={HeaderLink}>
             <li>
-              <Link to="/about" aria-label="ABOUT">
+              <Link to="/about/" aria-label="ABOUT">
                 ABOUT
               </Link>
             </li>
             <li>
-              <Link to="/posts" aria-label="POST">
+              <Link to="/posts/" aria-label="POST">
                 POST
               </Link>
             </li>
             <li>
-              <Link to="/works" aria-label="WORK">
+              <Link to="/works/" aria-label="WORK">
                 WORK
               </Link>
             </li>
             <li>
-              <Link to="/contacts" aria-label="CONTACT">
+              <Link to="/contacts/" aria-label="CONTACT">
                 CONTACT
               </Link>
             </li>
