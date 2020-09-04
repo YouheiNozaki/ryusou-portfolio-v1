@@ -28,7 +28,7 @@ export const PostList = css({
   },
 });
 
-const PostPageNation = css({
+export const PostPageNation = css({
   marginTop: sizes[8],
   position: 'relative',
   '& .PostPageNationPrev': {

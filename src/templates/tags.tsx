@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
-import Image from 'gatsby-image';
 import {
-  FaCalendar,
-  FaRegCalendarCheck,
+  FaArrowCircleRight,
+  FaArrowCircleLeft,
 } from 'react-icons/fa';
 
 import { PageTagQuery } from '../../graphql-types';
 import { TagsContext } from '../../gatsby-node';
-import { PostList } from './posts';
+import { PostList, PostPageNation } from './posts';
 import { SEO } from '../components/templates/Seo';
 import { Title } from '../components/Atom';
 import { Card } from '../components/molecules/Card';
@@ -49,9 +48,9 @@ const Tags: React.FC<Props> = ({
         );
       })}
     </section>
-    <div>
+    <div css={PostPageNation}>
       {!pageContext.isFirst && (
-        <div>
+        <div className="PostPageNationPrev">
           <Link
             to={
               pageContext.currentPage === 2
@@ -60,17 +59,19 @@ const Tags: React.FC<Props> = ({
             }
             rel="prev"
           >
+            <FaArrowCircleLeft className="icons" />
             <span>前のページ</span>
           </Link>
         </div>
       )}
       {!pageContext.isLast && (
-        <div>
+        <div className="PostPageNationNext">
           <Link
             to={`/posts/${pageContext.currentPage + 1}/`}
             rel="next"
           >
             <span>次のページ</span>
+            <FaArrowCircleRight className="icons" />
           </Link>
         </div>
       )}
