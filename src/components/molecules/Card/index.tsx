@@ -1,114 +1,119 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
-import unified from 'unified';
-import parse from 'rehype-parse';
 import { css } from '@emotion/core';
-
 import {
   FaCalendar,
   FaRegCalendarCheck,
 } from 'react-icons/fa';
 
-import { PostContext } from '../../../../gatsby-node';
-import { renderAst } from '../../../lib/renderHtml';
-import { colors, sizes } from '../../../theme';
+import {
+  sizes,
+  colors,
+  typography,
+  mq,
+} from '../../../theme';
 
 type Props = {
+  id: string;
+  postsId: string;
   title: string;
-  content: string;
-  createdAt: any;
-  updatedAt: any;
   fluidImage: any;
-  pageContext: PostContext;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
-const PostContainer = css({
-  '& .PostTitle': {
-    color: colors.blue,
+export const PostItem = css({
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  [mq[0]]: {
+    padding: sizes[4],
   },
   '& a': {
     textDecoration: 'none',
-    '& .tagName': {
-      marginRight: sizes[2],
-      marginLeft: sizes[2],
-      border: `solid ${sizes.px} ${colors.lightgray}`,
+    cursor: 'pointer',
+    '& article': {
+      border: `solid ${sizes[1]} ${colors.lightBlue}`,
       borderRadius: sizes[2],
-      padding: sizes[1],
-      backgroundColor: colors.lightBlue,
-      color: colors.white,
-    },
-  },
-  '& .PostDay': {
-    marginTop: sizes[3],
-    display: 'flex',
-    '& .PostDayItem': {
-      color: colors.blue,
-      marginLeft: sizes[2],
-      display: 'flex',
-      '& .icon': {
-        marginRight: sizes[1],
+      padding: sizes[4],
+      width: sizes.largeSizes.sm,
+      [mq[1]]: {
+        width: sizes.largeSizes.xs,
+      },
+      [mq[0]]: {
+        width: sizes.largeSizes.xs,
+      },
+      '& .PostItemTitle': {
+        color: colors.blue,
+        fontWeight: typography.fontWeights.medium,
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+      },
+      '& img': {
+        borderRadius: sizes[2],
+      },
+      '& .PostItemDay': {
+        marginTop: sizes[3],
+        display: 'flex',
+        [mq[0]]: {
+          marginTop: sizes[1],
+        },
+        '& .PostItemDayItem': {
+          display: 'flex',
+          color: colors.blue,
+          marginLeft: sizes[2],
+          '& .icon': {
+            marginRight: sizes[1],
+          },
+        },
+        [mq[1]]: {
+          display: 'block',
+        },
+        [mq[0]]: {
+          display: 'block',
+        },
       },
     },
-  },
-  '& img': {
-    width: '100%',
-  },
-  '& .PostContent': {
-    marginTop: sizes[8],
   },
 });
 
 export const Card: React.FC<Props> = ({
+  id,
+  postsId,
   title,
-  content,
+  fluidImage,
   createdAt,
   updatedAt,
-  fluidImage,
-  pageContext,
 }) => {
-  const post = pageContext.post;
-
-  const htmlAst = unified()
-    .use(parse, { fragment: true })
-    .parse(content);
-
   return (
     <>
-      <div css={PostContainer}>
-        <h1 className="PostTitle">{title}</h1>
-        {post?.tags?.map(
-          (tag) =>
-            tag?.id && (
-              <React.Fragment key={tag.id}>
-                <Link to={`/tags/${tag.id}`}>
-                  <span className="tagName">
-                    {tag.name}
-                  </span>
-                </Link>
-              </React.Fragment>
-            ),
-        )}
-        <div className="PostDay">
-          <div className="PostDayItem">
-            <FaCalendar className="icon" />
-            <p>投稿:{createdAt}</p>
-          </div>
-          <div className="PostDayItem">
-            <FaRegCalendarCheck className="icon" />
-            <p>更新:{updatedAt}</p>
-          </div>
+      <React.Fragment key={id}>
+        <div css={PostItem}>
+          <Link to={`/posts/${postsId}`}>
+            <article>
+              <p className="PostItemTitle">{title}</p>
+              <Image
+                fluid={fluidImage}
+                alt="ブログのイメージ画像"
+              />
+              <div className="PostItemDay">
+                <div className="PostItemDayItem">
+                  <FaCalendar className="icon" />
+                  投稿:
+                  {createdAt}
+                </div>
+                <div className="PostItemDayItem">
+                  <FaRegCalendarCheck className="icon" />
+                  更新:
+                  {updatedAt}
+                </div>
+              </div>
+            </article>
+          </Link>
         </div>
-        {post?.fields?.featuredImage?.fluid && (
-          <Image
-            fluid={fluidImage}
-            alt="投稿したブログのイメージ画像"
-          />
-        )}
-        <div className="PostContent">
-          {renderAst(htmlAst)}
-        </div>
-      </div>
+      </React.Fragment>
+      );
     </>
   );
 };

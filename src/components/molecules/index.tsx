@@ -1,1 +1,1 @@
-export { Table } from './Card';
+export { Card } from './Card';
