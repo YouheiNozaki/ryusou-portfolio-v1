@@ -15,9 +15,8 @@ import {
 } from '../../../theme';
 
 type Props = {
-  id: string;
-  postsId: string;
-  title: string;
+  postsId: string | null | undefined;
+  title: string | null | undefined;
   fluidImage: any;
   createdAt: Date;
   updatedAt: Date;
@@ -79,7 +78,6 @@ export const PostItem = css({
 });
 
 export const Card: React.FC<Props> = ({
-  id,
   postsId,
   title,
   fluidImage,
@@ -88,32 +86,29 @@ export const Card: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <React.Fragment key={id}>
-        <div css={PostItem}>
-          <Link to={`/posts/${postsId}`}>
-            <article>
-              <p className="PostItemTitle">{title}</p>
-              <Image
-                fluid={fluidImage}
-                alt="ブログのイメージ画像"
-              />
-              <div className="PostItemDay">
-                <div className="PostItemDayItem">
-                  <FaCalendar className="icon" />
-                  投稿:
-                  {createdAt}
-                </div>
-                <div className="PostItemDayItem">
-                  <FaRegCalendarCheck className="icon" />
-                  更新:
-                  {updatedAt}
-                </div>
+      <div css={PostItem}>
+        <Link to={`/posts/${postsId}`}>
+          <article>
+            <p className="PostItemTitle">{title}</p>
+            <Image
+              fluid={fluidImage}
+              alt="ブログのイメージ画像"
+            />
+            <div className="PostItemDay">
+              <div className="PostItemDayItem">
+                <FaCalendar className="icon" />
+                投稿:
+                {createdAt}
               </div>
-            </article>
-          </Link>
-        </div>
-      </React.Fragment>
-      );
+              <div className="PostItemDayItem">
+                <FaRegCalendarCheck className="icon" />
+                更新:
+                {updatedAt}
+              </div>
+            </div>
+          </article>
+        </Link>
+      </div>
     </>
   );
 };

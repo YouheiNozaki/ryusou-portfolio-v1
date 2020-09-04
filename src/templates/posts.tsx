@@ -1,19 +1,17 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
-import Image from 'gatsby-image';
 import { css } from '@emotion/core';
 import {
-  FaCalendar,
-  FaRegCalendarCheck,
   FaArrowCircleRight,
   FaArrowCircleLeft,
 } from 'react-icons/fa';
 
-import { sizes, colors, typography, mq } from '../theme';
+import { sizes, colors, mq } from '../theme';
 import { PagePostsQuery } from '../../graphql-types';
 import { PostsContext } from '../../gatsby-node';
 import { SEO } from '../components/templates/Seo';
 import { Title } from '../components/Atom';
+import { Card } from '../components/molecules/Card';
 
 type Props = {
   data: PagePostsQuery;
@@ -27,72 +25,6 @@ export const PostList = css({
   gap: sizes[4],
   [mq[0]]: {
     display: 'block',
-  },
-});
-
-export const PostItem = css({
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
-  [mq[0]]: {
-    padding: sizes[4],
-  },
-  '& a': {
-    textDecoration: 'none',
-    cursor: 'pointer',
-    '& article': {
-      border: `solid ${sizes[1]} ${colors.lightBlue}`,
-      borderRadius: sizes[2],
-      padding: sizes[4],
-      width: sizes.largeSizes.sm,
-      [mq[1]]: {
-        width: sizes.largeSizes.xs,
-      },
-      [mq[0]]: {
-        width: sizes.largeSizes.xs,
-      },
-      '& .PostItemTitle': {
-        color: colors.blue,
-        fontWeight: typography.fontWeights.medium,
-        textOverflow: 'ellipsis',
-        overflow: 'hidden',
-        whiteSpace: 'nowrap',
-      },
-      '& img': {
-        borderRadius: sizes[2],
-      },
-      '& .PostItemTag': {
-        marginTop: sizes[3],
-        '& a': {
-          marginRight: sizes[2],
-          border: `solid ${sizes.px} ${colors.lightgray}`,
-          borderRadius: sizes[2],
-          padding: sizes[1],
-          backgroundColor: colors.lightBlue,
-          color: colors.white,
-        },
-      },
-      '& .PostItemDay': {
-        marginTop: sizes[3],
-        display: 'flex',
-        [mq[0]]: {
-          marginTop: sizes[1],
-        },
-        '& .PostItemDayItem': {
-          display: 'flex',
-          color: colors.blue,
-          marginLeft: sizes[2],
-          '& .icon': {
-            marginRight: sizes[1],
-          },
-        },
-        [mq[1]]: {
-          display: 'block',
-        },
-        [mq[0]]: {
-          display: 'block',
-        },
-      },
-    },
   },
 });
 
@@ -151,52 +83,15 @@ const Posts: React.FC<Props> = ({
           const posts = edge.node;
           return (
             <React.Fragment key={posts.id}>
-              <div css={PostItem}>
-                <Link to={`/posts/${posts.postsId}`}>
-                  <article>
-                    <p className="PostItemTitle">
-                      {posts.title}
-                    </p>
-                    {posts?.fields?.featuredImage
-                      ?.fluid && (
-                      <Image
-                        fluid={
-                          posts.fields.featuredImage.fluid
-                        }
-                        alt="ブログのイメージ画像"
-                      />
-                    )}
-                    <div className="PostItemTag">
-                      {posts?.tags?.map(
-                        (tag) =>
-                          tag?.id && (
-                            <React.Fragment key={tag.id}>
-                              <Link to={`/tags/${tag.id}`}>
-                                <span>{tag.name}</span>
-                              </Link>
-                            </React.Fragment>
-                          ),
-                      )}
-                    </div>
-                    <div className="PostItemDay">
-                      <div className="PostItemDayItem">
-                        <FaCalendar className="icon" />
-                        {/* <p> */}
-                        投稿:
-                        {posts.createdAt}
-                        {/* </p> */}
-                      </div>
-                      <div className="PostItemDayItem">
-                        <FaRegCalendarCheck className="icon" />
-                        {/* <p> */}
-                        更新:
-                        {posts.updatedAt}
-                        {/* </p> */}
-                      </div>
-                    </div>
-                  </article>
-                </Link>
-              </div>
+              <Card
+                postsId={posts.postsId}
+                title={posts.title}
+                fluidImage={
+                  posts.fields?.featuredImage?.fluid
+                }
+                createdAt={posts.createdAt}
+                updatedAt={posts.updatedAt}
+              />
             </React.Fragment>
           );
         })}

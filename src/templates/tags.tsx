@@ -8,9 +8,10 @@ import {
 
 import { PageTagQuery } from '../../graphql-types';
 import { TagsContext } from '../../gatsby-node';
-import { PostList, PostItem } from './posts';
+import { PostList } from './posts';
 import { SEO } from '../components/templates/Seo';
 import { Title } from '../components/Atom';
+import { Card } from '../components/molecules/Card';
 
 type Props = {
   data: PageTagQuery;
@@ -35,51 +36,15 @@ const Tags: React.FC<Props> = ({
         const posts = edge.node;
         return (
           <React.Fragment key={posts.id}>
-            <div css={PostItem}>
-              <Link to={`/posts/${posts.postsId}`}>
-                <article>
-                  <p className="PostItemTitle">
-                    {posts.title}
-                  </p>
-                  {posts?.fields?.featuredImage?.fluid && (
-                    <Image
-                      fluid={
-                        posts.fields.featuredImage.fluid
-                      }
-                      alt="ブログのイメージ画像"
-                    />
-                  )}
-                  <div className="PostItemTag">
-                    {posts?.tags?.map(
-                      (tag) =>
-                        tag?.id && (
-                          <React.Fragment key={tag.id}>
-                            <Link to={`/tags/${tag.id}`}>
-                              <span>{tag.name}</span>
-                            </Link>
-                          </React.Fragment>
-                        ),
-                    )}
-                  </div>
-                  <div className="PostItemDay">
-                    <div className="PostItemDayItem">
-                      <FaCalendar className="icon" />
-                      <p>
-                        投稿:
-                        {posts.createdAt}
-                      </p>
-                    </div>
-                    <div className="PostItemDayItem">
-                      <FaRegCalendarCheck className="icon" />
-                      <p>
-                        更新:
-                        {posts.updatedAt}
-                      </p>
-                    </div>
-                  </div>
-                </article>
-              </Link>
-            </div>
+            <Card
+              postsId={posts.postsId}
+              title={posts.title}
+              fluidImage={
+                posts.fields?.featuredImage?.fluid
+              }
+              createdAt={posts.createdAt}
+              updatedAt={posts.updatedAt}
+            />
           </React.Fragment>
         );
       })}
