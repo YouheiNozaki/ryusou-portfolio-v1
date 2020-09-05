@@ -13,7 +13,7 @@ import {
   Paragraph,
   LinkText,
   Table,
-} from '../components/Atom';
+} from '../components/atoms';
 import { SkillCard } from '../components/molecules';
 
 type Props = {

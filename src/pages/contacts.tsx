@@ -5,7 +5,7 @@ import { color } from 'csx';
 import { FaCat } from 'react-icons/fa';
 import { AiOutlineMail, AiFillHeart } from 'react-icons/ai';
 
-import { Title } from '../components/Atom';
+import { Title } from '../components/atoms';
 import { sizes, colors, mq } from '../theme';
 import { SEO } from '../components/templates/Seo';
 

@@ -10,7 +10,7 @@ import { sizes, colors, mq } from '../theme';
 import { PagePostsQuery } from '../../graphql-types';
 import { PostsContext } from '../../gatsby-node';
 import { SEO } from '../components/templates/Seo';
-import { Title } from '../components/Atom';
+import { Title } from '../components/atoms';
 import { Card } from '../components/molecules/Card';
 
 type Props = {

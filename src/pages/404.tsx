@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 import { FluidImage } from '../lib/images';
 import { SEO } from '../components/templates/Seo';
 import { colors } from '../theme';
-import { Title } from '../components/Atom';
+import { Title } from '../components/atoms';
 
 type Props = {
   location: Location;

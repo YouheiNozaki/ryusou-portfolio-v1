@@ -3,8 +3,8 @@ import React, { useState, ReactNode } from 'react';
 import './index.css';
 import { Header } from '../templates/Header';
 import { Footer } from '../templates/Footer';
-import { Nav } from '../Atom';
-import { Burger } from '../Atom';
+import { Nav } from '../atoms';
+import { Burger } from '../atoms';
 import { sizes } from '../../theme';
 
 type Props = {
