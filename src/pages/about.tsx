@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import { FluidImage } from '../lib/images';
 import { css } from '@emotion/core';
 
-import { sizes, mq } from '../theme';
+import { sizes, mq, colors } from '../theme';
 import { PageAboutQuery } from '../../graphql-types';
 import { SEO } from '../components/templates/Seo';
 import {
@@ -22,7 +22,8 @@ type Props = {
 };
 
 const AboutContainer = css({
-  marginTop: sizes[16],
+  margin: `${sizes[16]} auto`,
+  textAlign: 'center',
   '& article': {
     '& .profile': {
       margin: `${sizes[16]} auto`,
@@ -65,8 +66,8 @@ const About: React.FC<Props> = ({ data, location }) => {
         pagedesc="Aboutページ"
         pagepath={location.pathname}
       />
+      <Title color={colors.blue}>ABOUT</Title>
       <section css={AboutContainer}>
-        <Title>ABOUT</Title>
         <SubTitle>どーも。りゅーそうです。</SubTitle>
         <Icon>
           <FluidImage

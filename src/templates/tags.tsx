@@ -11,6 +11,7 @@ import { PostList, PostPageNation } from './posts';
 import { SEO } from '../components/templates/Seo';
 import { Title } from '../components/atoms';
 import { Card } from '../components/molecules/Card';
+import { colors } from '../theme';
 
 type Props = {
   data: PageTagQuery;
@@ -29,7 +30,9 @@ const Tags: React.FC<Props> = ({
       pagedesc={`カテゴリー別ページ | ${pageContext.tagsname}`}
       pagepath={location.pathname}
     />
-    <Title>{pageContext.tagsname}</Title>
+    <Title color={colors.lightBlue}>
+      {pageContext.tagsname}
+    </Title>
     <section css={PostList}>
       {data.allMicrocmsPosts?.edges?.map((edge) => {
         const posts = edge.node;

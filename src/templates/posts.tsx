@@ -77,7 +77,7 @@ const Posts: React.FC<Props> = ({
         pagedesc="技術ブログのページ"
         pagepath={location.pathname}
       />
-      <Title>POST</Title>
+      <Title color={colors.lightBlue}>POST</Title>
       <section css={PostList}>
         {data.allMicrocmsPosts?.edges?.map((edge) => {
           const posts = edge.node;

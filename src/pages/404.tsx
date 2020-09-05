@@ -33,7 +33,7 @@ const NotFoundPage: React.FC<Props> = ({ location }) => (
       pagepath={location.pathname}
     />
     <div css={ErrorPageContainer}>
-      <Title>404</Title>
+      <Title color={colors.red}>404</Title>
       <FluidImage
         filename="404.png"
         alt="エラーページの画像"

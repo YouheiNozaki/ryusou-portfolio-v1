@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { css } from '@emotion/core';
 
-import { sizes, mq } from '../theme';
+import { sizes, mq, colors } from '../theme';
 import { SEO } from '../components/templates/Seo';
 import { PageWorksQuery } from '../../graphql-types';
 import { Title, SubTitle } from '../components/atoms';
@@ -37,10 +37,9 @@ const Works: React.FC<Props> = ({ data, location }) => (
       pagedesc="作品の一覧ページ"
       pagepath={location.pathname}
     />
-    <Title>WORK</Title>
+    <Title color={colors.red}>WORK</Title>
     <div css={WorkContainer}>
-      {/* <h2 className="WorkTitle">サイト</h2> */}
-      <SubTitle>サイト</SubTitle>
+      <SubTitle>Sites</SubTitle>
       <div className="WorkList">
         {data.site?.nodes?.map((node) => {
           const site = node;
@@ -54,6 +53,7 @@ const Works: React.FC<Props> = ({ data, location }) => (
                   }
                   url={site.url}
                   description={site.description}
+                  borderColor={colors.red}
                 />
               )}
             </React.Fragment>
@@ -62,7 +62,7 @@ const Works: React.FC<Props> = ({ data, location }) => (
       </div>
     </div>
     <div css={WorkContainer}>
-      <h2 className="WorkTitle">スピーチ</h2>
+      <SubTitle>Speaker Deck</SubTitle>
       <div className="WorkList">
         {data.speech?.nodes?.map((node) => {
           const speech = node;
@@ -76,6 +76,7 @@ const Works: React.FC<Props> = ({ data, location }) => (
                   }
                   url={speech.url}
                   description={speech.description}
+                  borderColor={colors.yellow}
                 />
               )}
             </React.Fragment>
