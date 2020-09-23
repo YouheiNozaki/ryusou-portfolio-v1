@@ -2,9 +2,9 @@
 このリポジトリは https://ryusou.dev/ のコードです。
 
 # 使用言語/フレームワークなど
-Gatsby
-TypeScript
-emotion 
+Gatsby  
+TypeScript  
+emotion   
 and more
 
 # CMS
