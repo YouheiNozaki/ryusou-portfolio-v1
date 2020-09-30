@@ -122,9 +122,6 @@ const About: React.FC<Props> = ({ data, location }) => {
                 },
               )}
             </div>
-            <Paragraph>
-              ※この数値は妄想であり、現実の能力とは解離している場合があります(笑)。
-            </Paragraph>
           </section>
         </article>
       </section>

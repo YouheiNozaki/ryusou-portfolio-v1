@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
-import { css } from '@emotion/core';
 import {
   FaCalendar,
   FaRegCalendarCheck,
@@ -24,60 +23,60 @@ type Props = {
   updatedAt: Date;
 };
 
-export const PostItem = css({
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
-  [mq[0]]: {
-    padding: sizes[4],
-  },
-  '& a': {
-    textDecoration: 'none',
-    cursor: 'pointer',
-    '& article': {
-      border: `solid ${sizes[1]} ${colors.lightBlue}`,
-      borderRadius: sizes[2],
-      padding: sizes[4],
-      width: sizes.largeSizes.sm,
-      [mq[1]]: {
-        width: sizes.largeSizes.xs,
-      },
-      [mq[0]]: {
-        width: sizes.largeSizes.xs,
-      },
-      '& .PostItemTitle': {
-        color: colors.blue,
-        fontWeight: typography.fontWeights.medium,
-        textOverflow: 'ellipsis',
-        overflow: 'hidden',
-        whiteSpace: 'nowrap',
-      },
-      '& img': {
-        borderRadius: sizes[2],
-      },
-      '& .PostItemDay': {
-        marginTop: sizes[3],
-        display: 'flex',
-        [mq[0]]: {
-          marginTop: sizes[1],
-        },
-        '& .PostItemDayItem': {
-          display: 'flex',
-          color: colors.blue,
-          marginLeft: sizes[2],
-          '& .icon': {
-            marginRight: sizes[1],
-          },
-        },
-        [mq[1]]: {
-          display: 'block',
-        },
-        [mq[0]]: {
-          display: 'block',
-        },
-      },
-    },
-  },
-});
+// export const PostItem = css({
+//   display: 'grid',
+//   gridTemplateColumns: '1fr 1fr',
+//   [mq[0]]: {
+//     padding: sizes[4],
+//   },
+//   '& a': {
+//     textDecoration: 'none',
+//     cursor: 'pointer',
+//     '& article': {
+//       border: `solid ${sizes[1]} ${colors.lightBlue}`,
+//       borderRadius: sizes[2],
+//       padding: sizes[4],
+//       width: sizes.largeSizes.sm,
+//       [mq[1]]: {
+//         width: sizes.largeSizes.xs,
+//       },
+//       [mq[0]]: {
+//         width: sizes.largeSizes.xs,
+//       },
+//       '& .PostItemTitle': {
+//         color: colors.blue,
+//         fontWeight: typography.fontWeights.medium,
+//         textOverflow: 'ellipsis',
+//         overflow: 'hidden',
+//         whiteSpace: 'nowrap',
+//       },
+//       '& img': {
+//         borderRadius: sizes[2],
+//       },
+//       '& .PostItemDay': {
+//         marginTop: sizes[3],
+//         display: 'flex',
+//         [mq[0]]: {
+//           marginTop: sizes[1],
+//         },
+//         '& .PostItemDayItem': {
+//           display: 'flex',
+//           color: colors.blue,
+//           marginLeft: sizes[2],
+//           '& .icon': {
+//             marginRight: sizes[1],
+//           },
+//         },
+//         [mq[1]]: {
+//           display: 'block',
+//         },
+//         [mq[0]]: {
+//           display: 'block',
+//         },
+//       },
+//     },
+//   },
+// });
 
 export const Card: React.FC<Props> = ({
   postsId,
@@ -89,6 +88,7 @@ export const Card: React.FC<Props> = ({
   const [ref, inView] = useInView({
     rootMargin: '-50px 0px',
   });
+
   return (
     <>
       <div
