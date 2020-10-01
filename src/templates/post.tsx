@@ -24,6 +24,7 @@ import { PostContext } from '../../gatsby-node';
 import { renderAst } from '../lib/renderHtml';
 import { colors, sizes, mq } from '../theme';
 import { SEO } from '../components/templates/Seo';
+import { CoffeeButton } from '../components/molecules/CoffeeButton';
 
 type Props = {
   pageContext: PostContext;
@@ -185,6 +186,7 @@ const Post: React.FC<Props> = ({
             <LineIcon size={40} round />
           </LineShareButton>
         </div>
+        <CoffeeButton />
         {/* <a
           href="https://b.hatena.ne.jp/entry/"
           className="hatena-bookmark-button"

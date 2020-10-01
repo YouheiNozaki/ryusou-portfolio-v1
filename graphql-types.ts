@@ -2529,6 +2529,7 @@ export type MicrocmsWorks = Node & {
   internal: Internal;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
+  publishedAt?: Maybe<Scalars['Date']>;
   image?: Maybe<MicrocmsWorksImage>;
   title?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
@@ -2546,6 +2547,13 @@ export type MicrocmsWorksCreatedAtArgs = {
 };
 
 export type MicrocmsWorksUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type MicrocmsWorksPublishedAtArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
@@ -2670,6 +2678,7 @@ export type MicrocmsWorksFieldsEnum =
   | 'internal___type'
   | 'createdAt'
   | 'updatedAt'
+  | 'publishedAt'
   | 'image___url'
   | 'title'
   | 'url'
@@ -2708,6 +2717,7 @@ export type MicrocmsWorksFilterInput = {
   internal?: Maybe<InternalFilterInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
+  publishedAt?: Maybe<DateQueryOperatorInput>;
   image?: Maybe<MicrocmsWorksImageFilterInput>;
   title?: Maybe<StringQueryOperatorInput>;
   url?: Maybe<StringQueryOperatorInput>;
@@ -3055,6 +3065,7 @@ export type QueryMicrocmsWorksArgs = {
   internal?: Maybe<InternalFilterInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
+  publishedAt?: Maybe<DateQueryOperatorInput>;
   image?: Maybe<MicrocmsWorksImageFilterInput>;
   title?: Maybe<StringQueryOperatorInput>;
   url?: Maybe<StringQueryOperatorInput>;
