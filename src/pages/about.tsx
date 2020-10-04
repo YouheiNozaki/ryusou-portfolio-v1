@@ -15,6 +15,7 @@ import {
   Table,
 } from '../components/atoms';
 import { SkillCard } from '../components/molecules';
+import { CoffeeButton } from '../components/molecules/CoffeeButton';
 
 type Props = {
   data: PageAboutQuery;
@@ -122,6 +123,9 @@ const About: React.FC<Props> = ({ data, location }) => {
                 },
               )}
             </div>
+          </section>
+          <section>
+            <CoffeeButton text="私の活動を応援してくださる方はこちらからサポートよろしくお願いします" />
           </section>
         </article>
       </section>

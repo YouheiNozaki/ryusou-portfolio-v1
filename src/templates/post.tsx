@@ -25,6 +25,7 @@ import { renderAst } from '../lib/renderHtml';
 import { colors, sizes, mq } from '../theme';
 import { SEO } from '../components/templates/Seo';
 import { CoffeeButton } from '../components/molecules/CoffeeButton';
+import { Paragraph } from '../components/atoms';
 
 type Props = {
   pageContext: PostContext;
@@ -58,9 +59,6 @@ const PostContainer = css({
         marginRight: sizes[1],
       },
     },
-  },
-  '& img': {
-    width: '100%',
   },
   '& .PostContent': {
     marginTop: sizes[8],
@@ -186,7 +184,7 @@ const Post: React.FC<Props> = ({
             <LineIcon size={40} round />
           </LineShareButton>
         </div>
-        <CoffeeButton />
+        <CoffeeButton text="もし記事を気に入っていただけたら、サポートよろしくお願いします" />
         {/* <a
           href="https://b.hatena.ne.jp/entry/"
           className="hatena-bookmark-button"
