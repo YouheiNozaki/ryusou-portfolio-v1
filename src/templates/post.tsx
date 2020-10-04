@@ -25,7 +25,6 @@ import { renderAst } from '../lib/renderHtml';
 import { colors, sizes, mq } from '../theme';
 import { SEO } from '../components/templates/Seo';
 import { CoffeeButton } from '../components/molecules/CoffeeButton';
-import { Paragraph } from '../components/atoms';
 
 type Props = {
   pageContext: PostContext;
