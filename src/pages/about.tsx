@@ -4,7 +4,7 @@ import { FluidImage } from '../lib/images';
 import { css } from '@emotion/core';
 
 import { sizes, mq, colors } from '../theme';
-import { PageAboutQuery } from '../../graphql-types';
+
 import { SEO } from '../components/templates/Seo';
 import {
   Title,
@@ -18,7 +18,7 @@ import { SkillCard } from '../components/molecules';
 import { CoffeeButton } from '../components/molecules/CoffeeButton';
 
 type Props = {
-  data: PageAboutQuery;
+  data: GatsbyTypes.PageAboutQuery;
   location: Location;
 };
 

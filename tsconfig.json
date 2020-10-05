@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
     "target": "esnext",
+    "module": "esnext",
+    "lib": ["dom", "es2017"],
+    "jsx": "react",
     "strict": true,
-    "sourceMap": true,
-    "noImplicitAny": true,
     "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "moduleResolution": "node",
-    "jsx": "preserve",
-    "lib": ["dom", "esnext"]
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node"
   },
   "exclude": ["node_modules", ".cache"],
   "include": ["./gatsby-node/**/*", "./src/**/*"]

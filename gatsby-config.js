@@ -63,12 +63,7 @@ module.exports = {
     'gatsby-plugin-offline',
     `gatsby-plugin-emotion`,
     `gatsby-plugin-typescript`,
-    {
-      resolve: `gatsby-plugin-graphql-codegen`,
-      options: {
-        filename: `./types/graphql-types.d.ts`,
-      },
-    },
+    `gatsby-plugin-typegen`,
     {
       resolve: 'gatsby-source-microcms',
       options: {

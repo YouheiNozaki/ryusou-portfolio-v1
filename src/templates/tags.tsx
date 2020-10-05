@@ -5,7 +5,6 @@ import {
   FaArrowCircleLeft,
 } from 'react-icons/fa';
 
-import { PageTagQuery } from '../../graphql-types';
 import { TagsContext } from '../../gatsby-node';
 import { PostList, PostPageNation } from './posts';
 import { SEO } from '../components/templates/Seo';
@@ -14,7 +13,7 @@ import { Card } from '../components/molecules/Card';
 import { colors } from '../theme';
 
 type Props = {
-  data: PageTagQuery;
+  data: GatsbyTypes.PageTagQuery;
   location: Location;
   pageContext: TagsContext;
 };

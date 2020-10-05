@@ -184,7 +184,7 @@ const Post: React.FC<Props> = ({
           </LineShareButton>
         </div>
         <CoffeeButton text="もし記事を気に入っていただけたら、サポートよろしくお願いします" />
-        {/* <a
+        <a
           href="https://b.hatena.ne.jp/entry/"
           className="hatena-bookmark-button"
           data-hatena-bookmark-layout="vertical-normal"
@@ -198,7 +198,7 @@ const Post: React.FC<Props> = ({
             height="20"
             css={{ border: 'none' }}
           />
-        </a> */}
+        </a>
         <div className="PostPageNation">
           {pageContext.previous && (
             <div className="PostPageNationPrevious">

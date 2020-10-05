@@ -51,7 +51,9 @@ const HeaderLink = css({
 });
 
 export const Header: React.FC = () => {
-  const data = useStaticQuery(graphql`
+  const data = useStaticQuery<
+    GatsbyTypes.MyQueryQuery
+  >(graphql`
     query MyQuery {
       file(relativePath: { eq: "icon.png" }) {
         childImageSharp {
@@ -68,8 +70,9 @@ export const Header: React.FC = () => {
       <div css={HeaderContainer}>
         <div css={HeaderLogo}>
           <Link to="/" aria-label="HOME">
+            {/* TODO:undefiendの処理を行う */}
             <Img
-              fixed={data.file.childImageSharp.fixed}
+              fixed={data.file!.childImageSharp!.fixed}
               alt="Logo"
             />
           </Link>

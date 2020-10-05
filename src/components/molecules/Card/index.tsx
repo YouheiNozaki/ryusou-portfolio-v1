@@ -19,8 +19,8 @@ type Props = {
   postsId: string | null | undefined;
   title: string | null | undefined;
   fluidImage: any;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string | undefined;
+  updatedAt: string | undefined;
 };
 
 export const Card: React.FC<Props> = ({

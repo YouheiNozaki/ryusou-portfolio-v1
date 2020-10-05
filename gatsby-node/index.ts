@@ -1,20 +1,15 @@
 import path from 'path';
 import { GatsbyNode } from 'gatsby';
-import {
-  MicrocmsPostsConnection,
-  MicrocmsPosts,
-  MicrocmsTagsConnection,
-} from '../graphql-types';
 
 type Result = {
-  allMicrocmsPosts: MicrocmsPostsConnection;
-  allMicrocmsTags: MicrocmsTagsConnection;
+  allMicrocmsPosts: GatsbyTypes.MicrocmsPostsConnection;
+  allMicrocmsTags: GatsbyTypes.MicrocmsTagsConnection;
 };
 
 export type PostContext = {
-  post: MicrocmsPosts;
-  next: MicrocmsPosts;
-  previous: MicrocmsPosts;
+  post: GatsbyTypes.MicrocmsPosts;
+  next: GatsbyTypes.MicrocmsPosts;
+  previous: GatsbyTypes.MicrocmsPosts;
 };
 
 export type PostsContext = {

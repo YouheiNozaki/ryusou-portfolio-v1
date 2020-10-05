@@ -4,12 +4,11 @@ import { css } from '@emotion/core';
 
 import { sizes, mq, colors } from '../theme';
 import { SEO } from '../components/templates/Seo';
-import { PageWorksQuery } from '../../graphql-types';
 import { Title, SubTitle } from '../components/atoms';
 import { WorkCard } from '../components/molecules';
 
 type Props = {
-  data: PageWorksQuery;
+  data: GatsbyTypes.PageWorksQuery;
   location: Location;
 };
 
