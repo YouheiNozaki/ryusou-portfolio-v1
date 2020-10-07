@@ -5,4 +5,7 @@ require('ts-node').register({
     target: 'esnext',
   },
 });
-exports.createPages = require('./gatsby-node/index').createPages;
+
+require('./src/__generated__/gatsby-types');
+
+exports.createPages = require('./src/gatsby-node/index').createPages;

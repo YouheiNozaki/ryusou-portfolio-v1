@@ -8,7 +8,7 @@ import {
 
 import { sizes, colors, mq } from '../theme';
 
-import { PostsContext } from '../../gatsby-node';
+import { PostsContext } from '../gatsby-node';
 import { SEO } from '../components/templates/Seo';
 import { Title } from '../components/atoms';
 import { Card } from '../components/molecules/Card';

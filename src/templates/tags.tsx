@@ -5,10 +5,11 @@ import {
   FaArrowCircleLeft,
 } from 'react-icons/fa';
 
-import { TagsContext } from '../../gatsby-node';
+import { TagsContext } from '../gatsby-node';
 import { PostList, PostPageNation } from './posts';
 import { SEO } from '../components/templates/Seo';
 import { Title } from '../components/atoms';
+
 import { Card } from '../components/molecules/Card';
 import { colors } from '../theme';
 

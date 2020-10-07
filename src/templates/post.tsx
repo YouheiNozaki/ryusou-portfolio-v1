@@ -20,7 +20,7 @@ import {
   LineShareButton,
 } from 'react-share';
 
-import { PostContext } from '../../gatsby-node';
+import { PostContext } from '../gatsby-node';
 import { renderAst } from '../lib/renderHtml';
 import { colors, sizes, mq } from '../theme';
 import { SEO } from '../components/templates/Seo';
