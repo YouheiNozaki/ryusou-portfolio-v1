@@ -72,6 +72,9 @@ module.exports = {
         apis: [
           {
             endpoint: 'posts',
+            query: {
+              draftKey: 'DRAFT_KEY',
+            },
           },
           {
             endpoint: 'works',

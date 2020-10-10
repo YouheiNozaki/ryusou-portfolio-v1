@@ -4182,6 +4182,7 @@ declare namespace GatsbyTypes {
     pluginOptions___serviceId = 'pluginOptions.serviceId',
     pluginOptions___apis = 'pluginOptions.apis',
     pluginOptions___apis___endpoint = 'pluginOptions.apis.endpoint',
+    pluginOptions___apis___query___draftKey = 'pluginOptions.apis.query.draftKey',
     pluginOptions___domain = 'pluginOptions.domain',
     pluginOptions___fields = 'pluginOptions.fields',
     pluginOptions___fields___nodeType = 'pluginOptions.fields.nodeType',
@@ -4375,16 +4376,28 @@ declare namespace GatsbyTypes {
 
   type SitePluginPluginOptionsApis = {
     readonly endpoint: Maybe<Scalars['String']>;
+    readonly query: Maybe<SitePluginPluginOptionsApisQuery>;
   };
 
   type SitePluginPluginOptionsApisFilterInput = {
     readonly endpoint: Maybe<StringQueryOperatorInput>;
+    readonly query: Maybe<
+      SitePluginPluginOptionsApisQueryFilterInput
+    >;
   };
 
   type SitePluginPluginOptionsApisFilterListInput = {
     readonly elemMatch: Maybe<
       SitePluginPluginOptionsApisFilterInput
     >;
+  };
+
+  type SitePluginPluginOptionsApisQuery = {
+    readonly draftKey: Maybe<Scalars['String']>;
+  };
+
+  type SitePluginPluginOptionsApisQueryFilterInput = {
+    readonly draftKey: Maybe<StringQueryOperatorInput>;
   };
 
   type SitePluginPluginOptionsEnv = {
@@ -4654,6 +4667,21 @@ declare namespace GatsbyTypes {
     }>;
   };
 
+  type Unnamed_3_QueryVariables = Exact<{
+    [key: string]: never;
+  }>;
+
+  type Unnamed_3_Query = {
+    readonly allImageSharp: {
+      readonly nodes: ReadonlyArray<{
+        readonly fluid: Maybe<
+          Pick<ImageSharpFluid, 'originalName'> &
+            GatsbyImageSharpFluid_withWebpFragment
+        >;
+      }>;
+    };
+  };
+
   type PageAboutQueryVariables = Exact<{
     [key: string]: never;
   }>;
@@ -4682,21 +4710,6 @@ declare namespace GatsbyTypes {
             }>;
           }>;
         };
-      }>;
-    };
-  };
-
-  type Unnamed_3_QueryVariables = Exact<{
-    [key: string]: never;
-  }>;
-
-  type Unnamed_3_Query = {
-    readonly allImageSharp: {
-      readonly nodes: ReadonlyArray<{
-        readonly fluid: Maybe<
-          Pick<ImageSharpFluid, 'originalName'> &
-            GatsbyImageSharpFluid_withWebpFragment
-        >;
       }>;
     };
   };
