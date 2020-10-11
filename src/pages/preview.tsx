@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'gatsby';
+import React, { useState, useEffect } from 'react';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 import Image from 'gatsby-image';
 import unified from 'unified';
 import parse from 'rehype-parse';
@@ -25,6 +25,10 @@ import { renderAst } from '../lib/renderHtml';
 import { colors, sizes, mq } from '../theme';
 import { SEO } from '../components/templates/Seo';
 import { CoffeeButton } from '../components/molecules/CoffeeButton';
+
+type PostData = {
+  microcmsPost: PostContext;
+};
 
 type Props = {
   pageContext: PostContext;
@@ -111,28 +115,74 @@ const Post: React.FC<Props> = ({
   pageContext,
   location,
 }) => {
-  const post = pageContext.post;
+  const PostData = useStaticQuery<PostData>(graphql`
+    query {
+      microcmsPost {
+        draftkey
+        postsId
+        title
+        createdAt
+        updatedAt
+        image {
+          url
+        }
+        tags {
+          id
+          name
+        }
+        content
+      }
+    }
+  `);
+  const microcmsPost = PostData.microcmsPost.post;
 
   const htmlAst = unified()
     .use(parse, { fragment: true })
-    .parse(post.content!);
+    .parse(microcmsPost.content!);
+
+  const [postData, setPostData] = useState(null);
+
+  useEffect(() => {
+    if (!postData) {
+      fetch(
+        `https://xxxxxxxxx.microcms.io/api/v1/blogs/${microcmsPost.postsId}?draftKey=${microcmsPost.draftkey}`,
+        {
+          headers: {
+            'X-API-KEY': `${process.env.GATSBY_X_API_KEY}`,
+          },
+        },
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+        })
+        .then((json) => {
+          setPostData(json);
+        });
+    } else {
+      return function cleanup() {
+        console.log('done');
+      };
+    }
+  });
 
   return (
     <>
       <SEO
-        pagetitle={post.title!}
+        pagetitle={microcmsPost.title!}
         pagedesc={`${htmlToText
-          .fromString(post.content!, {
+          .fromString(microcmsPost.content!, {
             ignoreImage: true,
             ignoreHref: true,
           })
           .slice(0, 70)}....`}
         pagepath={location.pathname}
-        postimg={post?.image?.url!}
+        postimg={microcmsPost?.image?.url}
       />
       <div css={PostContainer}>
-        <h1 className="PostTitle">{post.title}</h1>
-        {post?.tags?.map(
+        <h1 className="PostTitle">{microcmsPost.title}</h1>
+        {microcmsPost?.tags?.map(
           (tag) =>
             tag?.id && (
               <React.Fragment key={tag.id}>
@@ -147,16 +197,16 @@ const Post: React.FC<Props> = ({
         <div className="PostDay">
           <div className="PostDayItem">
             <FaCalendar className="icon" />
-            <p>投稿:{post.createdAt}</p>
+            <p>投稿:{microcmsPost.createdAt}</p>
           </div>
           <div className="PostDayItem">
             <FaRegCalendarCheck className="icon" />
-            <p>更新:{post.updatedAt}</p>
+            <p>更新:{microcmsPost.updatedAt}</p>
           </div>
         </div>
-        {post?.fields?.featuredImage?.fluid && (
+        {microcmsPost?.fields?.featuredImage?.fluid && (
           <Image
-            fluid={post.fields.featuredImage.fluid}
+            fluid={microcmsPost.fields.featuredImage.fluid}
             alt="投稿したブログのイメージ画像"
           />
         )}
@@ -165,20 +215,20 @@ const Post: React.FC<Props> = ({
         </div>
         <div className="ShareButton">
           <TwitterShareButton
-            title={post.title!}
-            url={`https://ryusou.dev/posts/${post.postsId}`}
+            title={microcmsPost.title!}
+            url={`https://ryusou.dev/posts/${microcmsPost.postsId}`}
           >
             <TwitterIcon size={40} round />
           </TwitterShareButton>
           <FacebookShareButton
-            quote={post.title!}
-            url={`https://ryusou.dev/posts/${post.postsId}`}
+            quote={microcmsPost.title!}
+            url={`https://ryusou.dev/posts/${microcmsPost.postsId}`}
           >
             <FacebookIcon size={40} round />
           </FacebookShareButton>
           <LineShareButton
-            title={post.title!}
-            url={`https://ryusou.dev/posts/${post.postsId}`}
+            title={microcmsPost.title!}
+            url={`https://ryusou.dev/posts/${microcmsPost.postsId}`}
           >
             <LineIcon size={40} round />
           </LineShareButton>

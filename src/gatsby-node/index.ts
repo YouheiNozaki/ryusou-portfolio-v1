@@ -10,6 +10,7 @@ export type PostContext = {
   post: GatsbyTypes.MicrocmsPosts;
   next: GatsbyTypes.MicrocmsPosts;
   previous: GatsbyTypes.MicrocmsPosts;
+  draftkey?: string;
 };
 
 export type PostsContext = {
