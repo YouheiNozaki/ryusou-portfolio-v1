@@ -117,18 +117,6 @@ const Post: React.FC<Props> = ({
     .use(parse, { fragment: true })
     .parse(post.content!);
 
-  // const [postData, setPostData] = useState(null);
-
-  // useEffect(() => {
-  //   if (postData) {
-  //     fetch(
-  //       `https://ryusou-mtkh.microcms.io/api/v1/posts/${post.postsId}?draftKey=${}`,
-  //     );
-  //   }
-  //   return () => {
-  //     cleanup;
-  //   };
-  // }, [input]);
   return (
     <>
       <SEO

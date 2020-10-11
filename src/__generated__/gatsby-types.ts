@@ -2928,10 +2928,10 @@ declare namespace GatsbyTypes {
     readonly allFile: FileConnection;
     readonly directory: Maybe<Directory>;
     readonly allDirectory: DirectoryConnection;
-    readonly sitePage: Maybe<SitePage>;
-    readonly allSitePage: SitePageConnection;
     readonly site: Maybe<Site>;
     readonly allSite: SiteConnection;
+    readonly sitePage: Maybe<SitePage>;
+    readonly allSitePage: SitePageConnection;
     readonly imageSharp: Maybe<ImageSharp>;
     readonly allImageSharp: ImageSharpConnection;
     readonly microcmsSkills: Maybe<MicrocmsSkills>;
@@ -3044,6 +3044,26 @@ declare namespace GatsbyTypes {
     limit: Maybe<Scalars['Int']>;
   };
 
+  type Query_siteArgs = {
+    buildTime: Maybe<DateQueryOperatorInput>;
+    siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+    port: Maybe<IntQueryOperatorInput>;
+    host: Maybe<StringQueryOperatorInput>;
+    polyfill: Maybe<BooleanQueryOperatorInput>;
+    pathPrefix: Maybe<StringQueryOperatorInput>;
+    id: Maybe<StringQueryOperatorInput>;
+    parent: Maybe<NodeFilterInput>;
+    children: Maybe<NodeFilterListInput>;
+    internal: Maybe<InternalFilterInput>;
+  };
+
+  type Query_allSiteArgs = {
+    filter: Maybe<SiteFilterInput>;
+    sort: Maybe<SiteSortInput>;
+    skip: Maybe<Scalars['Int']>;
+    limit: Maybe<Scalars['Int']>;
+  };
+
   type Query_sitePageArgs = {
     path: Maybe<StringQueryOperatorInput>;
     component: Maybe<StringQueryOperatorInput>;
@@ -3066,26 +3086,6 @@ declare namespace GatsbyTypes {
   type Query_allSitePageArgs = {
     filter: Maybe<SitePageFilterInput>;
     sort: Maybe<SitePageSortInput>;
-    skip: Maybe<Scalars['Int']>;
-    limit: Maybe<Scalars['Int']>;
-  };
-
-  type Query_siteArgs = {
-    buildTime: Maybe<DateQueryOperatorInput>;
-    siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-    port: Maybe<DateQueryOperatorInput>;
-    host: Maybe<StringQueryOperatorInput>;
-    polyfill: Maybe<BooleanQueryOperatorInput>;
-    pathPrefix: Maybe<StringQueryOperatorInput>;
-    id: Maybe<StringQueryOperatorInput>;
-    parent: Maybe<NodeFilterInput>;
-    children: Maybe<NodeFilterListInput>;
-    internal: Maybe<InternalFilterInput>;
-  };
-
-  type Query_allSiteArgs = {
-    filter: Maybe<SiteFilterInput>;
-    sort: Maybe<SiteSortInput>;
     skip: Maybe<Scalars['Int']>;
     limit: Maybe<Scalars['Int']>;
   };
@@ -3242,7 +3242,7 @@ declare namespace GatsbyTypes {
   type Site = Node & {
     readonly buildTime: Maybe<Scalars['Date']>;
     readonly siteMetadata: Maybe<SiteSiteMetadata>;
-    readonly port: Maybe<Scalars['Date']>;
+    readonly port: Maybe<Scalars['Int']>;
     readonly host: Maybe<Scalars['String']>;
     readonly polyfill: Maybe<Scalars['Boolean']>;
     readonly pathPrefix: Maybe<Scalars['String']>;
@@ -3253,13 +3253,6 @@ declare namespace GatsbyTypes {
   };
 
   type Site_buildTimeArgs = {
-    formatString: Maybe<Scalars['String']>;
-    fromNow: Maybe<Scalars['Boolean']>;
-    difference: Maybe<Scalars['String']>;
-    locale: Maybe<Scalars['String']>;
-  };
-
-  type Site_portArgs = {
     formatString: Maybe<Scalars['String']>;
     fromNow: Maybe<Scalars['Boolean']>;
     difference: Maybe<Scalars['String']>;
@@ -3452,8 +3445,8 @@ declare namespace GatsbyTypes {
   enum SiteFieldsEnum {
     buildTime = 'buildTime',
     siteMetadata___title = 'siteMetadata.title',
-    siteMetadata___lang = 'siteMetadata.lang',
     siteMetadata___description = 'siteMetadata.description',
+    siteMetadata___lang = 'siteMetadata.lang',
     siteMetadata___author = 'siteMetadata.author',
     siteMetadata___siteUrl = 'siteMetadata.siteUrl',
     siteMetadata___locale = 'siteMetadata.locale',
@@ -3555,7 +3548,7 @@ declare namespace GatsbyTypes {
     readonly siteMetadata: Maybe<
       SiteSiteMetadataFilterInput
     >;
-    readonly port: Maybe<DateQueryOperatorInput>;
+    readonly port: Maybe<IntQueryOperatorInput>;
     readonly host: Maybe<StringQueryOperatorInput>;
     readonly polyfill: Maybe<BooleanQueryOperatorInput>;
     readonly pathPrefix: Maybe<StringQueryOperatorInput>;
@@ -4182,7 +4175,6 @@ declare namespace GatsbyTypes {
     pluginOptions___serviceId = 'pluginOptions.serviceId',
     pluginOptions___apis = 'pluginOptions.apis',
     pluginOptions___apis___endpoint = 'pluginOptions.apis.endpoint',
-    pluginOptions___apis___query___draftKey = 'pluginOptions.apis.query.draftKey',
     pluginOptions___domain = 'pluginOptions.domain',
     pluginOptions___fields = 'pluginOptions.fields',
     pluginOptions___fields___nodeType = 'pluginOptions.fields.nodeType',
@@ -4376,28 +4368,16 @@ declare namespace GatsbyTypes {
 
   type SitePluginPluginOptionsApis = {
     readonly endpoint: Maybe<Scalars['String']>;
-    readonly query: Maybe<SitePluginPluginOptionsApisQuery>;
   };
 
   type SitePluginPluginOptionsApisFilterInput = {
     readonly endpoint: Maybe<StringQueryOperatorInput>;
-    readonly query: Maybe<
-      SitePluginPluginOptionsApisQueryFilterInput
-    >;
   };
 
   type SitePluginPluginOptionsApisFilterListInput = {
     readonly elemMatch: Maybe<
       SitePluginPluginOptionsApisFilterInput
     >;
-  };
-
-  type SitePluginPluginOptionsApisQuery = {
-    readonly draftKey: Maybe<Scalars['String']>;
-  };
-
-  type SitePluginPluginOptionsApisQueryFilterInput = {
-    readonly draftKey: Maybe<StringQueryOperatorInput>;
   };
 
   type SitePluginPluginOptionsEnv = {
@@ -4574,8 +4554,8 @@ declare namespace GatsbyTypes {
 
   type SiteSiteMetadata = {
     readonly title: Maybe<Scalars['String']>;
-    readonly lang: Maybe<Scalars['String']>;
     readonly description: Maybe<Scalars['String']>;
+    readonly lang: Maybe<Scalars['String']>;
     readonly author: Maybe<Scalars['String']>;
     readonly siteUrl: Maybe<Scalars['String']>;
     readonly locale: Maybe<Scalars['String']>;
@@ -4584,8 +4564,8 @@ declare namespace GatsbyTypes {
 
   type SiteSiteMetadataFilterInput = {
     readonly title: Maybe<StringQueryOperatorInput>;
-    readonly lang: Maybe<StringQueryOperatorInput>;
     readonly description: Maybe<StringQueryOperatorInput>;
+    readonly lang: Maybe<StringQueryOperatorInput>;
     readonly author: Maybe<StringQueryOperatorInput>;
     readonly siteUrl: Maybe<StringQueryOperatorInput>;
     readonly locale: Maybe<StringQueryOperatorInput>;
@@ -4619,66 +4599,99 @@ declare namespace GatsbyTypes {
     readonly glob: Maybe<Scalars['String']>;
   };
 
-  type Unnamed_1_QueryVariables = Exact<{
-    [key: string]: never;
+  type PagePostsQueryVariables = Exact<{
+    skip: Scalars['Int'];
+    limit: Scalars['Int'];
   }>;
 
-  type Unnamed_1_Query = {
-    readonly file: Maybe<{
-      readonly childImageSharp: Maybe<{
-        readonly fixed: Maybe<
-          GatsbyImageSharpFixedFragment
-        >;
-      }>;
-    }>;
-  };
-
-  type MyQueryQueryVariables = Exact<{
-    [key: string]: never;
-  }>;
-
-  type MyQueryQuery = {
-    readonly file: Maybe<{
-      readonly childImageSharp: Maybe<{
-        readonly fixed: Maybe<
-          GatsbyImageSharpFixedFragment
-        >;
-      }>;
-    }>;
-  };
-
-  type Unnamed_2_QueryVariables = Exact<{
-    [key: string]: never;
-  }>;
-
-  type Unnamed_2_Query = {
-    readonly site: Maybe<{
-      readonly siteMetadata: Maybe<
-        Pick<
-          SiteSiteMetadata,
+  type PagePostsQuery = {
+    readonly allMicrocmsPosts: {
+      readonly edges: ReadonlyArray<{
+        readonly node: Pick<
+          MicrocmsPosts,
+          | 'id'
+          | 'postsId'
           | 'title'
-          | 'lang'
-          | 'description'
-          | 'siteUrl'
-          | 'locale'
-          | 'fbappid'
-        >
-      >;
-    }>;
+          | 'createdAt'
+          | 'updatedAt'
+          | 'content'
+        > & {
+          readonly tags: Maybe<
+            ReadonlyArray<
+              Maybe<Pick<MicrocmsPostsTags, 'id' | 'name'>>
+            >
+          >;
+          readonly fields: Maybe<{
+            readonly featuredImage: Maybe<{
+              readonly fluid: Maybe<
+                Pick<
+                  ImgixFluid,
+                  | 'src'
+                  | 'sizes'
+                  | 'base64'
+                  | 'aspectRatio'
+                  | 'srcSet'
+                  | 'srcSetWebp'
+                  | 'srcWebp'
+                >
+              >;
+            }>;
+          }>;
+        };
+      }>;
+    };
   };
 
-  type Unnamed_3_QueryVariables = Exact<{
+  type PageTagQueryVariables = Exact<{
+    tagsId: Scalars['String'];
+    skip: Scalars['Int'];
+    limit: Scalars['Int'];
+  }>;
+
+  type PageTagQuery = {
+    readonly allMicrocmsPosts: {
+      readonly edges: ReadonlyArray<{
+        readonly node: Pick<
+          MicrocmsPosts,
+          | 'id'
+          | 'postsId'
+          | 'title'
+          | 'createdAt'
+          | 'updatedAt'
+        > & {
+          readonly tags: Maybe<
+            ReadonlyArray<
+              Maybe<Pick<MicrocmsPostsTags, 'id' | 'name'>>
+            >
+          >;
+          readonly fields: Maybe<{
+            readonly featuredImage: Maybe<{
+              readonly fluid: Maybe<
+                Pick<
+                  ImgixFluid,
+                  | 'src'
+                  | 'sizes'
+                  | 'base64'
+                  | 'aspectRatio'
+                  | 'srcSet'
+                  | 'srcSetWebp'
+                  | 'srcWebp'
+                >
+              >;
+            }>;
+          }>;
+        };
+      }>;
+    };
+  };
+
+  type PagesQueryQueryVariables = Exact<{
     [key: string]: never;
   }>;
 
-  type Unnamed_3_Query = {
-    readonly allImageSharp: {
-      readonly nodes: ReadonlyArray<{
-        readonly fluid: Maybe<
-          Pick<ImageSharpFluid, 'originalName'> &
-            GatsbyImageSharpFluid_withWebpFragment
-        >;
-      }>;
+  type PagesQueryQuery = {
+    readonly allSitePage: {
+      readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>>;
     };
   };
 
@@ -4771,153 +4784,58 @@ declare namespace GatsbyTypes {
     };
   };
 
-  type PagePostsQueryVariables = Exact<{
-    skip: Scalars['Int'];
-    limit: Scalars['Int'];
-  }>;
-
-  type PagePostsQuery = {
-    readonly allMicrocmsPosts: {
-      readonly edges: ReadonlyArray<{
-        readonly node: Pick<
-          MicrocmsPosts,
-          | 'id'
-          | 'postsId'
-          | 'title'
-          | 'createdAt'
-          | 'updatedAt'
-          | 'content'
-        > & {
-          readonly tags: Maybe<
-            ReadonlyArray<
-              Maybe<Pick<MicrocmsPostsTags, 'id' | 'name'>>
-            >
-          >;
-          readonly fields: Maybe<{
-            readonly featuredImage: Maybe<{
-              readonly fluid: Maybe<
-                Pick<
-                  ImgixFluid,
-                  | 'src'
-                  | 'sizes'
-                  | 'base64'
-                  | 'aspectRatio'
-                  | 'srcSet'
-                  | 'srcSetWebp'
-                  | 'srcWebp'
-                >
-              >;
-            }>;
-          }>;
-        };
-      }>;
-    };
-  };
-
-  type PageTagQueryVariables = Exact<{
-    tagsId: Scalars['String'];
-    skip: Scalars['Int'];
-    limit: Scalars['Int'];
-  }>;
-
-  type PageTagQuery = {
-    readonly allMicrocmsPosts: {
-      readonly edges: ReadonlyArray<{
-        readonly node: Pick<
-          MicrocmsPosts,
-          | 'id'
-          | 'postsId'
-          | 'title'
-          | 'createdAt'
-          | 'updatedAt'
-        > & {
-          readonly tags: Maybe<
-            ReadonlyArray<
-              Maybe<Pick<MicrocmsPostsTags, 'id' | 'name'>>
-            >
-          >;
-          readonly fields: Maybe<{
-            readonly featuredImage: Maybe<{
-              readonly fluid: Maybe<
-                Pick<
-                  ImgixFluid,
-                  | 'src'
-                  | 'sizes'
-                  | 'base64'
-                  | 'aspectRatio'
-                  | 'srcSet'
-                  | 'srcSetWebp'
-                  | 'srcWebp'
-                >
-              >;
-            }>;
-          }>;
-        };
-      }>;
-    };
-  };
-
   type GatsbyImageSharpFixedFragment = Pick<
     ImageSharpFixed,
     'base64' | 'width' | 'height' | 'src' | 'srcSet'
   >;
 
-  type GatsbyImageSharpFixed_tracedSVGFragment = Pick<
-    ImageSharpFixed,
-    'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'
-  >;
+  type usersyouheiPortfoliosrccomponentsatomsNavindexTsx1208217931QueryVariables = Exact<{
+    [key: string]: never;
+  }>;
 
-  type GatsbyImageSharpFixed_withWebpFragment = Pick<
-    ImageSharpFixed,
-    | 'base64'
-    | 'width'
-    | 'height'
-    | 'src'
-    | 'srcSet'
-    | 'srcWebp'
-    | 'srcSetWebp'
-  >;
-
-  type GatsbyImageSharpFixed_withWebp_tracedSVGFragment = Pick<
-    ImageSharpFixed,
-    | 'tracedSVG'
-    | 'width'
-    | 'height'
-    | 'src'
-    | 'srcSet'
-    | 'srcWebp'
-    | 'srcSetWebp'
-  >;
-
-  type GatsbyImageSharpFixed_noBase64Fragment = Pick<
-    ImageSharpFixed,
-    'width' | 'height' | 'src' | 'srcSet'
-  >;
-
-  type GatsbyImageSharpFixed_withWebp_noBase64Fragment = Pick<
-    ImageSharpFixed,
-    | 'width'
-    | 'height'
-    | 'src'
-    | 'srcSet'
-    | 'srcWebp'
-    | 'srcSetWebp'
-  >;
-
-  type GatsbyImageSharpFluidFragment = Pick<
-    ImageSharpFluid,
-    'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
-  >;
-
-  type GatsbyImageSharpFluidLimitPresentationSizeFragment = {
-    maxHeight: ImageSharpFluid['presentationHeight'];
-    maxWidth: ImageSharpFluid['presentationWidth'];
+  type usersyouheiPortfoliosrccomponentsatomsNavindexTsx1208217931Query = {
+    readonly file: Maybe<{
+      readonly childImageSharp: Maybe<{
+        readonly fixed: Maybe<
+          GatsbyImageSharpFixedFragment
+        >;
+      }>;
+    }>;
   };
 
-  type GatsbyImageSharpFluid_tracedSVGFragment = Pick<
-    ImageSharpFluid,
-    'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
-  >;
+  type MyQueryQueryVariables = Exact<{
+    [key: string]: never;
+  }>;
+
+  type MyQueryQuery = {
+    readonly file: Maybe<{
+      readonly childImageSharp: Maybe<{
+        readonly fixed: Maybe<
+          GatsbyImageSharpFixedFragment
+        >;
+      }>;
+    }>;
+  };
+
+  type usersyouheiPortfoliosrccomponentstemplatesSeoindexTsx509033975QueryVariables = Exact<{
+    [key: string]: never;
+  }>;
+
+  type usersyouheiPortfoliosrccomponentstemplatesSeoindexTsx509033975Query = {
+    readonly site: Maybe<{
+      readonly siteMetadata: Maybe<
+        Pick<
+          SiteSiteMetadata,
+          | 'title'
+          | 'lang'
+          | 'description'
+          | 'siteUrl'
+          | 'locale'
+          | 'fbappid'
+        >
+      >;
+    }>;
+  };
 
   type GatsbyImageSharpFluid_withWebpFragment = Pick<
     ImageSharpFluid,
@@ -4930,133 +4848,18 @@ declare namespace GatsbyTypes {
     | 'sizes'
   >;
 
-  type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = Pick<
-    ImageSharpFluid,
-    | 'tracedSVG'
-    | 'aspectRatio'
-    | 'src'
-    | 'srcSet'
-    | 'srcWebp'
-    | 'srcSetWebp'
-    | 'sizes'
-  >;
-
-  type GatsbyImageSharpFluid_noBase64Fragment = Pick<
-    ImageSharpFluid,
-    'aspectRatio' | 'src' | 'srcSet' | 'sizes'
-  >;
-
-  type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<
-    ImageSharpFluid,
-    | 'aspectRatio'
-    | 'src'
-    | 'srcSet'
-    | 'srcWebp'
-    | 'srcSetWebp'
-    | 'sizes'
-  >;
-
-  type GatsbyImageSharpResolutionsFragment = Pick<
-    ImageSharpResolutions,
-    'base64' | 'width' | 'height' | 'src' | 'srcSet'
-  >;
-
-  type GatsbyImageSharpResolutions_tracedSVGFragment = Pick<
-    ImageSharpResolutions,
-    'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'
-  >;
-
-  type GatsbyImageSharpResolutions_withWebpFragment = Pick<
-    ImageSharpResolutions,
-    | 'base64'
-    | 'width'
-    | 'height'
-    | 'src'
-    | 'srcSet'
-    | 'srcWebp'
-    | 'srcSetWebp'
-  >;
-
-  type GatsbyImageSharpResolutions_withWebp_tracedSVGFragment = Pick<
-    ImageSharpResolutions,
-    | 'tracedSVG'
-    | 'width'
-    | 'height'
-    | 'src'
-    | 'srcSet'
-    | 'srcWebp'
-    | 'srcSetWebp'
-  >;
-
-  type GatsbyImageSharpResolutions_noBase64Fragment = Pick<
-    ImageSharpResolutions,
-    'width' | 'height' | 'src' | 'srcSet'
-  >;
-
-  type GatsbyImageSharpResolutions_withWebp_noBase64Fragment = Pick<
-    ImageSharpResolutions,
-    | 'width'
-    | 'height'
-    | 'src'
-    | 'srcSet'
-    | 'srcWebp'
-    | 'srcSetWebp'
-  >;
-
-  type GatsbyImageSharpSizesFragment = Pick<
-    ImageSharpSizes,
-    'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
-  >;
-
-  type GatsbyImageSharpSizes_tracedSVGFragment = Pick<
-    ImageSharpSizes,
-    'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
-  >;
-
-  type GatsbyImageSharpSizes_withWebpFragment = Pick<
-    ImageSharpSizes,
-    | 'base64'
-    | 'aspectRatio'
-    | 'src'
-    | 'srcSet'
-    | 'srcWebp'
-    | 'srcSetWebp'
-    | 'sizes'
-  >;
-
-  type GatsbyImageSharpSizes_withWebp_tracedSVGFragment = Pick<
-    ImageSharpSizes,
-    | 'tracedSVG'
-    | 'aspectRatio'
-    | 'src'
-    | 'srcSet'
-    | 'srcWebp'
-    | 'srcSetWebp'
-    | 'sizes'
-  >;
-
-  type GatsbyImageSharpSizes_noBase64Fragment = Pick<
-    ImageSharpSizes,
-    'aspectRatio' | 'src' | 'srcSet' | 'sizes'
-  >;
-
-  type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<
-    ImageSharpSizes,
-    | 'aspectRatio'
-    | 'src'
-    | 'srcSet'
-    | 'srcWebp'
-    | 'srcSetWebp'
-    | 'sizes'
-  >;
-
-  type PagesQueryQueryVariables = Exact<{
+  type usersyouheiPortfoliosrclibimagesindexTsx3034406352QueryVariables = Exact<{
     [key: string]: never;
   }>;
 
-  type PagesQueryQuery = {
-    readonly allSitePage: {
-      readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>>;
+  type usersyouheiPortfoliosrclibimagesindexTsx3034406352Query = {
+    readonly allImageSharp: {
+      readonly nodes: ReadonlyArray<{
+        readonly fluid: Maybe<
+          Pick<ImageSharpFluid, 'originalName'> &
+            GatsbyImageSharpFluid_withWebpFragment
+        >;
+      }>;
     };
   };
 }

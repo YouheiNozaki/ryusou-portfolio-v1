@@ -62,7 +62,6 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     `gatsby-plugin-emotion`,
-    `gatsby-plugin-typescript`,
     `gatsby-plugin-typegen`,
     {
       resolve: 'gatsby-source-microcms',
@@ -72,9 +71,6 @@ module.exports = {
         apis: [
           {
             endpoint: 'posts',
-            query: {
-              draftKey: 'DRAFT_KEY',
-            },
           },
           {
             endpoint: 'works',
