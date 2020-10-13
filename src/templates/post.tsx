@@ -183,7 +183,6 @@ const Post: React.FC<Props> = ({
             <LineIcon size={40} round />
           </LineShareButton>
         </div>
-        <CoffeeButton text="もし記事を気に入っていただけたら、サポートよろしくお願いします" />
         <a
           href="https://b.hatena.ne.jp/entry/"
           className="hatena-bookmark-button"
@@ -199,6 +198,7 @@ const Post: React.FC<Props> = ({
             css={{ border: 'none' }}
           />
         </a>
+        <CoffeeButton text="もし記事を気に入っていただけたら、サポートよろしくお願いします" />
         <div className="PostPageNation">
           {pageContext.previous && (
             <div className="PostPageNationPrevious">
