@@ -3,19 +3,14 @@ import rehypeReact from 'rehype-react';
 import Imgix from 'react-imgix';
 import Highlight from 'react-highlight';
 import { FaExternalLinkAlt } from 'react-icons/fa';
-import {
-  colors,
-  sizes,
-  fontSizes,
-  typography,
-} from '../../theme';
+import { colors, sizes, typography } from '../../theme';
 
 const MainChapter: React.FC = (props) => {
   return (
     <h1
       css={{
         color: colors.blue,
-        padding: sizes[8],
+        padding: sizes[2],
         marginTop: sizes[8],
         marginBottom: sizes[8],
         borderLeft: `solid ${sizes[2]} ${colors.red}`,
@@ -31,7 +26,7 @@ const SubChapter: React.FC = (props) => {
     <h2
       css={{
         color: colors.blue,
-        padding: sizes[3],
+        padding: sizes[2],
         marginTop: sizes[8],
         marginBottom: sizes[8],
         borderLeft: `solid ${sizes[2]} ${colors.red}`,
@@ -47,7 +42,7 @@ const ThirdChapter: React.FC = (props) => {
     <h3
       css={{
         color: colors.blue,
-        padding: sizes[4],
+        padding: sizes[2],
         marginTop: sizes[4],
         borderLeft: `solid ${sizes[2]} ${colors.red}`,
       }}
@@ -76,9 +71,7 @@ const MyLink: React.FC = (props: any) => {
       href={props.href}
       className="MyLink"
       css={{
-        fontSize: fontSizes.xl,
         color: colors.red,
-        marginLeft: sizes[4],
         ':hover': {
           color: colors.blue,
         },
@@ -107,6 +100,19 @@ const MyImage: React.FC = (props: any) => {
   );
 };
 
+const BorderParagraph: React.FC = (props) => {
+  return (
+    <strong
+      css={{
+        textDecorationLine: 'underline',
+        textDecorationColor: colors.blue,
+      }}
+    >
+      {props.children}
+    </strong>
+  );
+};
+
 // @ts-ignore
 export const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -118,6 +124,7 @@ export const renderAst = new rehypeReact({
     p: Paragraph,
     a: MyLink,
     img: MyImage,
+    strong: BorderParagraph,
     // @ts-ignore
     code: Highlight,
   },
