@@ -104,8 +104,7 @@ const BorderParagraph: React.FC = (props) => {
   return (
     <strong
       css={{
-        textDecorationLine: 'underline',
-        textDecorationColor: colors.blue,
+        background: `linear-gradient(transparent 70%, ${colors.yellow} 70%)`,
       }}
     >
       {props.children}
