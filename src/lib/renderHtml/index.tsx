@@ -116,6 +116,43 @@ const MyLink: React.FC = (props: any) => {
   );
 };
 
+const List: React.FC = (props) => {
+  const [ref, inView] = useInView({
+    rootMargin: '-50px 0px',
+  });
+  return (
+    <ul
+      ref={ref}
+      css={{
+        opacity: inView ? 1 : 0,
+        animation: inView ? `${BottomIn} 0.5s ease-out` : 0,
+        ':hover': {
+          color: colors.blue,
+        },
+      }}
+    >
+      {props.children}
+    </ul>
+  );
+};
+
+const Code: React.FC = (props) => {
+  const [ref, inView] = useInView({
+    rootMargin: '-50px 0px',
+  });
+  return (
+    <pre
+      ref={ref}
+      css={{
+        opacity: inView ? 1 : 0,
+        animation: inView ? `${BottomIn} 0.5s ease-out` : 0,
+      }}
+    >
+      {props.children}
+    </pre>
+  );
+};
+
 const MyImage: React.FC = (props: any) => {
   const [ref, inView] = useInView({
     rootMargin: '-50px 0px',
@@ -176,8 +213,10 @@ export const renderAst = new rehypeReact({
     h3: ThirdChapter,
     p: Paragraph,
     a: MyLink,
+    ul: List,
     img: MyImage,
     strong: BorderParagraph,
+    pre: Code,
     // @ts-ignore
     code: Highlight,
   },
