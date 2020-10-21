@@ -4783,4 +4783,83 @@ declare namespace GatsbyTypes {
       >;
     };
   };
+
+  type GatsbyImageSharpFixedFragment = Pick<
+    ImageSharpFixed,
+    'base64' | 'width' | 'height' | 'src' | 'srcSet'
+  >;
+
+  type usersyouheiPortfoliosrccomponentsatomsNavindexTsx1208217931QueryVariables = Exact<{
+    [key: string]: never;
+  }>;
+
+  type usersyouheiPortfoliosrccomponentsatomsNavindexTsx1208217931Query = {
+    readonly file: Maybe<{
+      readonly childImageSharp: Maybe<{
+        readonly fixed: Maybe<
+          GatsbyImageSharpFixedFragment
+        >;
+      }>;
+    }>;
+  };
+
+  type MyQueryQueryVariables = Exact<{
+    [key: string]: never;
+  }>;
+
+  type MyQueryQuery = {
+    readonly file: Maybe<{
+      readonly childImageSharp: Maybe<{
+        readonly fixed: Maybe<
+          GatsbyImageSharpFixedFragment
+        >;
+      }>;
+    }>;
+  };
+
+  type GatsbyImageSharpFluid_withWebpFragment = Pick<
+    ImageSharpFluid,
+    | 'base64'
+    | 'aspectRatio'
+    | 'src'
+    | 'srcSet'
+    | 'srcWebp'
+    | 'srcSetWebp'
+    | 'sizes'
+  >;
+
+  type usersyouheiPortfoliosrclibimagesindexTsx3034406352QueryVariables = Exact<{
+    [key: string]: never;
+  }>;
+
+  type usersyouheiPortfoliosrclibimagesindexTsx3034406352Query = {
+    readonly allImageSharp: {
+      readonly nodes: ReadonlyArray<{
+        readonly fluid: Maybe<
+          Pick<ImageSharpFluid, 'originalName'> &
+            GatsbyImageSharpFluid_withWebpFragment
+        >;
+      }>;
+    };
+  };
+
+  type usersyouheiPortfoliosrccomponentstemplatesSeoindexTsx509033975QueryVariables = Exact<{
+    [key: string]: never;
+  }>;
+
+  type usersyouheiPortfoliosrccomponentstemplatesSeoindexTsx509033975Query = {
+    readonly site: Maybe<{
+      readonly siteMetadata: Maybe<
+        Pick<
+          SiteSiteMetadata,
+          | 'title'
+          | 'lang'
+          | 'description'
+          | 'siteUrl'
+          | 'locale'
+          | 'fbappid'
+        >
+      >;
+    }>;
+  };
 }
