@@ -75,7 +75,8 @@ module.exports = {
     'jsx-a11y/no-redundant-roles': `warn`,
     'jsx-a11y/no-static-element-interactions': `warn`,
     'jsx-a11y/role-has-required-aria-props': `warn`,
-    'jsx-a11y/role-supports-aria-props': `warn`,
+    // offにしないで対応する必要あり？atoms/Navコンポーネントのnav要素にaria属性を利用している
+    'jsx-a11y/role-supports-aria-props': `off`,
     'jsx-a11y/scope': `warn`,
     'jsx-a11y/tabindex-no-positive': `warn`,
   },
