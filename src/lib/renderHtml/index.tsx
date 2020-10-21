@@ -5,7 +5,6 @@ import Highlight from 'react-highlight';
 import { useInView } from 'react-intersection-observer';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
-import { BottomIn } from '../../keyframes';
 import { colors, sizes, typography } from '../../theme';
 
 const MainChapter: React.FC = (props) => {
@@ -22,7 +21,6 @@ const MainChapter: React.FC = (props) => {
         marginBottom: sizes[8],
         borderLeft: `solid ${sizes[2]} ${colors.red}`,
         opacity: inView ? 1 : 0,
-        animation: inView ? `${BottomIn} 0.5s ease-out` : 0,
       }}
     >
       {props.children}
@@ -44,7 +42,6 @@ const SubChapter: React.FC = (props) => {
         marginBottom: sizes[8],
         borderLeft: `solid ${sizes[2]} ${colors.red}`,
         opacity: inView ? 1 : 0,
-        animation: inView ? `${BottomIn} 0.5s ease-out` : 0,
       }}
     >
       {props.children}
@@ -65,7 +62,6 @@ const ThirdChapter: React.FC = (props) => {
         marginTop: sizes[4],
         borderLeft: `solid ${sizes[2]} ${colors.red}`,
         opacity: inView ? 1 : 0,
-        animation: inView ? `${BottomIn} 0.5s ease-out` : 0,
       }}
     >
       {props.children}
@@ -84,7 +80,6 @@ const Paragraph: React.FC = (props) => {
         letterSpacing: typography.letterSpacings.wide,
         lineHeight: typography.lineHeights.tall,
         opacity: inView ? 1 : 0,
-        animation: inView ? `${BottomIn} 0.5s ease-out` : 0,
       }}
     >
       {props.children}
@@ -104,7 +99,6 @@ const MyLink: React.FC = (props: any) => {
       css={{
         color: colors.red,
         opacity: inView ? 1 : 0,
-        animation: inView ? `${BottomIn} 0.5s ease-out` : 0,
         ':hover': {
           color: colors.blue,
         },
@@ -125,7 +119,6 @@ const List: React.FC = (props) => {
       ref={ref}
       css={{
         opacity: inView ? 1 : 0,
-        animation: inView ? `${BottomIn} 0.5s ease-out` : 0,
         ':hover': {
           color: colors.blue,
         },
@@ -145,7 +138,6 @@ const Code: React.FC = (props) => {
       ref={ref}
       css={{
         opacity: inView ? 1 : 0,
-        animation: inView ? `${BottomIn} 0.5s ease-out` : 0,
       }}
     >
       {props.children}
@@ -162,7 +154,6 @@ const MyImage: React.FC = (props: any) => {
       ref={ref}
       css={{
         opacity: inView ? 1 : 0,
-        animation: inView ? `${BottomIn} 0.5s ease-out` : 0,
       }}
     >
       <Imgix
@@ -176,9 +167,6 @@ const MyImage: React.FC = (props: any) => {
           margin: `0 auto ${sizes[8]} auto`,
           borderRadius: sizes[2],
           opacity: inView ? 1 : 0,
-          animation: inView
-            ? `${BottomIn} 0.5s ease-out`
-            : 0,
         }}
       />
     </div>
@@ -195,7 +183,6 @@ const BorderParagraph: React.FC = (props) => {
       css={{
         background: `linear-gradient(transparent 70%, ${colors.yellow} 70%)`,
         opacity: inView ? 1 : 0,
-        animation: inView ? `${BottomIn} 0.5s ease-out` : 0,
       }}
     >
       {props.children}
