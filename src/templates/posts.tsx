@@ -6,7 +6,7 @@ import {
   FaArrowCircleLeft,
 } from 'react-icons/fa';
 
-import { sizes, colors, mq } from '../theme';
+import { sizes, colors, mq, typography } from '../theme';
 
 import { PostsContext } from '../gatsby-node';
 import { SEO } from '../components/templates/Seo';
@@ -41,6 +41,7 @@ export const PostPageNation = css({
       color: colors.lightBlue,
       '& span': {
         marginLeft: sizes[1],
+        fontWeight: typography.fontWeights.semibold,
       },
     },
     '& a:hover': {
@@ -57,6 +58,7 @@ export const PostPageNation = css({
       color: colors.lightBlue,
       '& span': {
         marginRight: sizes[1],
+        fontWeight: typography.fontWeights.semibold,
       },
     },
     '& a:hover': {
