@@ -22,7 +22,7 @@ import {
 
 import { PostContext } from '../gatsby-node';
 import { renderAst } from '../lib/renderHtml';
-import { colors, sizes, mq } from '../theme';
+import { colors, sizes, mq, typography } from '../theme';
 import { SEO } from '../components/templates/Seo';
 import { CoffeeButton } from '../components/molecules/CoffeeButton';
 
@@ -74,6 +74,7 @@ const PostContainer = css({
         color: colors.lightBlue,
         '& span': {
           marginRight: sizes[1],
+          fontWeight: typography.fontWeights.semibold,
         },
       },
       '& a:hover': {
@@ -88,6 +89,7 @@ const PostContainer = css({
         color: colors.lightBlue,
         '& span': {
           marginLeft: sizes[1],
+          fontWeight: typography.fontWeights.semibold,
         },
       },
       '& a:hover': {

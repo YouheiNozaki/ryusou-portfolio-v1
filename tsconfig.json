@@ -12,6 +12,6 @@
     "skipLibCheck": true,
     "moduleResolution": "node"
   },
-  "exclude": ["src/gatsby-node/**/*ache"],
-  "include": ["./gatsby-node/**/*", "./src/**/*"]
+  "exclude": ["src/gatsby-node/**/*ache", "node_modules"],
+  "include": ["./src/**/*"]
 }
