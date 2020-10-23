@@ -4,6 +4,7 @@ import { css } from '@emotion/core';
 import { sizes, colors } from '../../../theme';
 
 const FooterContainer = css({
+  paddingTop: sizes[8],
   margin: '0 auto',
   textAlign: 'center',
 });
@@ -34,25 +35,23 @@ const FooterLink = css({
 
 export const Footer: React.FC = () => {
   return (
-    <>
-      <div css={FooterContainer}>
-        <p>© 2020 Built with Gatsby</p>
-        <p>This site uses Google Analytics</p>
-        <div css={FooterLink}>
-          <a
-            href="https://twitter.com/ryusou_mtkh"
-            aria-label="りゅーそうのTwitterアカウントへ"
-          >
-            <FaTwitter className="twitter" />
-          </a>
-          <a
-            href="https://github.com/YouheiNozaki"
-            aria-label="りゅーそうのgithubアカウントへ"
-          >
-            <FaGithub className="github" />
-          </a>
-        </div>
+    <div css={FooterContainer}>
+      <p>© 2020 Built with Gatsby</p>
+      <p>This site uses Google Analytics</p>
+      <div css={FooterLink}>
+        <a
+          href="https://twitter.com/ryusou_mtkh"
+          aria-label="りゅーそうのTwitterアカウントへ"
+        >
+          <FaTwitter className="twitter" />
+        </a>
+        <a
+          href="https://github.com/YouheiNozaki"
+          aria-label="りゅーそうのgithubアカウントへ"
+        >
+          <FaGithub className="github" />
+        </a>
       </div>
-    </>
+    </div>
   );
 };
