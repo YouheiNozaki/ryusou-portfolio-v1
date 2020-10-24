@@ -16,6 +16,7 @@ import {
 } from '../components/atoms';
 import { SkillCard } from '../components/molecules';
 import { CoffeeButton } from '../components/molecules/CoffeeButton';
+import { Loading } from '../components/molecules/Loading';
 
 type Props = {
   data: GatsbyTypes.PageAboutQuery;
@@ -109,6 +110,14 @@ const About: React.FC<Props> = ({ data, location }) => {
               {data?.allMicrocmsSkills?.edges.map(
                 (edge) => {
                   const skill = edge.node;
+                  if (
+                    skill.title == null ||
+                    skill.parameter == null ||
+                    skill.fields?.featuredImage?.fixed ==
+                      null
+                  ) {
+                    return <Loading />;
+                  }
                   return (
                     <React.Fragment key={skill.id}>
                       <SkillCard

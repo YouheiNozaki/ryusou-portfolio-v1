@@ -6,9 +6,10 @@ import { sizes, colors, mq } from '../../../theme';
 import { BottomIn } from '../../../keyframes';
 
 type Props = {
+  // TODO: gatsbyimageの型を書く。
   fixedImage: any;
-  title: string | null | undefined;
-  parameter: string | null | undefined;
+  title: string;
+  parameter: string;
 };
 
 export const SkillCard: React.FC<Props> = ({
@@ -19,6 +20,7 @@ export const SkillCard: React.FC<Props> = ({
   const [ref, inView] = useInView({
     rootMargin: '-50px 0px',
   });
+
   return (
     <>
       <div
