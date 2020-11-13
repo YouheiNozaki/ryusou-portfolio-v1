@@ -24,7 +24,7 @@
     "rehype-parse": "7.0.1",
     "rehype-react": "6.1.0",
     "ts-node": "9.0.0",
-    "typescript": "4.0.3",
+    "typescript": "^4.0.5",
     "unified": "9.2.0"
   },
   "keywords": [
@@ -34,20 +34,27 @@
   "main": "n/a",
   "scripts": {
     "type-check": "tsc",
-    "build": "gatsby build",
+    "build": "gatsby build && build:func",
     "start": "gatsby develop",
     "clean": "gatsby clean",
+    "build:func": "netlify-lambda build src/functions",
+    "serve": "netlify-lambda serve src/functions",
     "format": "prettier --write \"src/**/*.{js,ts,tsx}*\"",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "local": "node -e 'require(\"./gatsby-browser.js\").onSuccess()'"
+  },
+  "engines": {
+    "node": "^12.9.0"
   },
   "devDependencies": {
     "@babel/core": "7.12.3",
     "@babel/plugin-syntax-nullish-coalescing-operator": "^7.8.3",
     "@babel/plugin-syntax-optional-chaining": "^7.8.3",
+    "@babel/preset-typescript": "^7.12.1",
     "@emotion/core": "10.0.35",
     "@hot-loader/react-dom": "^17.0.0",
     "@netlify/plugin-lighthouse": "1.4.2",
+    "@types/aws-lambda": "^8.10.64",
     "@types/html-to-text": "5.1.2",
     "@types/node": "14.14.0",
     "@types/prettier": "2.1.5",
@@ -89,6 +96,7 @@
     "gatsby-transformer-sharp": "2.5.19",
     "husky": "4.3.0",
     "lint-staged": "10.4.2",
+    "netlify-lambda": "^2.0.1",
     "prettier": "2.1.2"
   },
   "husky": {
