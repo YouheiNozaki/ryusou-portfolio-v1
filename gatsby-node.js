@@ -1,4 +1,10 @@
 'use strict';
+const path = require('path');
+const fs = require('fs');
+const {
+  zipFunctions,
+} = require('@netlify/zip-it-and-ship-it');
+
 require('ts-node').register({
   compilerOptions: {
     module: 'commonjs',
@@ -18,4 +24,19 @@ exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
       'react-dom': '@hot-loader/react-dom',
     };
   }
+};
+
+exports.onPostBuild = () => {
+  const srcLocation = path.join(
+    __dirname,
+    `./src/functions`,
+  );
+  const outputLocation = path.join(
+    __dirname,
+    `./public/functions`,
+  );
+  if (!fs.existsSync(outputLocation)) {
+    fs.mkdirSync(outputLocation);
+  }
+  return zipFunctions(srcLocation, outputLocation);
 };
