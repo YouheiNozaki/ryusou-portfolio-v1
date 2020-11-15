@@ -162,12 +162,14 @@ const Contact: React.FC<Props> = ({ location }) => {
   const onSubmit = async (data: FormData) => {
     try {
       await fetch(
-        'https://ryusou-mtkh.microcms.io/api/v1/contacts',
+        // 'https://ryusou-mtkh.microcms.io/api/v1/contacts',
+        `${process.env.AUDIT_URL}` +
+          '.netlify/functions/contact',
         {
           method: 'post',
           headers: {
             'Content-type': 'application/json',
-            'X-WRITE-API-KEY': `${process.env.GATSBY_X_WRITE_API_KEY}`,
+            //   //   // 'X-WRITE-API-KEY': `${process.env.GATSBY_X_WRITE_API_KEY}`,
           },
           body: JSON.stringify(data),
         },
@@ -175,11 +177,7 @@ const Contact: React.FC<Props> = ({ location }) => {
       setSubmitted(true);
       reset();
     } catch (error) {
-      setError(
-        'submit',
-        'sumitError',
-        `問題がおきました。申し訳ありません！お手数ですが,Twitterアカウントにご連絡ください ${error.message}`,
-      );
+      setError('submit', `${errors.submit}`);
     }
   };
   const showSubmitError = (msg: any) => (

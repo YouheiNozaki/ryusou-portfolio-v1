@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es2019",
     "module": "esnext",
-    "lib": ["dom", "es2017"],
+    "lib": ["ES2020"],
     "jsx": "react",
     "strict": true,
     "esModuleInterop": true,

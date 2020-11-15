@@ -6,12 +6,13 @@
   "dependencies": {
     "@emotion/babel-preset-css-prop": "10.0.27",
     "csx": "10.0.1",
-    "dotenv": "8.2.0",
+    "dotenv": "^8.2.0",
     "gatsby": "2.24.84",
     "gatsby-image": "2.4.21",
     "gatsby-link": "2.4.16",
     "highlight.js": "10.3.1",
     "html-to-text": "5.1.1",
+    "node-fetch": "^2.6.1",
     "react": "17.0.0",
     "react-dom": "17.0.0",
     "react-helmet": "6.1.0",
@@ -24,7 +25,7 @@
     "rehype-parse": "7.0.1",
     "rehype-react": "6.1.0",
     "ts-node": "9.0.0",
-    "typescript": "4.0.3",
+    "typescript": "^4.0.5",
     "unified": "9.2.0"
   },
   "keywords": [
@@ -34,20 +35,27 @@
   "main": "n/a",
   "scripts": {
     "type-check": "tsc",
-    "build": "gatsby build",
+    "build": "gatsby build && build:func",
     "start": "gatsby develop",
     "clean": "gatsby clean",
+    "build:func": "netlify-lambda build src/functions",
+    "build:serve": "netlify-lambda serve src/functions",
     "format": "prettier --write \"src/**/*.{js,ts,tsx}*\"",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "local": "node -e 'require(\"./gatsby-browser.js\").onSuccess()'"
+  },
+  "engines": {
+    "node": "^12.9.0"
   },
   "devDependencies": {
     "@babel/core": "7.12.3",
     "@babel/plugin-syntax-nullish-coalescing-operator": "^7.8.3",
     "@babel/plugin-syntax-optional-chaining": "^7.8.3",
+    "@babel/preset-typescript": "^7.12.1",
     "@emotion/core": "10.0.35",
     "@hot-loader/react-dom": "^17.0.0",
     "@netlify/plugin-lighthouse": "1.4.2",
+    "@types/aws-lambda": "^8.10.64",
     "@types/html-to-text": "5.1.2",
     "@types/node": "14.14.0",
     "@types/prettier": "2.1.5",
@@ -62,6 +70,7 @@
     "babel-plugin-emotion": "10.0.33",
     "babel-preset-gatsby": "0.5.14",
     "babel-preset-react-app": "9.1.2",
+    "dotenv-webpack": "^5.1.0",
     "eslint": "7.11.0",
     "eslint-config-prettier": "6.13.0",
     "eslint-config-react-app": "5.2.1",
@@ -89,7 +98,10 @@
     "gatsby-transformer-sharp": "2.5.19",
     "husky": "4.3.0",
     "lint-staged": "10.4.2",
-    "prettier": "2.1.2"
+    "netlify-lambda": "^2.0.1",
+    "prettier": "2.1.2",
+    "ts-loader": "^8.0.11",
+    "webpack": "^5.4.0"
   },
   "husky": {
     "hooks": {
