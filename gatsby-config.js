@@ -68,7 +68,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-microcms',
       options: {
-        apiKey: process.env.X_API_KEY,
+        apiKey: `${process.env.X_API_KEY}`,
         serviceId: 'ryusou-mtkh',
         apis: [
           {
