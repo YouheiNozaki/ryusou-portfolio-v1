@@ -1,25 +1,34 @@
-export const contact = async (req: any, res: any) => {
-  const content = await fetch(
-    `${process.env.GATSBY_BASE_URL}`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-        'X-WRITE-API-KEY': `${process.env.X_WRITE_API_KEY}`,
-      },
-      body: JSON.stringify(req.body),
-    },
-  )
-    .then(() => 'Created')
-    .catch(() => null);
+import { APIGatewayProxyEvent } from 'aws-lambda';
+import fetch from 'node-fetch';
 
-  if (content !== 'Created') {
-    return res
-      .status(401)
-      .json({ message: 'Unauthorized' });
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
+const { X_WRITE_API_KEY } = process.env;
+
+export const handler = async (
+  event: APIGatewayProxyEvent,
+) => {
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, body: 'Method Not Allowed' };
   }
-
-  res.status(200).json({ message: 'OK' });
-
-  res.end('Contact enabled');
+  const URL = `https://ryusou-mtkh.microcms.io/api/v1/contacts`;
+  return await fetch(URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      // 'X-WRITE-API-KEY': `${process.env.X_WRITE_API_KEY}`,
+      'X-WRITE-API-KEY': `${X_WRITE_API_KEY}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => ({
+      statusCode: 200,
+      body: JSON.stringify(data),
+    }))
+    .catch((error) => ({
+      statusCode: 422,
+      body: String(error),
+    }));
 };
