@@ -4803,20 +4803,6 @@ declare namespace GatsbyTypes {
     }>;
   };
 
-  type MyQueryQueryVariables = Exact<{
-    [key: string]: never;
-  }>;
-
-  type MyQueryQuery = {
-    readonly file: Maybe<{
-      readonly childImageSharp: Maybe<{
-        readonly fixed: Maybe<
-          GatsbyImageSharpFixedFragment
-        >;
-      }>;
-    }>;
-  };
-
   type usersyouheiPortfoliosrccomponentstemplatesSeoindexTsx509033975QueryVariables = Exact<{
     [key: string]: never;
   }>;
@@ -4834,6 +4820,20 @@ declare namespace GatsbyTypes {
           | 'fbappid'
         >
       >;
+    }>;
+  };
+
+  type MyQueryQueryVariables = Exact<{
+    [key: string]: never;
+  }>;
+
+  type MyQueryQuery = {
+    readonly file: Maybe<{
+      readonly childImageSharp: Maybe<{
+        readonly fixed: Maybe<
+          GatsbyImageSharpFixedFragment
+        >;
+      }>;
     }>;
   };
 
