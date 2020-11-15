@@ -9,7 +9,7 @@ import { Title } from '../components/atoms';
 import { sizes, colors, mq } from '../theme';
 import { SEO } from '../components/templates/Seo';
 
-type FormData = {
+export type FormData = {
   name: string;
   email: string;
   question: string;
@@ -161,19 +161,13 @@ const Contact: React.FC<Props> = ({ location }) => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      await fetch(
-        // 'https://ryusou-mtkh.microcms.io/api/v1/contacts',
-        `${process.env.AUDIT_URL}` +
-          '.netlify/functions/contact',
-        {
-          method: 'post',
-          headers: {
-            'Content-type': 'application/json',
-            //   //   // 'X-WRITE-API-KEY': `${process.env.GATSBY_X_WRITE_API_KEY}`,
-          },
-          body: JSON.stringify(data),
+      await fetch('.netlify/functions/contact', {
+        method: 'post',
+        headers: {
+          'Content-type': 'application/json',
         },
-      );
+        body: JSON.stringify(data),
+      });
       setSubmitted(true);
       reset();
     } catch (error) {
@@ -270,6 +264,9 @@ const Contact: React.FC<Props> = ({ location }) => {
         pagepath={location.pathname}
       />
       <Title color={colors.yellow}>CONTACT</Title>
+      <p>
+        現在こちらのページは動きません。お問い合わせはTwitterによろしくお願いします
+      </p>
       <div css={ContactContainer}>
         {errors &&
           errors.submit &&
