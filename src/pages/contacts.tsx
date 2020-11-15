@@ -265,7 +265,8 @@ const Contact: React.FC<Props> = ({ location }) => {
       />
       <Title color={colors.yellow}>CONTACT</Title>
       <p>
-        現在こちらのページは動きません。お問い合わせはTwitterによろしくお願いします
+        現在こちらのページは動きません。お問い合わせはTwitter
+        までよろしくお願いします
       </p>
       <div css={ContactContainer}>
         {errors &&
